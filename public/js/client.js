@@ -3,3 +3,9 @@ VK.init({
 });
 
 var app = angular.module("vkSample", []);
+
+app.directive("authDirective", function() {
+    return {
+        template : "directive"
+    };
+});
