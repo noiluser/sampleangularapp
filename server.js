@@ -6,7 +6,7 @@ var express = require('express');
 var app = express();
 
 // set port
-var port = process.env.PORT || 4080;
+var port = process.env.PORT || 4081;
 
 // Handling static content
 app.use('/static', express.static(__dirname + '/public'));
