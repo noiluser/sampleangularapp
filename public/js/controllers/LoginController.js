@@ -1,4 +1,4 @@
-app.controller("authCtrl", function($scope) {
+app.controller("authCtrl", function($scope, userData) {
 	$scope.login = function() {
 		VK.Auth.login(function (response) {
 			if (response.session) {
