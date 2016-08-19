@@ -29,8 +29,8 @@ app.controller("authCtrl", function($scope) {
 				$scope.userHref = "";				
 				$scope.loginManage = $scope.login;
 				console.log(response);
-			//};*/
-		});
+			//};
+		});*/
 	};
 	
 	$scope.loginManage = $scope.login;
