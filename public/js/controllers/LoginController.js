@@ -6,7 +6,8 @@ app.controller("authCtrl", function($scope) {
 	
 	
 	$scope.login = function() {
-		VK.Auth.login(function (response) {
+		$scope.authText = "Log out";
+		/*VK.Auth.login(function (response) {
 			if (response.session) {
 				$scope.authText = "Log out";
 				$scope.userName = response.session.user.first_name;
@@ -15,11 +16,12 @@ app.controller("authCtrl", function($scope) {
 				$scope.loginManage = $scope.logout;
 				//console.log(response);
 			};
-		}, VK.access.GROUPS);
+		}, VK.access.GROUPS);*/
 	};
 	
 	$scope.logout = function() {
-		VK.Auth.logout(function (response) {
+		$scope.authText = "Log in";
+		/*VK.Auth.logout(function (response) {
 			//if (response.session) {
 				$scope.authText = "Log in";
 				$scope.userName = "";
@@ -27,7 +29,7 @@ app.controller("authCtrl", function($scope) {
 				$scope.userHref = "";				
 				$scope.loginManage = $scope.login;
 				console.log(response);
-			//};
+			//};*/
 		});
 	};
 	
