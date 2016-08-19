@@ -1,4 +1,4 @@
-app.controller("groupsCtrl", function($scope, $rootScope) {
+app.controller("groupsCtrl", ['$scope', '$rootScope', function($scope) {
 	$scope.isUserLoggedIn = 0;
 	
 	$rootScope.$on('userLogin', function(event, user) { 
@@ -14,4 +14,4 @@ app.controller("groupsCtrl", function($scope, $rootScope) {
 		console.log("loading", user); 
 	});
 
-});
+}]);
