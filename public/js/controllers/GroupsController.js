@@ -1,5 +1,9 @@
-app.controller("groupsCtrl", function($scope) {
+app.controller("groupsCtrl", function($scope, $rootScope) {
 	$scope.isUserLoggedIn = 0;
+	
+	$rootScope.$on('userLogin', function(event, user) { 
+		$scope.$emit('userLogin', user);
+	});
 	
 	$scope.$on('userLogin', function(event, user) { 
 		console.log("user authorized", user);
