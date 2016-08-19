@@ -23,16 +23,13 @@ app.controller("groupsCtrl", function($scope, $http) {
 	
 	$scope.$on('groupsLoad', function(event, user) { 
 		console.log("loading groups");
-		
-		var uid = $scope.user.user.id;
-		$http({
-	        method : "POST",
-	        url : "https://api.vk.com/method/groups.get?user_ids=" + uid
-	    }).then(function mySucces(response) {
-	        console.log(response);
-	    }, function myError(response) {
-	    	console.log(response);
-	    });
+		// https://api.vk.com/method/METHOD_NAME?PARAMETERS&access_token=ACCESS_TOKEN&v=V 
+		//var uid = $scope.user.user.id;
+		VK.Api.call('groups.get', {}, function(r) {
+			if(r.response) {
+				console.log(r.response);
+			}
+		});
 	});
 
 });
