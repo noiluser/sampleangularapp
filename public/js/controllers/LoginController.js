@@ -8,14 +8,15 @@ app.controller("authCtrl", function($scope) {
 					$scope.userHref = response.session.user.href;
 					$scope.isUserLoggedIn = true;
 				 });
-				//console.log(response);
 			};
 		}, VK.access.GROUPS);
 	};
 	
 	$scope.logout = function() {
 		VK.Auth.logout(function (response) {
-			$scope.isUserLoggedIn = false;
+			$scope.$apply(function(){
+				$scope.isUserLoggedIn = false;
+			}
 		});
 	};
 	
