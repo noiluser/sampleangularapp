@@ -2,7 +2,7 @@ app.controller("groupsCtrl", function($scope, $rootScope) {
 	$scope.isUserLoggedIn = 0;
 	
 	var listenerRemove = $rootScope.$on('userLogin', function(event, user) {
-		listenerRemove();
+		event.stopPropagation();
 		
 		console.log("user authorized", user);
 		$scope.$emit('userLogin', user);		
