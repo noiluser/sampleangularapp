@@ -1,4 +1,4 @@
-app.controller("authCtrl", function($scope, $rootScope) {
+app.controller("authCtrl", function($scope) {
 	$scope.login = function() {
 		VK.Auth.login(function (response) {
 			if (response.session) {
@@ -7,7 +7,7 @@ app.controller("authCtrl", function($scope, $rootScope) {
 					$scope.userLastName = response.session.user.last_name;
 					$scope.userHref = response.session.user.href;
 					$scope.isUserLoggedIn = true;
-					//$rootScope.$emit('userLogin', response.session);
+					
 					$scope.$parent.$broadcast('userLogin', response.session);
 				 });
 			};
@@ -18,6 +18,7 @@ app.controller("authCtrl", function($scope, $rootScope) {
 		VK.Auth.logout(function (response) {
 			$scope.$apply(function(){
 				$scope.isUserLoggedIn = false;
+				$scope.$parent.$broadcast('userLogout', response.session);
 			});
 		});
 	};
