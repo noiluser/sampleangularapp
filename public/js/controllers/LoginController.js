@@ -7,7 +7,8 @@ app.controller("authCtrl", function($scope, $rootScope) {
 					$scope.userLastName = response.session.user.last_name;
 					$scope.userHref = response.session.user.href;
 					$scope.isUserLoggedIn = true;
-					$rootScope.$emit('userLogin', response.session);
+					//$rootScope.$emit('userLogin', response.session);
+					$scope.$parent.$broadcast('userLogin', response.session);
 				 });
 			};
 		}, VK.access.GROUPS);

@@ -15,3 +15,7 @@ app.config(function($routeProvider) {
             controller  : 'detailsCtrl'
         })
 });
+
+app.controller("mainCtrl", function($scope) {
+	
+});
