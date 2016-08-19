@@ -3,7 +3,7 @@ app.controller("authCtrl", function($scope) {
 	$scope.userName = "";
 	$scope.userLastName = "";
 	$scope.userHref = "";
-	$scope.loginManage = $scope.login();
+	
 	
 	$scope.login = function() {
 		VK.Auth.login(function (response) {
@@ -30,4 +30,6 @@ app.controller("authCtrl", function($scope) {
 			//};
 		});
 	};
+	
+	$scope.loginManage = $scope.login;
 });
