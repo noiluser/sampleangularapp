@@ -1,12 +1,15 @@
-app.controller("groupsCtrl", ['$scope', '$rootScope', function($scope) {
+app.controller("groupsCtrl", function($scope, $rootScope) {
 	$scope.isUserLoggedIn = 0;
 	
-	$rootScope.$on('userLogin', function(event, user) { 
+	var listenerRemove = $rootScope.$on('userLogin', function(event, user) { 
+		console.log("user authorized", user);
 		$scope.$emit('userLogin', user);
+		
+		listenerRemove();
 	});
 	
 	$scope.$on('userLogin', function(event, user) { 
-		console.log("user authorized", user);
+		console.log("loading", user);
 		$scope.$emit('groupsLoad', user);
 	});
 	
@@ -14,4 +17,4 @@ app.controller("groupsCtrl", ['$scope', '$rootScope', function($scope) {
 		console.log("loading", user); 
 	});
 
-}]);
+});
