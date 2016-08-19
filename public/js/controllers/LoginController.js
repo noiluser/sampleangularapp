@@ -1,14 +1,13 @@
-app.controller("authCtrl", function($scope, userData) {
+app.controller("authCtrl", function($scope) {
 	$scope.login = function() {
 		VK.Auth.login(function (response) {
 			if (response.session) {
-				userData.user = response.session; 
 				$scope.$apply(function(){
 					$scope.userName = response.session.user.first_name;
 					$scope.userLastName = response.session.user.last_name;
 					$scope.userHref = response.session.user.href;
 					$scope.isUserLoggedIn = true;
-					$scope.$emit('userLogin', {});
+					$scope.$emit('userLogin', response.session);
 				 });
 			};
 		}, VK.access.GROUPS);

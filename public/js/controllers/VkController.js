@@ -1,6 +1,6 @@
-app.controller("vkCtrl", function($scope, userData) {
-	 $scope.$on('userLogin', function(event, args) {
+app.controller("vkCtrl", function($scope) {
+	 $scope.$on('userLogin', function(event, user) {
 		 console.log("now we can get groups");
-		 console.log(userData.user);
+		 console.log(user);
 	 });
 });
