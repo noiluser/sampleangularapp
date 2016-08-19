@@ -24,7 +24,7 @@ app.controller("groupsCtrl", function($scope, $http) {
 	$scope.$on('groupsLoad', function(event, user) { 
 		console.log("loading groups");
 		
-		var uid = $scope.user.id;
+		var uid = $scope.user.user.id;
 		$http({
 	        method : "POST",
 	        url : "https://api.vk.com/method/groups.get?user_ids=" + uid
