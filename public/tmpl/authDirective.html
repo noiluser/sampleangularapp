@@ -1,4 +1,4 @@
 <div ng-controller='authCtrl'>
-	<span>{{userName}}</span>
-	<a href="javascript:void(0);" ng-click="login()">{{authText}}</a>
+	<a href="{{userHref}}">{{userName}} {{userLastName}}</a>
+	<a href="javascript:void(0);" ng-click="loginManage()">{{authText}}</a>
 </div>
