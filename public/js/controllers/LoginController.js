@@ -1,8 +1,8 @@
 app.controller("authCtrl", function($scope) {
-	$scope.userName = "";
+	/*$scope.userName = "";
 	$scope.userLastName = "";
 	$scope.userHref = "";
-	
+	*/
 	
 	$scope.login = function() {
 		VK.Auth.login(function (response) {
@@ -12,7 +12,7 @@ app.controller("authCtrl", function($scope) {
 				$scope.userHref = response.session.user.href;
 				$scope.loginManage = $scope.logout;
 				$scope.isUserLoggedIn = true;
-				//console.log(response);
+				console.log(response);
 			};
 		}, VK.access.GROUPS);
 	};
