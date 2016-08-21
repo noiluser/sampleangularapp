@@ -8,7 +8,7 @@
  	font-weight: bold;
  }
  
- .group-item {
+ .group-item, .next-loader {
  	margin-bottom: 20px;
  }
 </style>
@@ -41,7 +41,7 @@
 		
 	</div>
 
-	<div class="row" ng-show="!IsGroupsLoaded">
+	<div class="row next-loader" ng-show="!IsGroupsLoaded">
 		<div class="col-xs-12">
 			<div class="text-center">
 				<button class="btn btn-default" ng-click="getGroups()">Load more</button>

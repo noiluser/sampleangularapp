@@ -14,7 +14,7 @@ app.controller("groupsCtrl", function($scope, $http) {
 				count : $scope.count, 
 				filter : "groups",
 				extended : 1,
-				fields : "description"
+				fields : ["description", "members_count"]
 			}, function(r) {
 				if(r.response) {
 					console.log(r.response);
@@ -56,7 +56,7 @@ app.controller("groupsCtrl", function($scope, $http) {
 		$scope.$apply(function(){
 			$scope.isGroupsLoading = false;
 			$scope.IsGroupsLoaded = false;
-			$scope.groups = groups;
+			$scope.groups = $scope.groups.concat(groups);
 			console.log($scope.groups);
 		});
 	});
