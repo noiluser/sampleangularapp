@@ -1,16 +1,16 @@
-app.controller("groupsCtrl", function($scope, $http) {
+app.controller("groupsCtrl", function($scope, $routeParams) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
-	$scope.offset = 0;
-	$scope.count = 10;
+	//$scope.offset = 0;
+	$scope.count = $routeParams.count || 10;
 	$scope.IsGroupsLoaded = true;
 	$scope.groups = [];
 	
 	$scope.getGroups = function(next) {
-		$scope.offset += $scope.count;
+		//$scope.offset += $scope.count;
 		
 		VK.Api.call('groups.get', {
-				offset : $scope.offset, 
+				//offset : $scope.offset, 
 				count : $scope.count, 
 				filter : "groups",
 				extended : 1,
