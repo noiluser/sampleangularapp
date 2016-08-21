@@ -21,7 +21,7 @@
 
 <div class="container">
 	<div ng-repeat="gr in groups" id="group_{{gr.screen_name}}" class="row group-item">
-		<div class="logo col-lg-1 col-lg-2 col-md-1 col-md-offset-2 col-sm-2 col-xs-2">
+		<div class="logo col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2 col-sm-2 col-xs-2">
 			<img class="img-rounded pull-right" src="{{gr.photo}}">
 		</div>
 		<div class="col-lg-7 col-md-7 col-sm-10 col-xs-10" >
@@ -29,5 +29,15 @@
 			<div ng-bind="gr.description"></div>
 		</div
 		
+	</div>
+</div>
+
+<div class="container" ng-show="IsGroupsLoaded">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="text-center">
+				<button class="btn btn-primary" ng-click="getGroups()">Load more</button>
+			</div>
+		</div>
 	</div>
 </div>
