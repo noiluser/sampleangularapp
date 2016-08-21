@@ -5,15 +5,7 @@ app.controller("groupsCtrl", function($scope, $http) {
 	$scope.count = 10;
 	
 	$scope.getGroups = function() {
-		VK.Auth.getLoginStatus(function(response) {
-			  if (response.session) {
-			    console.log("authorized");
-			  } else {
-				  console.log("no access");  
-			  }
-		});
-
-		VK.Api.call('groups.getInvites', {offset : $scope.offset, count : $scope.count}, function(r) {
+		VK.Api.call('groups.get', {offset : $scope.offset, count : $scope.count}, function(r) {
 			if(r.response) {
 				$scope.$emit('groupsLoaded', r.response);
 			}
