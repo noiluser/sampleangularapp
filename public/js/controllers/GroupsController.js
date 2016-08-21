@@ -49,6 +49,5 @@ app.controller("groupsCtrl", function($scope, $http) {
 			console.log($scope.groups);
 		});
 	});
-	
 
 });

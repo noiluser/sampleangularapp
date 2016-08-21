@@ -4,11 +4,18 @@
 </div>
 
 <div>
-	<ul>
-		<li ng-repeat="gr in groups">
-			{{ gr.name + ' -- ' + gr.description }}
-			<a href="javascript:void(0);" class="btn btn-default">Open</a>
+	<div ng-repeat="gr in groups">
+		<div>
+			<a>
+				<img src="{{gr.photo_50}}">
+			</a>
+		</div>
 			
-		</li>
-	</ul>
+		<div>
+		</div>
+		<div>
+			{{gr.name}}
+			{{gr.description}}
+		</div>
+	</div>
 </div>
