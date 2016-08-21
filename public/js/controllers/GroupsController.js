@@ -44,6 +44,7 @@ app.controller("groupsCtrl", function($scope, $http) {
 		$scope.$apply(function(){
 			$scope.isGroupsLoading = false;
 			$scope.groups = groups;
+			console.log($scope.groups);
 		});
 	});
 	

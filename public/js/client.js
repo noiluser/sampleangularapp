@@ -2,7 +2,7 @@ VK.init({
 	apiId: 5590999
 });
 
-var app = angular.module("vkSample", ['ngRoute']);
+var app = angular.module("vkSample", ['ngRoute', 'ui.bootstrap']);
 
 app.config(function($routeProvider) {
     $routeProvider
