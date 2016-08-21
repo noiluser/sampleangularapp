@@ -8,10 +8,10 @@ app.controller("groupsCtrl", function($scope, $routeParams) {
 	$scope.getGroups = function() {
 		//$scope.offset += $scope.count;
 		//$scope.offset = $scope.$parent.offset || 10;
-		$scope.count = $scope.$parent.count || 10;
+		$scope.offset = $scope.$parent.offset || 10;
 		VK.Api.call('groups.get', {
-				//offset : $scope.offset, 
-				count : $scope.count, 
+				offset : $scope.offset, 
+				count : 10, 
 				filter : "groups",
 				extended : 1,
 				fields : ["description", "members_count"]
@@ -20,7 +20,10 @@ app.controller("groupsCtrl", function($scope, $routeParams) {
 					console.log(r.response);
 					var gr = r.response;
 					var co = gr.shift();
-					$scope.$parent.count += co * 1;
+					if ($scope.$parent.offset)
+						$scope.$parent.offset += co * 1;
+					else 
+						$scope.$parent.offset = co;
 					if (co < $scope.count)
 						$scope.$apply(function(){
 							$scope.IsGroupsLoaded = true;
