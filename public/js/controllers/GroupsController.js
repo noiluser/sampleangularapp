@@ -9,6 +9,7 @@ app.controller("groupsCtrl", function($scope, $routeParams) {
 		//$scope.offset += $scope.count;
 		//$scope.offset = $scope.$parent.offset || 10;
 		$scope.offset = $scope.$parent.offset || 10;
+		console.log("COUNT", $scope.$parent.count);
 		VK.Api.call('groups.get', {
 				offset : $scope.offset, 
 				count : 10, 
@@ -48,8 +49,8 @@ app.controller("groupsCtrl", function($scope, $routeParams) {
 		$scope.isUserLoggedIn = false;
 		$scope.isGroupsLoading = false;
 		$scope.IsGroupsLoaded = true;
-		//$scope.groups = [];
-		$scope.$parent.count = 10;
+		$scope.groups = [];
+		$scope.$parent.offset = 10;
 	});	
 	
 	$scope.$on('groupsLoad', function(event, user) { 
