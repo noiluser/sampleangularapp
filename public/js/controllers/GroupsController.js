@@ -1,6 +1,16 @@
 app.controller("groupsCtrl", function($scope, $http) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
+	$scope.offset = 0;
+	$scope.count = 10;
+	
+	$scope.getGroups = function() {
+		VK.Api.call('groups.getInvites', {offset : $scope.offset, count : $scope.count}, function(r) {
+			if(r.response) {
+				$scope.$emit('groupsLoaded', r.response);
+			}
+		});
+	}
 
 	$scope.$on('userLogin', function(event, user) {
 		console.log("User logged in", user);
@@ -19,15 +29,13 @@ app.controller("groupsCtrl", function($scope, $http) {
 	
 	$scope.$on('groupsLoad', function(event, user) { 
 		console.log("loading groups");
-		VK.Api.call('groups.get', {}, function(r) {
-			if(r.response) {
-				$scope.$emit('groupsLoaded', r.response);
-			}
-		});
+		$scope.getGroups();
 	});
 	
 	$scope.$on('groupsLoaded', function(event, groups) {
-		console.log("Groups loaded");		
+		$scope.isGroupsLoading = false;
+		console.log("Groups loaded");
+		console.log(groups);
 	});
 	
 
