@@ -1,5 +1,6 @@
 app.controller("authCtrl", function($scope) {
 	$scope.login = function() {
+		var access = 262144;
 		VK.Auth.login(function (response) {
 			if (response.session) {
 				$scope.$apply(function(){
@@ -11,7 +12,7 @@ app.controller("authCtrl", function($scope) {
 					$scope.$parent.$broadcast('userLogin', response.session);
 				 });
 			};
-		}, VK.access.GROUPS);
+		}, access);
 	};
 	
 	$scope.logout = function() {
