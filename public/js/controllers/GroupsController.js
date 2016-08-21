@@ -34,6 +34,7 @@ app.controller("groupsCtrl", function($scope, $http) {
 		
 		$scope.isUserLoggedIn = false;
 		$scope.isGroupsLoading = false;
+		$scope.groups = [];
 	});	
 	
 	$scope.$on('groupsLoad', function(event, user) { 
