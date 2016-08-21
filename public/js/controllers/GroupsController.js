@@ -3,7 +3,6 @@ app.controller("groupsCtrl", function($scope, $http) {
 	$scope.isGroupsLoading = false;
 	$scope.offset = 0;
 	$scope.count = 10;
-	$scope.groups = [];
 	
 	$scope.getGroups = function() {
 		VK.Api.call('groups.get', {
