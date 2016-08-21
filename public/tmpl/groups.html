@@ -4,10 +4,10 @@
 </div>
 
 <div>
-	<div ng-repeat="gr in groups">
+	<div ng-repeat="gr in groups" id="group_{{gr.screen_name}}">
 		<div>
-			<a>
-				<img src="{{gr.photo_50}}">
+			<a href="javascript:boid(0);">
+				<img src="{{gr.photo}}">
 			</a>
 		</div>
 			
