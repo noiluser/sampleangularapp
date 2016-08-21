@@ -2,3 +2,11 @@
 	<div ng-show="!isUserLoggedIn">Please log in first</div>
 	<div ng-show="isGroupsLoading">Loading groups</div>
 </div>
+
+<div>
+	<ul>
+		<li ng-repeat="group in groups">
+			{{ group.name + ' -- ' + x.description }}
+		</li>
+	</ul>
+</div>

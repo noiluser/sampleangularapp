@@ -3,9 +3,17 @@ app.controller("groupsCtrl", function($scope, $http) {
 	$scope.isGroupsLoading = false;
 	$scope.offset = 0;
 	$scope.count = 10;
+	$scope.groups = [];
 	
 	$scope.getGroups = function() {
-		VK.Api.call('groups.get', {offset : $scope.offset, count : $scope.count}, function(r) {
+		VK.Api.call('groups.get', {
+				offset : $scope.offset, 
+				count : $scope.count, 
+				filter : "groups",
+				extended : 1,
+				fields : "description"
+			}, function(r) {
+
 			if(r.response) {
 				$scope.$emit('groupsLoaded', r.response);
 			}
@@ -35,7 +43,7 @@ app.controller("groupsCtrl", function($scope, $http) {
 	$scope.$on('groupsLoaded', function(event, groups) {
 		$scope.isGroupsLoading = false;
 		console.log("Groups loaded");
-		console.log(groups);
+		$scope.groups = groups;
 	});
 	
 
