@@ -1,14 +1,14 @@
 app.controller("groupsCtrl", function($scope, $routeParams) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
-	//$scope.offset = 0;
 	$scope.count = $routeParams.count || 10;
 	$scope.IsGroupsLoaded = true;
-	//$scope.groups = [];
+	$scope.groups = [];
 
 	$scope.getGroups = function() {
 		//$scope.offset += $scope.count;
-		
+		//$scope.offset = $scope.$parent.offset || 10;
+		$scope.count = $scope.$parent.count || 10;
 		VK.Api.call('groups.get', {
 				//offset : $scope.offset, 
 				count : $scope.count, 
@@ -20,10 +20,12 @@ app.controller("groupsCtrl", function($scope, $routeParams) {
 					console.log(r.response);
 					var gr = r.response;
 					var co = gr.shift();
+					$scope.$parent.count += co * 1;
 					if (co < $scope.count)
 						$scope.$apply(function(){
 							$scope.IsGroupsLoaded = true;
 						});
+					
 					$scope.$emit('groupsLoaded', gr);
 				}
 		});
@@ -43,7 +45,8 @@ app.controller("groupsCtrl", function($scope, $routeParams) {
 		$scope.isUserLoggedIn = false;
 		$scope.isGroupsLoading = false;
 		$scope.IsGroupsLoaded = true;
-		$scope.groups = [];
+		//$scope.groups = [];
+		$scope.$parent.count = 10;
 	});	
 	
 	$scope.$on('groupsLoad', function(event, user) { 
@@ -56,8 +59,7 @@ app.controller("groupsCtrl", function($scope, $routeParams) {
 		$scope.$apply(function(){
 			$scope.isGroupsLoading = false;
 			$scope.IsGroupsLoaded = false;
-			//$scope.groups = $scope.groups.concat(groups);
-			$scope.groups = groups;
+			$scope.groups = $scope.groups.concat(groups);
 			console.log($scope.groups);
 		});
 	});
