@@ -24,5 +24,18 @@ app.controller("authCtrl", function($scope) {
 		});
 	};
 	
+	VK.Auth.getLoginStatus(function(response) { 
+		if (response.session) { 
+			$scope.$apply(function(){
+				$scope.userName = response.session.user.first_name;
+				$scope.userLastName = response.session.user.last_name;
+				$scope.userHref = response.session.user.href;
+				$scope.isUserLoggedIn = true;
+				
+				$scope.$parent.$broadcast('userLogin', response.session);
+			 });
+		} 
+	}); 
+	
 
 });
