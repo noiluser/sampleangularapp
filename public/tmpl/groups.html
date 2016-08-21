@@ -1,21 +1,33 @@
+<style type="text/css">
+ .logo {
+ 	max-height: 50px; 
+ 	overflow: hidden;
+ }
+ 
+ .group-header {
+ 	font-weight: bold;
+ }
+ 
+ .group-item {
+ 	margin-bottom: 20px;
+ }
+</style>
+
 <div>
 	<div ng-show="!isUserLoggedIn">Please log in first</div>
 	<div ng-show="isGroupsLoading">Loading groups</div>
 </div>
 
-<div>
-	<div ng-repeat="gr in groups" id="group_{{gr.screen_name}}">
-		<div>
-			<a href="javascript:boid(0);">
-				<img class="img-rounded" src="{{gr.photo}}">
-			</a>
+
+<div class="container">
+	<div ng-repeat="gr in groups" id="group_{{gr.screen_name}}" class="row group-item">
+		<div class="logo col-lg-1 col-lg-2 col-md-1 col-md-offset-2 col-sm-2 col-xs-2">
+			<img class="img-rounded pull-right" src="{{gr.photo}}">
 		</div>
-			
-		<div>
-		</div>
-		<div>
-			{{gr.name}}
-			{{gr.description}}
-		</div>
+		<div class="col-lg-7 col-md-7 col-sm-10 col-xs-10" >
+			<div class="group-header" ng-bind="gr.name"></div>
+			<div ng-bind="gr.description"></div>
+		</div
+		
 	</div>
 </div>
