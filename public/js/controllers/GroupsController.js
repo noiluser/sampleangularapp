@@ -41,9 +41,11 @@ app.controller("groupsCtrl", function($scope, $http) {
 	});
 	
 	$scope.$on('groupsLoaded', function(event, groups) {
-		$scope.isGroupsLoading = false;
 		console.log("Groups loaded");
-		$scope.groups = groups;
+		$scope.$apply(function(){
+			$scope.isGroupsLoading = false;
+			$scope.groups = groups;
+		});
 	});
 	
 
