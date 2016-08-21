@@ -24,7 +24,7 @@ app.controller("groupsCtrl", function($scope, $http) {
 						$scope.$apply(function(){
 							$scope.IsGroupsLoaded = true;
 						});
-					$scope.$emit('groupsLoaded', {"count" : count, "groups" : gr});
+					$scope.$emit('groupsLoaded', gr);
 				}
 		});
 	}
@@ -55,7 +55,7 @@ app.controller("groupsCtrl", function($scope, $http) {
 		$scope.$apply(function(){
 			$scope.isGroupsLoading = false;
 			$scope.IsGroupsLoaded = false;
-			$scope.groups = groups.groups;
+			$scope.groups = groups;
 			console.log($scope.groups);
 		});
 	});
