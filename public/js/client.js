@@ -10,7 +10,7 @@ app.config(function($routeProvider) {
             templateUrl : 'static/tmpl/groups.html',
             controller  : 'groupsCtrl'
         })
-        .when('/details', {
+        .when('/details/:group', {
             templateUrl : 'static/tmpl/details.html',
             controller  : 'detailsCtrl'
         })
