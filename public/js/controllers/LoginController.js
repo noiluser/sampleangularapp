@@ -11,7 +11,7 @@ app.controller("authCtrl", function($scope) {
 					
 					$scope.$parent.$broadcast('userLogin', response.session);
 				 });*/
-				$scope.$emit('userExists', response.session);
+				$scope.$emit('userExists', response.session.user);
 			};
 		}, access);
 	};
@@ -26,14 +26,13 @@ app.controller("authCtrl", function($scope) {
 	};
 	
 	$scope.$on('userExists', function(event, user) { 
-		//$scope.$apply(function(){
+		$scope.$apply(function(){
 			$scope.userName = user.first_name;
 			$scope.userLastName = user.last_name;
 			$scope.userHref = user.href;
 			$scope.isUserLoggedIn = true;
-			
-			$scope.$parent.$broadcast('userLogin', user);
-		 //});
+		});
+		$scope.$parent.$broadcast('userLogin', user);
 	});
 	
 });
