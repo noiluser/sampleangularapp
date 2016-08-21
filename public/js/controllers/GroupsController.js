@@ -4,9 +4,9 @@ app.controller("groupsCtrl", function($scope, $routeParams) {
 	//$scope.offset = 0;
 	$scope.count = $routeParams.count || 10;
 	$scope.IsGroupsLoaded = true;
-	$scope.groups = [];
-	
-	$scope.getGroups = function(next) {
+	//$scope.groups = [];
+
+	$scope.getGroups = function() {
 		//$scope.offset += $scope.count;
 		
 		VK.Api.call('groups.get', {
@@ -56,7 +56,8 @@ app.controller("groupsCtrl", function($scope, $routeParams) {
 		$scope.$apply(function(){
 			$scope.isGroupsLoading = false;
 			$scope.IsGroupsLoaded = false;
-			$scope.groups = $scope.groups.concat(groups);
+			//$scope.groups = $scope.groups.concat(groups);
+			$scope.groups = groups;
 			console.log($scope.groups);
 		});
 	});

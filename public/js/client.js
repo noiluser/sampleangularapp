@@ -6,6 +6,10 @@ var app = angular.module("vkSample", ['ngRoute', 'ui.bootstrap']);
 
 app.config(function($routeProvider) {
     $routeProvider
+	    .when('/', {
+	        templateUrl : 'static/tmpl/groups.html',
+	        controller  : 'groupsCtrl'
+	    })    
         .when('/:count', {
             templateUrl : 'static/tmpl/groups.html',
             controller  : 'groupsCtrl'
