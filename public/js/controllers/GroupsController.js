@@ -12,10 +12,12 @@ app.controller("groupsCtrl", function($scope, $http) {
 				extended : 1,
 				fields : "description"
 			}, function(r) {
-
-			if(r.response) {
-				$scope.$emit('groupsLoaded', r.response);
-			}
+				if(r.response) {
+					console.log(r.response);
+					var gr = r.response;
+					var count = gr.shift();
+					$scope.$emit('groupsLoaded', {"count" : count, "groups" : gr});
+				}
 		});
 	}
 
@@ -43,7 +45,7 @@ app.controller("groupsCtrl", function($scope, $http) {
 		console.log("Groups loaded");
 		$scope.$apply(function(){
 			$scope.isGroupsLoading = false;
-			$scope.groups = groups;
+			$scope.groups = groups.groups;
 			console.log($scope.groups);
 		});
 	});
