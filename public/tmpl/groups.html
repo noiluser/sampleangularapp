@@ -4,18 +4,20 @@
 </div>
 
 <div>
-	<div ng-repeat="gr in groups" id="group_{{gr.screen_name}}">
-		<div>
-			<a href="javascript:boid(0);">
-				<img src="{{gr.photo}}">
-			</a>
-		</div>
-			
-		<div>
-		</div>
-		<div>
-			{{gr.name}}
-			{{gr.description}}
+	<div ng-repeat="gr in groups">
+		<div id="group_{{gr.screen_name}}">
+			<div>
+				<a href="javascript:boid(0);">
+					<img src="{{gr.photo}}">
+				</a>
+			</div>
+				
+			<div>
+			</div>
+			<div>
+				{{gr.name}}
+				{{gr.description}}
+			</div>
 		</div>
 	</div>
 </div>
