@@ -4,7 +4,7 @@ app.controller("groupsCtrl", function($scope, $http) {
 	$scope.offset = 0;
 	$scope.count = 10;
 	$scope.IsGroupsLoaded = true;
-
+	$scope.groups = [];
 	
 	$scope.getGroups = function(next) {
 		$scope.offset += $scope.count;
