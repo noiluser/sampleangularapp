@@ -1,18 +1,17 @@
-<div ng-controller='authCtrl'>	
+<div class="container" ng-controller='authCtrl'>
 	<div class="row">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a href="javascript:void(0);" class="navbar-brand" style="margin-left:10px">AngularVK</a>
+					<a href="javascript:void(0);" class="navbar-brand">AngularVK</a>
 				</div>
-				<div style="margin-left:10px; margin-right:10px">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="{{userHref}}" ng-show="isUserLoggedIn">{{userName}} {{userLastName}}</a></li>
-						<li ng-show="isUserLoggedIn"><a href="javascript:void(0);" ng-click="logout()">Logout</a></li>
-						<li ng-show="!isUserLoggedIn"><a href="javascript:void(0);" ng-click="login()">Login</a></li>
-					</ul>
-				</div>
+				
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{{userHref}}" ng-show="isUserLoggedIn">{{userName}} {{userLastName}}</a></li>
+					<li ng-show="isUserLoggedIn"><a href="javascript:void(0);" ng-click="logout()">Logout</a></li>
+					<li ng-show="!isUserLoggedIn"><a href="javascript:void(0);" ng-click="login()">Login</a></li>
+				</ul>
 			</div>
 		</nav>
 	</div>	
-</div>
+</div>	
