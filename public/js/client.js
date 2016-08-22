@@ -21,11 +21,14 @@ app.controller("mainCtrl", function($scope) {
 });
 
 app.service('PagesService', function() {
+	this.page = 0;
 	this.offset = 0;
 	this.count = 10;
 	this.currentId = 0;
+	
 	this.nextPage = function() {
-		this.offset += 10;
+		this.offset += this.count*this.page;
+		this.page++;
 		return this.offset;
 	}
 });
