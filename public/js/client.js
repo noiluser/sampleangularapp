@@ -42,3 +42,13 @@ app.service('PagesService', function() {
 		}
 	}
 });
+
+app.service('UserService', function() {
+	this.authorized = false;
+	this.first_name = "fname";
+	this.last_name = "lname";
+	this.href = "href";
+	this.photo = "ph";
+	
+	
+});
