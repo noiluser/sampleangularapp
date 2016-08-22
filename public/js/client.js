@@ -49,6 +49,5 @@ app.service('UserService', function() {
 	this.last_name = "lname";
 	this.href = "href";
 	this.photo = "ph";
-	
-	
+	this.has_photo = false;	
 });

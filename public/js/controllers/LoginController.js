@@ -21,18 +21,20 @@ app.controller("authCtrl", function($scope, UserService) {
 		$scope.userName = user.first_name;
 		$scope.userLastName = user.last_name;
 		$scope.userHref = user.href;
+		$scope.photo = user.photo;
+		$scope.hasPhoto = user.has_photo; 
 		$scope.isUserLoggedIn = true;
 		$scope.$parent.$broadcast('userLogin', user);
 	});
 	
 	$scope.$on('userData', function(event, user) { 
-		VK.Api.call('users.get', {fields : ['photo_100']}, function(r) {
+		VK.Api.call('users.get', {fields : ['photo_100', 'has_photo', 'domain']}, function(r) {
 			if(r.response) {
-				console.log(r.response);
-				UserService.first_name = r.response.user.first_name;
-				UserService.last_name = r.response.user.last_name;
-				UserService.href = r.response.user.href;
-				UserService.photo = r.response.user.photo_100;
+				UserService.first_name = r.response[0].first_name;
+				UserService.last_name = r.response[0].last_name;
+				UserService.href = r.response[0].domain;
+				UserService.photo = r.response[0].photo_100;
+				UserService.has_photo = r.response[0].has_photo;
 				UserService.authorized = true;
 				$scope.$emit('userExists', UserService);		
 			}
