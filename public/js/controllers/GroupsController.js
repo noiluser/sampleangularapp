@@ -64,6 +64,7 @@ app.controller("groupsCtrl", function($scope, PagesService) {
 	
 	VK.Auth.getLoginStatus(function(response) { 
 		if (response.session) { 
+			console.lib(response.session);
 			$scope.$parent.$broadcast('userExists', response.session.user);
 		} 
 	}); 
