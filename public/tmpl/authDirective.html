@@ -2,6 +2,10 @@
 	.avatar {
 		height : 40px;
 	}	
+	
+	.avatar-item {
+		margin : 5px;
+	}
 </style>
 
 
@@ -14,7 +18,7 @@
 				</div>
 				
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="https://vk.com/{{userHref}}" ng-show="hasPhoto" target="_blank">
+					<li class="avatar-item"><a href="https://vk.com/{{userHref}}" ng-show="hasPhoto" target="_blank">
 						<img class="avatar img-circle" src="{{photo}}">
 					</a></li>
 					<li><a href="https://vk.com/{{userHref}}" ng-show="isUserLoggedIn" target="_blank">{{userName}} {{userLastName}}</a></li>

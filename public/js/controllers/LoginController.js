@@ -12,6 +12,7 @@ app.controller("authCtrl", function($scope, UserService) {
 		VK.Auth.logout(function (response) {
 			$scope.$apply(function(){
 				$scope.isUserLoggedIn = false;
+				UserService.has_photo = false;
 				$scope.$parent.$broadcast('userLogout', response.session);
 			});
 		});
