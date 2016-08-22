@@ -18,9 +18,11 @@
 				</div>
 				
 				<ul class="nav navbar-nav navbar-right">
-					<li class="avatar-item"><a href="https://vk.com/{{userHref}}" ng-show="hasPhoto" target="_blank">
-						<img class="avatar img-circle" src="{{photo}}">
-					</a></li>
+					<li>
+						<a class="avatar-item" href="https://vk.com/{{userHref}}" ng-show="hasPhoto" target="_blank">
+							<img class="avatar img-circle" src="{{photo}}">
+						</a>
+					</li>
 					<li><a href="https://vk.com/{{userHref}}" ng-show="isUserLoggedIn" target="_blank">{{userName}} {{userLastName}}</a></li>
 					<li ng-show="isUserLoggedIn"><a href="javascript:void(0);" ng-click="logout()">Logout</a></li>
 					<li ng-show="!isUserLoggedIn"><a href="javascript:void(0);" ng-click="login()">Login</a></li>
