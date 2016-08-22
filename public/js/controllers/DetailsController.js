@@ -1,4 +1,4 @@
-app.controller("detailsCtrl", function($scope, $routeParams) {
+app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 	$scope.id = $routeParams.group;
 	
 	VK.Api.call('groups.getById', {

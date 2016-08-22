@@ -1,10 +1,10 @@
-app.controller("groupsCtrl", function($scope, $routeParams) {
+app.controller("groupsCtrl", function($scope, $routeParams, PagesService) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
 	$scope.count = $routeParams.count || 10;
 	$scope.IsGroupsLoaded = true;
 	$scope.groups = [];
-
+console.log(PagesService);
 	$scope.getGroups = function() {
 		//$scope.offset += $scope.count;
 		//$scope.offset = $scope.$parent.offset || 10;

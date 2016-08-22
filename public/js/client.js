@@ -19,3 +19,13 @@ app.config(function($routeProvider) {
 app.controller("mainCtrl", function($scope) {
 	
 });
+
+app.service('PagesService', function() {
+	this.offset = 0;
+	this.count = 10;
+	this.currentId = 0;
+	this.nextPage = function() {
+		this.offset += 10;
+		return this.offset;
+	}
+});
