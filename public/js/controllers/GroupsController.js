@@ -5,7 +5,7 @@ app.controller("groupsCtrl", function($scope, PagesService) {
 	$scope.groups = [];
 
 	$scope.getGroups = function() {
-		var getParams = PagesService.nextPage();
+		var getParams = PagesService.getParams();
 		getParams.filter = "groups";
 		getParams.extended = 1;
 		getParams.fields = ["description", "members_count"];

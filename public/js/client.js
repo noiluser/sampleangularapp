@@ -28,7 +28,7 @@ app.service('PagesService', function() {
 	this.count = 10;
 	this.currentId = 0;
 	
-	this.getData = function() {
+	this.getParams = function() {
 		if (this.reload) {
 			return {				
 				offset : 0,

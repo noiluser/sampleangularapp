@@ -1,6 +1,6 @@
 app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 	$scope.id = $routeParams.group;
-	
+	PagesService.reload = true;
 	VK.Api.call('groups.getById', {
 		group_id : $scope.id
 	}, function(r) {
