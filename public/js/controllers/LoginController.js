@@ -28,6 +28,7 @@ app.controller("authCtrl", function($scope, UserService) {
 	$scope.$on('userData', function(event, user) { 
 		VK.Api.call('users.get', {fields : ['photo_100']}, function(r) {
 			if(r.response) {
+				console.log(r.response);
 				UserService.first_name = r.response.user.first_name;
 				UserService.last_name = r.response.user.last_name;
 				UserService.href = r.response.user.href;
