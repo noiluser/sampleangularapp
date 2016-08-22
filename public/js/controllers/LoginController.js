@@ -25,4 +25,11 @@ app.controller("authCtrl", function($scope) {
 		$scope.$parent.$broadcast('userLogin', user);
 	});
 	
+	
+	VK.Auth.getLoginStatus(function(response) { 
+		if (response.session) { 
+			console.log("AUTHORIZED", response.session);
+		} 
+	});
+	
 });

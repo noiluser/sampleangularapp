@@ -62,12 +62,12 @@ app.controller("groupsCtrl", function($scope, PagesService) {
 		});
 	});
 	
-	VK.Auth.getLoginStatus(function(response) { 
+	/*VK.Auth.getLoginStatus(function(response) { 
 		if (response.session) { 
 			console.log(response.session);
 			$scope.$parent.$broadcast('userExists', response.session.user);
 		} 
-	}); 
+	});*/ 
 
 	//$scope.groups = [{screen_name : "abc", members_count : 1, name : "Aaa", description : "Bbbb bbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbb b bbbbbbbbbbbbbbbbb", photo: "http://cs624416.vk.me/v624416877/1231a/OZ7c25mYgRA.jpg"},
 	//                 {screen_name : "bcf", members_count : 2, name : "Ccc", description : "Ddd dddddddddddddddddd<br>dd dddddddddddddddd dddddddddddddddddd", photo: "http://cs10407.vk.me/g59184/c_b17a5775.jpg"}];
