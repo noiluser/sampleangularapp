@@ -5,21 +5,20 @@ app.controller("groupsCtrl", function($scope, PagesService) {
 	$scope.groups = [];
 
 	$scope.getGroups = function() {
-		VK.Api.call('groups.get', {
-				offset : PagesService.nextPage(), 
-				count : PagesService.count, 
-				filter : "groups",
-				extended : 1,
-				fields : ["description", "members_count"]
-			}, function(r) {
+		var getParams = PagesService.nextPage();
+		getParams.filter = "groups";
+		getParams.extended = 1;
+		getParams.fields = ["description", "members_count"];
+		VK.Api.call('groups.get', getParams, function(r) {
 				if(r.response) {
 					console.log(r.response);
 					var gr = r.response;
 					var co = gr.shift();
-					if ($scope.$parent.offset)
-						$scope.$parent.offset += co * 1;
-					else 
-						$scope.$parent.offset = co;
+					
+					PagesService.reload = false;
+					PagesService.offset += co;
+					
+					
 					if (co < $scope.count)
 						$scope.$apply(function(){
 							$scope.IsGroupsLoaded = true;
