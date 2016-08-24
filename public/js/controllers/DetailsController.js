@@ -11,7 +11,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 				$scope.photo = r.response.photo_big;
 				$scope.IsClosed = r.response.is_closed;
 				$scope.CanPost = r.response.can_post;
-			
+				$scope.description = r.response.description;
 				$scope.msg = r.response;
 			});
 			$scope.$emit('loadWall', $scope.id);
