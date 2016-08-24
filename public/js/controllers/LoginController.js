@@ -3,6 +3,7 @@ app.controller("authCtrl", function($scope, UserService) {
 		var access = 262144;
 		VK.Auth.login(function (response) {
 			if (response.session) {
+				console.log("l", response.session);
 				$scope.$emit('userData', response.session.user);
 			};
 		}, access);
@@ -45,6 +46,7 @@ app.controller("authCtrl", function($scope, UserService) {
 	
 	VK.Auth.getLoginStatus(function(response) { 
 		if (response.session) { 
+			console.log("u", response.session);
 			$scope.$emit('userData', response.session.user);
 		} 
 	});
