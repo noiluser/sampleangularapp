@@ -8,10 +8,10 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 	}, function(r) {
 		if(r.response) {
 			$scope.$apply(function(){
-				$scope.photo = r.response.photo_big;
-				$scope.IsClosed = r.response.is_closed;
-				$scope.CanPost = r.response.can_post;
-				$scope.description = r.response.description;
+				$scope.photo = r.response[0].photo_big;
+				$scope.IsClosed = r.response[0].is_closed;
+				$scope.CanPost = r.response[0].can_post;
+				$scope.description = r.response[0].description;
 				$scope.msg = r.response;
 			});
 			$scope.$emit('loadWall', $scope.id);
