@@ -3,8 +3,7 @@ app.controller("authCtrl", function($scope, UserService) {
 		var access = 262144;
 		VK.Auth.login(function (response) {
 			if (response.session) {
-				console.log("l", response.session);
-				$scope.$emit('userData', response.session.user);
+				$scope.$emit('userData', response.session.sid);
 			};
 		}, access);
 	};
@@ -13,7 +12,7 @@ app.controller("authCtrl", function($scope, UserService) {
 		VK.Auth.logout(function (response) {
 			$scope.$apply(function(){
 				$scope.isUserLoggedIn = false;
-				UserService.has_photo = false;
+				UserService.resetParams();
 				$scope.$parent.$broadcast('userLogout', response.session);
 			});
 		});
@@ -29,7 +28,7 @@ app.controller("authCtrl", function($scope, UserService) {
 		$scope.$parent.$broadcast('userLogin', user);
 	});
 	
-	$scope.$on('userData', function(event, user) { 
+	$scope.$on('userData', function(event, token) { 
 		VK.Api.call('users.get', {fields : ['photo_100', 'has_photo', 'domain']}, function(r) {
 			if(r.response) {
 				UserService.first_name = r.response[0].first_name;
@@ -37,6 +36,7 @@ app.controller("authCtrl", function($scope, UserService) {
 				UserService.href = r.response[0].domain;
 				UserService.photo = r.response[0].photo_100;
 				UserService.has_photo = r.response[0].has_photo;
+				UserService.token = token;
 				UserService.authorized = true;
 				$scope.$emit('userExists', UserService);		
 			}
@@ -47,7 +47,7 @@ app.controller("authCtrl", function($scope, UserService) {
 	VK.Auth.getLoginStatus(function(response) { 
 		if (response.session) { 
 			console.log("u", response.session);
-			$scope.$emit('userData', response.session.user);
+			$scope.$emit('userData', response.session.sid);
 		} 
 	});
 	

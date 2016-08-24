@@ -3,6 +3,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 	PagesService.reload = true;
 	VK.Api.call('groups.getById', {
 		group_id : $scope.id,
+		access_token : PagesService.token,
 		fields : ['description', 'can_post']
 	}, function(r) {
 		if(r.response) {

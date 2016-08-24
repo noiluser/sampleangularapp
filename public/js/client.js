@@ -27,6 +27,7 @@ app.service('PagesService', function() {
 	this.reload = false;
 	this.count = 10;
 	this.currentId = 0;
+	this.token = "";
 	
 	this.getParams = function() {
 		if (this.reload) {
@@ -40,7 +41,18 @@ app.service('PagesService', function() {
 				count : this.count				
 			};
 		}
-	}
+	};
+	
+	this.resetParams = function() {
+		this.totalRows = 0;
+		this.offset = 0;
+		this.page = 0;
+		this.reload = false;
+		this.count = 10;
+		this.currentId = 0;
+		this.token = "";
+	};
+	
 });
 
 app.service('UserService', function() {
