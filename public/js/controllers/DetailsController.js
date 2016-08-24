@@ -12,6 +12,8 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 				$scope.IsClosed = r.response[0].is_closed;
 				$scope.CanPost = r.response[0].can_post;
 				$scope.description = r.response[0].description;
+				$scope.name = r.response[0].name;
+				
 				$scope.msg = r.response;
 			});
 			$scope.$emit('loadWall', $scope.id);
@@ -19,6 +21,18 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 	});
 	
 	$scope.$on('loadWall', function(event, id) {
-		console.log(id, PagesService.token);
+		VK.Api.call('wall.get', {
+			owner_id : "-" + id,
+			access_token : PagesService.token,
+			offset : 0,
+			count : 10,
+			
+		}, function(r) {
+			if(r.response) {
+				$scope.$apply(function(){
+				});
+				console.log(r.response);
+			}	
+		});
 	});
 });
