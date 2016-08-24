@@ -7,7 +7,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 	}, function(r) {
 		if(r.response) {
 			$scope.$apply(function(){
-				$score.photo = r.response.photo_big;
+				$scope.photo = r.response.photo_big;
 				$scope.IsClosed = r.response.is_closed;
 				$scope.CanPost = r.response.can_post;
 			
