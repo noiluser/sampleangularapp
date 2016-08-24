@@ -13,10 +13,11 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 				$scope.CanPost = r.response[0].can_post;
 				$scope.description = r.response[0].description;
 				$scope.name = r.response[0].name;
+				$scope.gid = r.response[0].gid;
 				
 				$scope.msg = r.response;
 			});
-			$scope.$emit('loadWall', $scope.id);
+			$scope.$emit('loadWall', $scope.gid);
 		}	
 	});
 	
