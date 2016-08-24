@@ -1,5 +1,6 @@
 app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 	$scope.id = $routeParams.group;
+	$scope.posts = [];
 	PagesService.reload = true;
 	VK.Api.call('groups.getById', {
 		group_id : $scope.id,
@@ -27,12 +28,14 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 			access_token : PagesService.token,
 			offset : 0,
 			count : 10,
-			
+			extended : 1
 		}, function(r) {
 			if(r.response) {
+				var psts = r.response;
+				var co = psts.shift();
 				$scope.$apply(function(){
+					$scope.posts = $scope.posts.concat(psts);
 				});
-				console.log(r.response);
 			}	
 		});
 	});
