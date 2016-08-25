@@ -40,7 +40,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $sce, PagesService)
 	$scope.leaveGroup = function(id) {
 		VK.Api.call('groups.leave', {
 			group_id : id,
-			access_token : PagesService.token,
+			oauth : PagesService.token,
 		}, function(r) {
 			if(r.response) {
 				$scope.$apply(function(){
