@@ -1,6 +1,7 @@
 <style>
 	span {
 		margin-bottom : 20px;
+		display : block;
 	}
 	
 	#group-name {
@@ -16,8 +17,8 @@
 		<div class="col-lg-9">
 			<span id="group-name">{{name}}</span>
 			<span id="group-desc">{{description}}</span>
-			<button class="btn btn-default" ng-show="!IsMember" ng-click="joinGroup({{gid}})">Join group</button>
-			<button class="btn btn-default" ng-show="IsMember" ng-click="leaveGroup({{gid}})">Leave group</button>						
+			<button class="btn btn-default" ng-show="!IsMember" ng-click="joinGroup(gid)">Join group</button>
+			<button class="btn btn-default" ng-show="IsMember" ng-click="leaveGroup(gid)">Leave group</button>						
 		</div>
 	</div>
 	<div class="row">
