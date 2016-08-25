@@ -27,12 +27,12 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 			owner_id : "-" + id,
 			access_token : PagesService.token,
 			offset : 0,
-			count : 10,
+			count : 50,
 			extended : 1
 		}, function(r) {
 			if(r.response) {
 				console.log(r.response);
-				var psts = r.response;
+				var psts = r.response.wall;
 				var co = psts.shift();
 				$scope.$apply(function(){
 					$scope.posts = $scope.posts.concat(psts);
