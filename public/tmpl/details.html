@@ -12,7 +12,7 @@
 		background-color : #f3f2f2;
 		border-radius : 3px;
 		border-color : #f3f2f2;
-		mergin-bottom : 10px;
+		margin-bottom : 10px;
 	}
 </style>
 <div class="container">
@@ -30,9 +30,8 @@
 	</div>
 	<div class="row">
 		<div ng-repeat="post in posts" class="post" class="row post-item">
-			<div class="logo col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2 col-sm-2 col-xs-2">
-			</div>
-			<div class="col-lg-7 col-md-7 col-sm-10 col-xs-10" >
+			<div class="row"></div>
+			<div class="row">
 				<ng-bind-html ng-bind-html="renderHtml(post.text)">
 				</ng-bind-html>
 			</div>
