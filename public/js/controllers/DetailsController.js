@@ -31,6 +31,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 			extended : 1
 		}, function(r) {
 			if(r.response) {
+				console.log(r.response);
 				var psts = r.response;
 				var co = psts.shift();
 				$scope.$apply(function(){
