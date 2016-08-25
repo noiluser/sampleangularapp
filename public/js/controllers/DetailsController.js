@@ -27,7 +27,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $sce, PagesService)
 	$scope.joinGroup = function(id) {
 		VK.Api.call('groups.join', {
 			group_id : id,
-			oauth : PagesService.token,
+			//access_token : PagesService.token,
 		}, function(r) {
 			if(r.response) {
 				$scope.$apply(function(){
@@ -40,7 +40,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $sce, PagesService)
 	$scope.leaveGroup = function(id) {
 		VK.Api.call('groups.leave', {
 			group_id : id,
-			oauth : PagesService.token,
+			//access_token : PagesService.token,
 		}, function(r) {
 			if(r.response) {
 				$scope.$apply(function(){
