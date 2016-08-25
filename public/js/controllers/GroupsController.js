@@ -1,8 +1,9 @@
-app.controller("groupsCtrl", function($scope, PagesService, UserService) {
+app.controller("groupsCtrl", function($scope, $sce, PagesService, UserService) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
 	$scope.IsGroupsLoaded = true;
 	$scope.groups = [];
+	$scope.renderHtml = $scope.$parent.renderHtml;
 
 	$scope.getGroups = function() {
 		var getParams = PagesService.getParams();

@@ -16,8 +16,10 @@ app.config(function($routeProvider) {
         })
 });
 
-app.controller("mainCtrl", function($scope) {
-	
+app.controller("mainCtrl", function($scope, $sce) {
+	$scope.renderHtml = function(html_code)	{
+	    return $sce.trustAsHtml(html_code);
+	};
 });
 
 app.service('PagesService', function() {
