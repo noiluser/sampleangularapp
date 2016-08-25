@@ -15,6 +15,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 				$scope.description = r.response[0].description;
 				$scope.name = r.response[0].name;
 				$scope.gid = r.response[0].gid;
+				$scope.IsMember = r.response[0].is_member;
 				
 				$scope.msg = r.response;
 			});
