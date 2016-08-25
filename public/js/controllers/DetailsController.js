@@ -24,6 +24,33 @@ app.controller("detailsCtrl", function($scope, $routeParams, $sce, PagesService)
 		}	
 	});
 	
+	$scope.joinGroup = function(id) {
+		VK.Api.call('groups.join', {
+			group_id : id,
+			access_token : PagesService.token,
+		}, function(r) {
+			if(r.response) {
+				$scope.$apply(function(){
+					$scope.IsMember = true;
+				});
+			}	
+		});
+	};
+	
+	$scope.leaveGroup = function(id) {
+		VK.Api.call('groups.leave', {
+			group_id : id,
+			access_token : PagesService.token,
+		}, function(r) {
+			if(r.response) {
+				$scope.$apply(function(){
+					$scope.IsMember = false;
+				});
+			}	
+		});
+	};
+	
+	
 	$scope.$on('loadWall', function(event, id) {
 		VK.Api.call('wall.get', {
 			owner_id : "-" + id,

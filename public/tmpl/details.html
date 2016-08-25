@@ -1,14 +1,23 @@
+<style>
+	span {
+		margin-bottom : 20px;
+	}
+	
+	#group-name {
+		font-weight : bold;
+	}
+</style>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-3">
 			<img src="{{photo}}" class="img-rounded">
-			<button class="btn btn-default" ng-show="!IsMember">Join group</button>
-			<button class="btn btn-default" ng-show="IsMember">Leave group</button>
+
 		</div>
 		<div class="col-lg-9">
-			{{name}}
-			<br>
-			{{description}}						
+			<span id="group-name">{{name}}</span>
+			<span id="group-desc">{{description}}</span>
+			<button class="btn btn-default" ng-show="!IsMember" ng-click="joinGroup({{gid}})">Join group</button>
+			<button class="btn btn-default" ng-show="IsMember" ng-click="leaveGroup({{gid}})">Leave group</button>						
 		</div>
 	</div>
 	<div class="row">
