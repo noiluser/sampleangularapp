@@ -1,6 +1,6 @@
 app.controller("authCtrl", function($scope, UserService) {
 	$scope.login = function() {
-		var access = 262144;
+		var access = 262144 + 65536;
 		VK.Auth.login(function (response) {
 			if (response.session) {
 				$scope.$emit('userData', response.session.sig);
