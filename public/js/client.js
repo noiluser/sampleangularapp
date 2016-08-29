@@ -65,6 +65,7 @@ app.service('UserService', function() {
 	this.photo = "ph";
 	this.token = "";
 	this.has_photo = false;	
+	this.code = "";
 	
 	this.resetParams = function() {
 		this.authorized = false;
@@ -74,5 +75,6 @@ app.service('UserService', function() {
 		this.photo = "ph";
 		this.token = "";
 		this.has_photo = false;
+		this.code = "";
 	};
 });
