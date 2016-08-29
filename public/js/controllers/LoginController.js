@@ -1,6 +1,8 @@
-app.controller("authCtrl", function($scope, $routeParams, $location, UserService) {
+app.controller("authCtrl", function($scope, $routeParams, $http, UserService) {
 	UserService.code = $routeParams.code;
-	console.log($routeParams, $location);
+	
+	var token = "https://oauth.vk.com/access_token?client_id=5590999&client_secret=atSWBxGT2fRivAqmOMff&redirect_uri=https://nsrg-angular-api.herokuapp.com/#/&code=" + UserService.code;
+	
 	/*$scope.login = function() {
 		var access = 262144 + 65536;
 		VK.Auth.login(function (response) {
