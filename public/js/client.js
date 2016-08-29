@@ -4,7 +4,7 @@
 
 var app = angular.module("vkSample", ['ngRoute', 'ui.bootstrap']);
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
     $routeProvider
 	    .when('/', {
 	        templateUrl : 'static/tmpl/groups.html',
@@ -13,7 +13,8 @@ app.config(function($routeProvider) {
         .when('/details/:group', {
             templateUrl : 'static/tmpl/details.html',
             controller  : 'detailsCtrl'
-        })
+        });
+    $locationProvider.html5Mode(true);
 });
 
 app.controller("mainCtrl", function($scope, $sce) {
