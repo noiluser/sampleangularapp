@@ -65,4 +65,14 @@ app.service('UserService', function() {
 	this.photo = "ph";
 	this.token = "";
 	this.has_photo = false;	
+	
+	this.resetParams = function() {
+		this.authorized = false;
+		this.first_name = "fname";
+		this.last_name = "lname";
+		this.href = "href";
+		this.photo = "ph";
+		this.token = "";
+		this.has_photo = false;
+	};
 });
