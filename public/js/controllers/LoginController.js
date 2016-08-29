@@ -3,9 +3,9 @@ app.controller("authCtrl", function($scope, UserService) {
 		var access = 262144;
 		VK.Auth.login(function (response) {
 			if (response.session) {
-				$scope.$emit('userData', response.session.sid);
+				$scope.$emit('userData', response.session.sig);
 			};
-		}, VK.access.GROUPS);
+		}, access);
 	};
 	
 	$scope.logout = function() {
