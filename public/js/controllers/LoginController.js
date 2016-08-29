@@ -5,7 +5,7 @@ app.controller("authCtrl", function($scope, UserService) {
 			if (response.session) {
 				$scope.$emit('userData', response.session.sid);
 			};
-		}, access);
+		}, VK.access.GROUPS);
 	};
 	
 	$scope.logout = function() {
