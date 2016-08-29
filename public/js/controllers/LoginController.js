@@ -1,5 +1,7 @@
-app.controller("authCtrl", function($scope, UserService) {
-	$scope.login = function() {
+app.controller("authCtrl", function($scope, $routeParams, UserService) {
+	UserService.code = $routeParams.code;
+	console.log(code);
+	/*$scope.login = function() {
 		var access = 262144 + 65536;
 		VK.Auth.login(function (response) {
 			if (response.session) {
@@ -50,5 +52,5 @@ app.controller("authCtrl", function($scope, UserService) {
 			$scope.$emit('userData', response.session.sid);
 		} 
 	});
-	
+	*/
 });
