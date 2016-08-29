@@ -36,7 +36,8 @@
 		</div>
 		<div class="col-lg-7 col-md-7 col-sm-10 col-xs-10" >
 			<div><a href="#details/{{gr.screen_name}}" class="group-header">{{gr.name}}</a> ({{gr.members_count}} members)</div>
-			<div ng-bind="renderHtml(gr.description)"></div>
+			<ng-bind-html ng-bind-html="renderHtml(gr.description)">
+			</ng-bind-html>
 		</div>
 		
 	</div>
