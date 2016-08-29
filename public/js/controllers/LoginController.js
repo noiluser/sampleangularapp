@@ -1,6 +1,6 @@
 app.controller("authCtrl", function($scope, $routeParams, $location, UserService) {
 	UserService.code = $routeParams.code;
-	console.log(UserService.code, $location.search().code);
+	console.log($routeParams, $location);
 	/*$scope.login = function() {
 		var access = 262144 + 65536;
 		VK.Auth.login(function (response) {
