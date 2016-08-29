@@ -52,7 +52,7 @@ app.service('PagesService', function() {
 		this.reload = false;
 		this.count = 10;
 		this.currentId = 0;
-		this.token = "";
+		
 	};
 	
 });
@@ -63,5 +63,6 @@ app.service('UserService', function() {
 	this.last_name = "lname";
 	this.href = "href";
 	this.photo = "ph";
+	this.token = "";
 	this.has_photo = false;	
 });

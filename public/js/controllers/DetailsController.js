@@ -1,7 +1,8 @@
-app.controller("detailsCtrl", function($scope, $routeParams, $sce, PagesService) {
+app.controller("detailsCtrl", function($scope, $routeParams, $sce, PagesService, UserService) {
 	$scope.id = $routeParams.group;
 	$scope.posts = [];
 	$scope.renderHtml = $scope.$parent.renderHtml;
+
 	PagesService.reload = true;
 	VK.Api.call('groups.getById', {
 		group_id : $scope.id,
@@ -27,7 +28,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $sce, PagesService)
 	$scope.joinGroup = function(id) {
 		VK.Api.call('groups.join', {
 			group_id : id,
-			access_token : PagesService.token,
+			access_token : UserService.token,
 		}, function(r) {
 			if(r.response) {
 				$scope.$apply(function(){
@@ -38,10 +39,10 @@ app.controller("detailsCtrl", function($scope, $routeParams, $sce, PagesService)
 	};
 	
 	$scope.leaveGroup = function(id) {
-console.log(">>>>  ", id, PagesService.token);		
+console.log(">>>>  ", id, UserService.token);		
 		VK.Api.call('groups.leave', {
 			group_id : id,
-			access_token : PagesService.token,
+			access_token : UserService.token,
 		}, function(r) {
 			if(r.response) {
 				$scope.$apply(function(){
