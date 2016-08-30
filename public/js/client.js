@@ -67,6 +67,9 @@ app.service('UserService', function() {
 	this.token = "";
 	this.has_photo = false;	
 	this.code = "";
+	this.authorize = function(code, scope) {
+		this.code = code;
+	};
 	
 	this.resetParams = function() {
 		this.authorized = false;
@@ -78,4 +81,43 @@ app.service('UserService', function() {
 		this.has_photo = false;
 		this.code = "";
 	};
+});
+
+app.factory('User', function($http) {
+	var userPublic = new Object();
+	var userPrivate = new Object(); 
+	userPrivate.appId = "5590999";
+	userPrivate.secret = "atSWBxGT2fRivAqmOMff";
+	userPrivate.redirectUrl = "https://nsrg-angular-api.herokuapp.com/#/";
+	
+	// public methods
+	userPublic.authorize = function(code, callback) {
+		userPrivate.code = code;
+		userPrivate.getAccess(callback);
+	};
+
+	userPublic.getCode = function() {
+		return userPrivate.code;
+	};
+	
+	userPublic.getAppId = function() {
+		return userPrivate.appId;
+	};
+	
+	userPublic.getRedirectUrl = function() {
+		return userPrivate.redirectUrl;
+	};
+
+	// private methods
+	userPrivate.getAccess = function(callback) {
+		var url = "https://oauth.vk.com/access_token?client_id=" + this.appId + "&client_secret=" + this.secret + "&redirect_uri=" + redirectUrl + "&code=" + this.code;
+		$http.get(url).then(function successCallback(response) {
+			callback(response);
+		}, function errorCallback(response) {
+			
+		});
+		
+	};
+	
+	return userPublic;
 });
