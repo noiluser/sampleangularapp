@@ -88,7 +88,7 @@ app.factory('User', function($http) {
 	var userPrivate = new Object(); 
 	userPrivate.appId = "5590999";
 	userPrivate.secret = "atSWBxGT2fRivAqmOMff";
-	userPrivate.redirectUrl = "https://nsrg-angular-api.herokuapp.com";
+	userPrivate.redirectUrl = "https://nsrg-angular-api.herokuapp.com/";
 	
 	// public methods
 	userPublic.authorize = function(code, callback) {
