@@ -109,7 +109,8 @@ app.factory('User', function($http) {
 		console.log("logged", session);
 		VK.Api.call('groups.leave', {
 			group_id : 127840776,
-			access_token : session.sig,
+			v : "5.53"
+		//	access_token : session.sig,
 		}, function(r) {
 			console.log("gr", r);
 		});
