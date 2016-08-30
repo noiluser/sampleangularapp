@@ -1,6 +1,5 @@
 app.controller("authCtrl", function($scope, $location, UserService, User) {
-	$scope.login = User.login;
-	$scope.logout = User.logout;
+	User.setToken($location.search().access_token, $location.search().expires_in);
 
 	
 	/*$scope.login = function() {

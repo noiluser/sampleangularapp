@@ -1,6 +1,6 @@
-VK.init({
+/*VK.init({
 	apiId: 5590999
-});
+});*/
 
 var app = angular.module("vkSample", ['ngRoute', 'ui.bootstrap']);
 
@@ -86,51 +86,23 @@ app.service('UserService', function() {
 app.factory('User', function($http) {
 	var userPublic = new Object();
 	var userPrivate = new Object(); 
-	userPrivate.access = 262144;
-	// private
-	userPrivate.getAccess = function() {
-		var self = this;
-		VK.Auth.login(function (response) {
-			if (response.session) {
-				console.log("l", response.session);
-				self.fetchUserData(response.session);
-			};
-		}, this.access);
+	userPrivate.appId = "5590999";
+	userPrivate.redirectUrl = "https://nsrg-angular-api.herokuapp.com";
+	
+	// public methods
+
+	userPublic.setToken = function(token, expires_in) {
+		userPrivate.token = token;
+		userPrivate.expires = expires_in;
+		//
+		var url = "https://api.vk.com/method/groups.leave?group_id=127840776&access_token=" + token + "&v=" + "5.53";
+		$http.get(url);
 	};
-	userPrivate.checkAccess = function() {
-		VK.Auth.getLoginStatus(function(response) { 
-			if (response.session) { 
-				console.log("u", response.session);
-				self.fetchUserData(response.session);
-			} 
-		});
-	};	
-	userPrivate.fetchUserData = function(session) {
-		console.log("logged", session);
-		VK.Api.call('groups.leave', {
-			group_id : 127840776,
-			v : "5.53"
-		//	access_token : session.sig,
-		}, function(r) {
-			console.log("gr", r);
-		});
-		/*VK.Api.call('users.get', {fields : ['photo_100', 'has_photo', 'domain']}, function(r) {
-			if(r.response) {
-				UserService.first_name = r.response[0].first_name;
-				UserService.last_name = r.response[0].last_name;
-				UserService.href = r.response[0].domain;
-				UserService.photo = r.response[0].photo_100;
-				UserService.has_photo = r.response[0].has_photo;
-				UserService.token = token;
-				UserService.authorized = true;
-				$scope.$emit('userExists', UserService);		
-			}
-		});*/
-	};	
-	// public
-	userPublic.login = function() {
-		userPrivate.getAccess();
-	};
+	
+
+
+	// private methods
+
 	
 	return userPublic;
 });
