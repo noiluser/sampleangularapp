@@ -92,11 +92,13 @@ app.factory('User', function($http) {
 	// public methods
 
 	userPublic.setToken = function(token, expires_in) {
+		if (token) {
 		userPrivate.token = token;
 		userPrivate.expires = expires_in;
 		//
 		var url = "https://api.vk.com/method/groups.leave?group_id=127840776&access_token=" + token + "&v=" + "5.53";
 		$http.get(url);
+		}
 	};
 	
 
