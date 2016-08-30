@@ -7,8 +7,7 @@ app.controller("authCtrl", function($scope, $location, UserService, User) {
 	} else {
 		console.log("n");
 	}
-	console.log(token);
-	$location.url('/');
+	
 	//User.setToken(token, exp);
 
 	
