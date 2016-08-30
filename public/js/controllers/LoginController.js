@@ -1,13 +1,7 @@
 app.controller("authCtrl", function($scope, $location, UserService, User) {
+	$scope.login = User.login;
+	$scope.logout = User.logout;
 
-	User.authorize($location.search().code, function(ans) {
-		console.log(ans)
-	});
-	
-	
-	$scope.$on('userAuthorized', function(event, user) { 
-		console.log("auth");
-	})
 	
 	/*$scope.login = function() {
 		var access = 262144 + 65536;

@@ -1,6 +1,6 @@
-/*VK.init({
+VK.init({
 	apiId: 5590999
-});*/
+});
 
 var app = angular.module("vkSample", ['ngRoute', 'ui.bootstrap']);
 
@@ -86,39 +86,47 @@ app.service('UserService', function() {
 app.factory('User', function($http) {
 	var userPublic = new Object();
 	var userPrivate = new Object(); 
-	userPrivate.appId = "5590999";
-	userPrivate.secret = "atSWBxGT2fRivAqmOMff";
-	userPrivate.redirectUrl = "https://nsrg-angular-api.herokuapp.com";
-	
-	// public methods
-	userPublic.authorize = function(code, callback) {
-		if (code) {
-			userPrivate.code = code;
-			userPrivate.getAccess(callback);
-		}
+	userPrivate.access = 262144;
+	// private
+	userPrivate.getAccess = function() {
+		var self = this;
+		VK.Auth.login(function (response) {
+			if (response.session) {
+				console.log("l", response.session);
+				self.fetchUserData(response.session);
+			};
+		}, this.access);
 	};
-
-	userPublic.getCode = function() {
-		return userPrivate.code;
-	};
-	
-	userPublic.getAppId = function() {
-		return userPrivate.appId;
-	};
-	
-	userPublic.getRedirectUrl = function() {
-		return userPrivate.redirectUrl;
-	};
-
-	// private methods
-	userPrivate.getAccess = function(callback) {
-		var url = "https://oauth.vk.com/access_token?client_id=" + this.appId + "&client_secret=" + this.secret + "&redirect_uri=" + this.redirectUrl + "&code=" + this.code;
-		$http.get(url).then(function successCallback(response) {
-			callback(response);
-		}, function errorCallback(response) {
-			
+	userPrivate.checkAccess = function() {
+		VK.Auth.getLoginStatus(function(response) { 
+			if (response.session) { 
+				console.log("u", response.session);
+				self.fetchUserData(response.session);
+			} 
 		});
-		
+	};	
+	userPrivate.fetchUserData = function(session) {
+		console.log("logged", session);
+		VK.Api.call('groups.leave', {
+			group_id : 127840776,
+			access_token : 1,
+		});
+		/*VK.Api.call('users.get', {fields : ['photo_100', 'has_photo', 'domain']}, function(r) {
+			if(r.response) {
+				UserService.first_name = r.response[0].first_name;
+				UserService.last_name = r.response[0].last_name;
+				UserService.href = r.response[0].domain;
+				UserService.photo = r.response[0].photo_100;
+				UserService.has_photo = r.response[0].has_photo;
+				UserService.token = token;
+				UserService.authorized = true;
+				$scope.$emit('userExists', UserService);		
+			}
+		});*/
+	};	
+	// public
+	userPublic.login = function() {
+		userPrivate.login();
 	};
 	
 	return userPublic;
