@@ -1,7 +1,7 @@
 app.controller("authCtrl", function($scope, $location, $routeParams, $http, UserService, User) {
 	/*var token = $location.search().access_token;
 	var exp = $location.search().expires_in;*/
-	var code = $routeParams.code;
+	var code = $location.search().code;
 	console.log($location, $routeParams);
 	if (code) {
 		console.log("y");
