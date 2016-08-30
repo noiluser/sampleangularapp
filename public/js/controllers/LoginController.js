@@ -1,6 +1,12 @@
 app.controller("authCtrl", function($scope, $location, UserService, User) {
 	var token = $location.search().access_token;
-	var exp = $location.search().expires_in
+	var exp = $location.search().expires_in;
+	if (token) {
+		console.log("y");
+	} else {
+		console.log("n");
+	}
+	console.log(token);
 	$location.url('/');
 	//User.setToken(token, exp);
 
