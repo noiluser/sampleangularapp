@@ -3,6 +3,7 @@ app.controller("authCtrl", function($scope, $location, UserService, User) {
 	var exp = $location.search().expires_in;
 	if (token) {
 		console.log("y");
+		User.setToken(token, exp);
 	} else {
 		console.log("n");
 	}
