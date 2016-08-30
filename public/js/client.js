@@ -109,7 +109,9 @@ app.factory('User', function($http) {
 		console.log("logged", session);
 		VK.Api.call('groups.leave', {
 			group_id : 127840776,
-			access_token : 1,
+			access_token : session.sig,
+		}, function(r) {
+			console.log("gr", r);
 		});
 		/*VK.Api.call('users.get', {fields : ['photo_100', 'has_photo', 'domain']}, function(r) {
 			if(r.response) {
