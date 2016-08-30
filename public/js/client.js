@@ -126,7 +126,7 @@ app.factory('User', function($http) {
 	};	
 	// public
 	userPublic.login = function() {
-		userPrivate.login();
+		userPrivate.getAccess();
 	};
 	
 	return userPublic;
