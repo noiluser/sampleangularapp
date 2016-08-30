@@ -92,8 +92,10 @@ app.factory('User', function($http) {
 	
 	// public methods
 	userPublic.authorize = function(code, callback) {
-		userPrivate.code = code;
-		userPrivate.getAccess(callback);
+		if (code) {
+			userPrivate.code = code;
+			userPrivate.getAccess(callback);
+		}
 	};
 
 	userPublic.getCode = function() {
@@ -110,7 +112,7 @@ app.factory('User', function($http) {
 
 	// private methods
 	userPrivate.getAccess = function(callback) {
-		var url = "https://oauth.vk.com/access_token?client_id=" + this.appId + "&client_secret=" + this.secret + "&redirect_uri=" + redirectUrl + "&code=" + this.code;
+		var url = "https://oauth.vk.com/access_token?client_id=" + this.appId + "&client_secret=" + this.secret + "&redirect_uri=" + this.redirectUrl + "&code=" + this.code;
 		$http.get(url).then(function successCallback(response) {
 			callback(response);
 		}, function errorCallback(response) {
