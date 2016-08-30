@@ -1,6 +1,6 @@
-app.controller("authCtrl", function($scope, $routeParams, $http, UserService, User) {
-	
-	User.authorize($routeParams.code, function(ans) {
+app.controller("authCtrl", function($scope, $location, UserService, User) {
+
+	User.authorize($location.search().code, function(ans) {
 		console.log(ans)
 	});
 	
@@ -9,8 +9,6 @@ app.controller("authCtrl", function($scope, $routeParams, $http, UserService, Us
 		console.log("auth");
 	})
 	
-	
-	UserService.authorize($routeParams.code, $scope);
 	/*$scope.login = function() {
 		var access = 262144 + 65536;
 		VK.Auth.login(function (response) {
