@@ -1,6 +1,6 @@
 app.controller("authCtrl", function($scope, $location, $window, User) {
 	$scope.openProfile = function() {
-		$window.open($scope.userHref, '_blank');
+		$window.open('https://vk.com/' + $scope.userHref, '_blank');
 	};
 	
 	var path = $location.hash();
