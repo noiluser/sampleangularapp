@@ -1,15 +1,16 @@
-app.controller("groupsCtrl", function($scope, $sce, $http, PagesService) {
+app.controller("groupsCtrl", function($scope, $sce, $http, User, PagesService) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
 	$scope.IsGroupsLoaded = true;
 	$scope.groups = [];
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.paramsToString = function(hash, delim) {
-		var str = "";
+		var output = "";
 		for(var item in hash) {
-			str += item + "=" + hash[item];
-			if (delim) str += delim; else str += "&";
+			output += item + "=" + hash[item];
+			if (delim) output += delim; else output += "&";
 		}
+		return output;
 	};
 	
 	$scope.$on('userLogin', function(event) {
@@ -26,7 +27,7 @@ app.controller("groupsCtrl", function($scope, $sce, $http, PagesService) {
 		getParams.extended = 1;
 		getParams.fields = "description,members_count";
 		
-		var url = "https://api.vk.com/method/users.get?"+$scope.paramsToString(getParams)+"&access_token=" + this.access_token + "&v=" + this.ver + "&callback=JSON_CALLBACK";
+		var url = "https://api.vk.com/method/groups.get?" + $scope.paramsToString(getParams) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {

@@ -127,6 +127,11 @@ app.factory('User', function($http) {
 		return userPrivate.photo;		
 	};
 
+	userPublic.getUrlParams = function() {
+		var output = "";
+		output += "&access_token=" + userPrivate.access_token + "&v=" + userPrivate.ver + "&callback=JSON_CALLBACK";
+		return output;
+	};
 	// private methods
 	
 	userPrivate.getUserData = function(cb) {
