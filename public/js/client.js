@@ -21,6 +21,15 @@ app.controller("mainCtrl", function($scope, $sce) {
 	$scope.renderHtml = function(html_code)	{
 	    return $sce.trustAsHtml(html_code);
 	};
+	
+	$scope.paramsToString = function(hash, delim) {
+		var output = "";
+		for(var item in hash) {
+			output += item + "=" + hash[item];
+			if (delim) output += delim; else output += "&";
+		}
+		return output;
+	};
 });
 
 app.service('PagesService', function() {

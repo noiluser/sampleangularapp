@@ -1,5 +1,6 @@
 app.controller("detailsCtrl", function($scope, $routeParams, PagesService, User) {
 	$scope.renderHtml = $scope.$parent.renderHtml;
+	$scope.paramsToString = $scope.$parent.paramsToString;
 	$scope.id = $routeParams.group;
 	$scope.posts = [];
 	PagesService.reload = true;

@@ -4,14 +4,7 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 	$scope.IsAllGroupsLoaded = true;
 	$scope.groups = [];
 	$scope.renderHtml = $scope.$parent.renderHtml;
-	$scope.paramsToString = function(hash, delim) {
-		var output = "";
-		for(var item in hash) {
-			output += item + "=" + hash[item];
-			if (delim) output += delim; else output += "&";
-		}
-		return output;
-	};
+	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.$on('userLogin', function(event) {
 		$scope.isUserLoggedIn = true;
