@@ -14,7 +14,7 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 	});
 	
 	$scope.getGroups = function() {
-		console.log("get", PagesService);
+console.log("get", PagesService);
 		var getParams = PagesService.getParams();
 		getParams.filter = "groups";
 		getParams.extended = 1;
@@ -26,12 +26,12 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 		    success(function(data, status, headers, config) {
 
 				var gr = data.response.items;
-				var co = data.response.items.length;
+				var co = gr.length;
 				var groupsCount = data.response.count; 
 				
 				PagesService.reload = false;
 				PagesService.offset += co;
-								
+console.log("got", PagesService, co, gr);
 				if (groupsCount == PagesService.offset)
 					$scope.$apply(function(){
 						$scope.IsAllGroupsLoaded = true;
@@ -48,7 +48,6 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 		$scope.isGroupsLoading = false;
 		$scope.IsGroupsLoaded = false;
 		$scope.groups = $scope.groups.concat(groups);
-		console.log($scope.groups);
 	});
 	
 	if (User.isAuthorized()) {
@@ -65,7 +64,5 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 		$scope.IsAllGroupsLoaded = true;
 		$scope.groups = [];
 	};
-	
-	$scope.resetParams();
-	
+		
 });
