@@ -1,4 +1,4 @@
-app.controller("detailsCtrl", function($scope, $routeParams, PagesService, User) {
+app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService, User) {
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	$scope.id = $routeParams.group;
