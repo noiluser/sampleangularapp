@@ -29,8 +29,10 @@ console.log("get", PagesService);
 				var co = gr.length;
 				var groupsCount = data.response.count; 
 				
-				PagesService.reload = false;
-				PagesService.offset += co;
+				if (PagesService.reload)
+					PagesService.reload = false;
+				else 
+		    		PagesService.offset += co;
 console.log("got", PagesService, co, gr);
 				if (groupsCount == PagesService.offset)
 					$scope.$apply(function(){
