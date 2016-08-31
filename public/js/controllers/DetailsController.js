@@ -88,33 +88,6 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		}	
 	});
 	
-	$scope.joinGroup = function(id) {
-		VK.Api.call('groups.join', {
-			group_id : id,
-			access_token : UserService.token,
-		}, function(r) {
-			if(r.response) {
-				$scope.$apply(function(){
-					$scope.IsMember = true;
-				});
-			}	
-		});
-	};
-	
-	$scope.leaveGroup = function(id) {
-console.log(">>>>  ", id, UserService.token);		
-		VK.Api.call('groups.leave', {
-			group_id : id,
-			access_token : UserService.token,
-		}, function(r) {
-			if(r.response) {
-				$scope.$apply(function(){
-					$scope.IsMember = false;
-				});
-			}	
-		});
-	};
-	
 	
 	$scope.$on('loadWall', function(event, id) {
 		VK.Api.call('wall.get', {
