@@ -11,9 +11,9 @@ app.controller("authCtrl", function($scope, $location, $routeParams, $http, $win
 		console.log("y", codeUrl);
 
 		$http.jsonp(codeUrl + "&callback=JSON_CALLBACK")
-		    .success(function(data){
-		        console.log(data);
-		    })
+        .then(function(json) {
+            console.log(json.access_token);
+        });
 		/*$http.get(codeUrl).then(function(response) {
 			console.log(response)
 		});*/
