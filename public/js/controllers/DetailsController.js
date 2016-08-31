@@ -23,7 +23,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    	self.gid = data.response[0].id;
 		    	self.IsMember = data.response[0].is_member;
 
-		    	$scope.post(); // TODO
+		    	//$scope.post(); // TODO
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
