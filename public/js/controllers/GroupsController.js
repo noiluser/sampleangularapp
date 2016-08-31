@@ -32,18 +32,18 @@ app.controller("groupsCtrl", function($scope, $sce, $http, User, PagesService) {
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
 
-				var gr = data.response;
-				var co = gr.shift();
+				var gr = data.response.items;
+				var co = data.response.count;
 				
 				PagesService.reload = false;
 				PagesService.offset += co;
 								
-				if (co < $scope.count)
+				/*if (co < $scope.count)
 					$scope.$apply(function(){
 						$scope.IsAllGroupsLoaded = true;
 					});
-				
-				//$scope.$emit('groupsLoaded', gr);
+				*/
+				$scope.$emit('groupsLoaded', gr);
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
