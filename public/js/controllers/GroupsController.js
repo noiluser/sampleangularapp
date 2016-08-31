@@ -99,12 +99,12 @@ app.controller("groupsCtrl", function($scope, $sce, $http, User, PagesService) {
 	
 	$scope.$on('groupsLoaded', function(event, groups) {
 		console.log("Groups loaded");
-		$scope.$apply(function(){
+		//$scope.$apply(function(){
 			$scope.isGroupsLoading = false;
 			$scope.IsGroupsLoaded = false;
 			$scope.groups = $scope.groups.concat(groups);
-			console.log($scope.groups);
-		});
+			//console.log($scope.groups);
+		//});
 	});
 	
 
