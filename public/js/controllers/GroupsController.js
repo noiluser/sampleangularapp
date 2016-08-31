@@ -33,7 +33,7 @@ app.controller("groupsCtrl", function($scope, $sce, $http, User, PagesService) {
 		    success(function(data, status, headers, config) {
 
 				var gr = data.response.items;
-				var co = data.response.count;
+				var co = data.response.items.length;
 				
 				PagesService.reload = false;
 				PagesService.offset += co;
@@ -49,6 +49,13 @@ app.controller("groupsCtrl", function($scope, $sce, $http, User, PagesService) {
 		        console.log(data);
 		    });
 	}
+	
+	$scope.$on('groupsLoaded', function(event, groups) {
+		$scope.isGroupsLoading = false;
+		$scope.IsGroupsLoaded = false;
+		$scope.groups = $scope.groups.concat(groups);
+		console.log($scope.groups);
+	});
 	
 
 	
@@ -97,15 +104,7 @@ app.controller("groupsCtrl", function($scope, $sce, $http, User, PagesService) {
 		$scope.getGroups();
 	});
 	
-	$scope.$on('groupsLoaded', function(event, groups) {
-		console.log("Groups loaded");
-		//$scope.$apply(function(){
-			$scope.isGroupsLoading = false;
-			$scope.IsGroupsLoaded = false;
-			$scope.groups = $scope.groups.concat(groups);
-			//console.log($scope.groups);
-		//});
-	});
+
 	
 
 });
