@@ -85,7 +85,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    */
 		
 		var getParams = {
-				owner_id : User.id,
+				owner_id : User.getId(),
 				photo_id : 429436464
 		};
 				

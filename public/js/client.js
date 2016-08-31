@@ -112,6 +112,10 @@ app.factory('User', function($http) {
 	userPublic.getPhoto = function() {
 		return userPrivate.photo;		
 	};
+	
+	userPublic.getId = function() {
+		return userPrivate.id;		
+	};
 
 	userPublic.getUrlParams = function() {
 		var output = "";
