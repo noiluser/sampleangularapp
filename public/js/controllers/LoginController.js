@@ -1,13 +1,20 @@
 app.controller("authCtrl", function($scope, $location, $routeParams, $http, $window, UserService, User) {
 	$scope.openProfile = function() {
-		$window.open('https://vk.com/n_srg', '_blank');
+		$window.open($scope.userHref, '_blank');
 	};
 	
 	var path = $location.hash();
 	if(path) {
 		console.log("got Token");
-		User.setToken(path);
-		console.log(User.getToken());
+		User.setToken(path, function() {
+			$scope.userName = User.getFirstName();
+			$scope.userLastName = User.getLastName();
+			$scope.userHref = User.getHref();
+			$scope.photo = User.getPhoto();
+			$scope.hasPhoto = User.hasPhoto(); 
+			$scope.isUserLoggedIn = true;
+			//$scope.$parent.$broadcast('userLogin', user);
+		});
 	}
 
 	

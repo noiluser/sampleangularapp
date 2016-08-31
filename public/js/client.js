@@ -92,31 +92,58 @@ app.factory('User', function($http) {
 	userPrivate.redirectUrl = "https://nsrg-angular-api.herokuapp.com/";
 	
 	// public methods
-	userPublic.setToken = function(paramStr) {
+	userPublic.setToken = function(paramStr, cb) {
 		var settings = paramStr.split(/[\=\&]+/);
 		for(var i = 0; i < settings.length; i+=2) {
 			userPrivate[settings[i]] = settings[i+1];
 		}
 		if(userPrivate.hasOwnProperty("access_token")) {
 			userPrivate.isAuthorized = true;
-			userPrivate.getUserData();
+			userPrivate.getUserData(cb);
 		}
 	};
 
 	userPublic.getToken = function() {
 		return userPrivate.access_token;
 	};
+	
+	userPublic.getFirstName = function() {
+		return userPrivate.firstName;		
+	};
+	
+	userPublic.getLastName = function() {
+		return userPrivate.lastName;		
+	};
+	
+	userPublic.getHref = function() {
+		return userPrivate.href;		
+	};
+	
+	userPublic.hasPhoto = function() {
+		return userPrivate.hasPhoto;		
+	};
+	
+	userPublic.getPhoto = function() {
+		return userPrivate.photo;		
+	};
+
 	// private methods
 	
-	userPrivate.getUserData = function() {
+	userPrivate.getUserData = function(cb) {
 		var url = "https://api.vk.com/method/users.get?fields=photo_100,has_photo,domain&access_token=" + this.access_token + "&v=" + this.ver + "&callback=JSON_CALLBACK";
-
+		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
-		    	console.log(data);
-		    }).
+		    	self.firstName = data.response[0].first_name;
+		    	self.lastName = data.response[0].last_name;
+		    	self.href = data.response[0].domain;
+		    	self.photo = data.response[0].photo_100;
+		    	self.hasPhoto = data.response[0].has_photo;
+		    	if (cb)
+		    		cb();
+		    });
 		    error(function(data, status, headers, config) {
-		        $scope.error = true;
+		        console.log(data);
 		    });
 	};
 
