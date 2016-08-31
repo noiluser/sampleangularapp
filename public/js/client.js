@@ -109,7 +109,7 @@ app.factory('User', function($http) {
 	// private methods
 	
 	userPrivate.getUserData = function() {
-		var url = "https://api.vk.com/method/users.get?fields=['photo_100','has_photo','domain']&access_token=" + this.access_token + "&v=" + this.ver + "&callback=JSONP_CALLBACK";
+		var url = "https://api.vk.com/method/users.get?access_token=" + this.access_token + "&v=" + this.ver + "&callback=JSONP_CALLBACK";
 
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
