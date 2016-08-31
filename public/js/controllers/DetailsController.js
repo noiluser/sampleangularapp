@@ -33,7 +33,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
-		    	self.photo = data.response[0].photo_big;
+		    	self.photo = data.response[0].photo_200;
 		    	self.IsClosed = data.response[0].is_closed;
 		    	self.CanPost = data.response[0].can_post;
 		    	self.description = data.response[0].description;
