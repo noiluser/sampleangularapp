@@ -91,7 +91,7 @@ app.factory('User', function($http) {
 	
 	// public methods
 	userPublic.setToken = function(paramStr) {
-		var settings = paramSrt.split(/[\=\&]+/);
+		var settings = paramStr.split(/[\=\&]+/);
 		for(var i = 0; i < settings.length; i+=2) {
 			userPrivate[settings[i]] = settings[i+1];
 		}
