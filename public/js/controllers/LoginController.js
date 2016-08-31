@@ -1,11 +1,15 @@
-app.controller("authCtrl", function($scope, $location, $routeParams, $http, UserService, User) {
+app.controller("authCtrl", function($scope, $location, $routeParams, $http, $window, UserService, User) {
+	$scope.openProfile = function() {
+		$window.open('https://vk.com/n_srg', '_blank');
+	};
 	/*var token = $location.search().access_token;
 	var exp = $location.search().expires_in;*/
 	var code = $location.search().code;
 	console.log($location, $routeParams);
 	if (code) {
 		console.log("y");
-		$http.get("https://oauth.vk.com/access_token?client_id=" + "5590999" + "&client_secret=" + "atSWBxGT2fRivAqmOMff" + "&v=5.53&redirect_uri=https://nsrg-angular-api.herokuapp.com&code="+code);
+		$scope.codeUrl = "https://oauth.vk.com/access_token?client_id=" + "5590999" + "&client_secret=" + "atSWBxGT2fRivAqmOMff" + "&v=5.53&redirect_uri=https://nsrg-angular-api.herokuapp.com&code="+code;
+		//$http.get("https://oauth.vk.com/access_token?client_id=" + "5590999" + "&client_secret=" + "atSWBxGT2fRivAqmOMff" + "&v=5.53&redirect_uri=https://nsrg-angular-api.herokuapp.com&code="+code);
 		//User.setToken(token, exp);
 	} else {
 		console.log("n");

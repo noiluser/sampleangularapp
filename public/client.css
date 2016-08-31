@@ -2,8 +2,6 @@
 
 .avatar {
 	height : 40px;
+	margin-top : 5px;
+	cursor : pointer;
 }	
-
-.avatar-item {
-	padding : 5px;
-}

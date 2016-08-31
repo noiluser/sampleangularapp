@@ -1,10 +1,3 @@
-<style>
-	.navbar { margin-bottom: 0 }
-	.avatar, .avatar-item {
-		padding : 0px;
-		margin : 0px;
-	}
-</style>
 <div class="container" ng-controller='authCtrl'>
 	<div class="row">
 		<nav class="navbar navbar-default">
@@ -15,15 +8,14 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a class="avatar-item" href="https://vk.com/{{userHref}}" ng-show="hasPhoto" target="_blank">
-							<img class="avatar img-circle" src="{{photo}}">
-						</a>
+						<img ng-show="hasPhoto" ng-click="openProfile()" class="avatar img-circle" src="{{photo}}">
 					</li>
-					<li><a href="https://vk.com/{{userHref}}" ng-show="isUserLoggedIn" target="_blank">{{userName}} {{userLastName}}</a></li>
+					<li><a href="javascript:void(0);" ng-show="isUserLoggedIn" ng-click="openProfile()" target="_blank">{{userName}} {{userLastName}}</a></li>
 					<li ng-show="isUserLoggedIn"><a href="javascript:void(0);" ng-click="logout()">Logout</a></li>
 					<li ng-show="!isUserLoggedIn"><a href="javascript:void(0);" ng-click="login()">Login</a></li>
 									   
 <li ng-show="!isUserLoggedIn"><a href="https://oauth.vk.com/authorize?client_id=5590999&display=page&scope=groups&response_type=code&v=5.53&redirect_uri=https://nsrg-angular-api.herokuapp.com">Li</a></li>
+					<iframe src={{codeUrl}}></iframe>
 				</ul>
 			</div>
 		</nav>
