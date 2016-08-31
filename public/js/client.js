@@ -141,7 +141,7 @@ app.factory('User', function($http) {
 		    	self.hasPhoto = data.response[0].has_photo;
 		    	if (cb)
 		    		cb();
-		    });
+		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
 		    });
