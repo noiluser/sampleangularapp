@@ -14,7 +14,7 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl : 'static/tmpl/details.html',
             controller  : 'detailsCtrl'
         });
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
 });
 
 app.controller("mainCtrl", function($scope, $sce) {
