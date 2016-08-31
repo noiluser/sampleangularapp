@@ -22,6 +22,7 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 	});
 	
 	$scope.getGroups = function() {
+		console.log("get", PagesService);
 		var getParams = PagesService.getParams();
 		getParams.filter = "groups";
 		getParams.extended = 1;
