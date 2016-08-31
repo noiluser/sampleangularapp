@@ -1,4 +1,4 @@
-app.controller("authCtrl", function($scope, $location, $window, User) {
+app.controller("authCtrl", function($scope, $location, $window, User, PagesService) {
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.openProfile = function() {
@@ -17,6 +17,7 @@ app.controller("authCtrl", function($scope, $location, $window, User) {
 	$scope.logout = function() {
 		User.resetParams(function() {
 			$scope.syncUserData();
+			PagesService.resetParams();
 			$scope.$parent.$broadcast('userLogout');
 		});
 	};
@@ -39,7 +40,7 @@ app.controller("authCtrl", function($scope, $location, $window, User) {
 				response_type : "token",
 				v : "5.53"				
 		};
-		$window.open('https://oauth.vk.com/authorize?' + this.paramsToString(getParams));
+		$window.open('https://oauth.vk.com/authorize?' + this.paramsToString(getParams), '_self');
 	};
 	
 

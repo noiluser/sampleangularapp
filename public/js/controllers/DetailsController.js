@@ -46,6 +46,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    });
 	};	
 	//$scope.leaveGroup();
+	$scope.getGroupInfo();
 	/*
 	
 	VK.Api.call('groups.getById', {
