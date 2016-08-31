@@ -5,24 +5,6 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	$scope.posts = [];
 	PagesService.reload = true;
 	
-	console.log($scope.id);
-	
-	$scope.leaveGroup = function() {
-		var getParams = {
-				group_id : this.id
-		};
-				
-		var url = "https://api.vk.com/method/groups.leave?" + this.paramsToString(getParams) + User.getUrlParams();
-		var self = this;
-		$http.jsonp(url).
-		    success(function(data, status, headers, config) {
-		    	console.log(data);
-		    }).
-		    error(function(data, status, headers, config) {
-		        console.log(data);
-		    });
-	};	
-	
 	$scope.getGroupInfo = function() {
 		var getParams = {
 				group_id : this.id,
@@ -47,6 +29,42 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	};	
 	//$scope.leaveGroup();
 	$scope.getGroupInfo();
+	
+	$scope.leaveGroup = function() {
+		var getParams = {
+				group_id : this.id
+		};
+				
+		var url = "https://api.vk.com/method/groups.leave?" + this.paramsToString(getParams) + User.getUrlParams();
+		var self = this;
+		$http.jsonp(url).
+		    success(function(data, status, headers, config) {
+		    	console.log(data);
+		    }).
+		    error(function(data, status, headers, config) {
+		        console.log(data);
+		    });
+	};	
+	
+	$scope.joinGroup = function() {
+		var getParams = {
+				group_id : this.id
+		};
+				
+		var url = "https://api.vk.com/method/groups.join?" + this.paramsToString(getParams) + User.getUrlParams();
+		var self = this;
+		$http.jsonp(url).
+		    success(function(data, status, headers, config) {
+		    	console.log(data);
+		    }).
+		    error(function(data, status, headers, config) {
+		        console.log(data);
+		    });
+	};
+	
+	
+	
+	
 	/*
 	
 	VK.Api.call('groups.getById', {
