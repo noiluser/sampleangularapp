@@ -30,9 +30,9 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	//$scope.leaveGroup();
 	$scope.getGroupInfo();
 	
-	$scope.leaveGroup = function() {
+	$scope.leaveGroup = function(gid) {
 		var getParams = {
-				group_id : this.id
+				group_id : gid
 		};
 				
 		var url = "https://api.vk.com/method/groups.leave?" + this.paramsToString(getParams) + User.getUrlParams();
@@ -46,9 +46,9 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    });
 	};	
 	
-	$scope.joinGroup = function() {
+	$scope.joinGroup = function(gid) {
 		var getParams = {
-				group_id : this.id
+				group_id : gid
 		};
 				
 		var url = "https://api.vk.com/method/groups.join?" + this.paramsToString(getParams) + User.getUrlParams();
