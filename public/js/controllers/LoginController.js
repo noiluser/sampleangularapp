@@ -2,6 +2,9 @@ app.controller("authCtrl", function($scope, $location, $routeParams, $http, $win
 	$scope.openProfile = function() {
 		$window.open('https://vk.com/n_srg', '_blank');
 	};
+	
+	var path = $location.path();
+	console.log(path);
 	/*var token = $location.search().access_token;
 	var exp = $location.search().expires_in;*/
 	var code = $location.search().code;
