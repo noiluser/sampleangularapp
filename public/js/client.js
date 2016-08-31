@@ -120,6 +120,18 @@ app.factory('User', function($http) {
 	userPublic.isAuthorized = function() {
 		return userPrivate.isAuthorized;
 	};
+	
+	userPublic.resetParams = function(cb) {
+		userPrivate.isAuthorized = false;
+		userPrivate.access_token = "";
+		userPrivate.firstName = "";
+		userPrivate.lastName = "";
+		userPrivate.href = "";
+		userPrivate.photo = "";
+		userPrivate.hasPhoto = false;
+    	if (cb)
+    		cb();
+	};
 	// private methods
 	
 	userPrivate.getUserData = function(cb) {
@@ -140,6 +152,6 @@ app.factory('User', function($http) {
 		    });
 	};
 
-	
+	userPublic.resetParams();
 	return userPublic;
 });

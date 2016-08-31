@@ -9,10 +9,10 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	
 	$scope.leaveGroup = function() {
 		var getParams = {
-				group_id : $scope.id
+				group_id : this.id
 		};
 				
-		var url = "https://api.vk.com/method/groups.leave?" + $scope.paramsToString(getParams) + User.getUrlParams();
+		var url = "https://api.vk.com/method/groups.leave?" + this.paramsToString(getParams) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
@@ -22,7 +22,30 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		        console.log(data);
 		    });
 	};	
-	$scope.leaveGroup();
+	
+	$scope.getGroupInfo = function() {
+		var getParams = {
+				group_id : this.id,
+				fields : "description,can_post"
+		};
+				
+		var url = "https://api.vk.com/method/groups.getById?" + this.paramsToString(getParams) + User.getUrlParams();
+		var self = this;
+		$http.jsonp(url).
+		    success(function(data, status, headers, config) {
+		    	self.photo = r.response[0].photo_big;
+		    	self.IsClosed = r.response[0].is_closed;
+		    	self.CanPost = r.response[0].can_post;
+		    	self.description = r.response[0].description;
+		    	self.name = r.response[0].name;
+		    	self.gid = r.response[0].gid;
+		    	self.IsMember = r.response[0].is_member;
+		    }).
+		    error(function(data, status, headers, config) {
+		        console.log(data);
+		    });
+	};	
+	//$scope.leaveGroup();
 	/*
 	
 	VK.Api.call('groups.getById', {

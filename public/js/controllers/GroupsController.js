@@ -10,7 +10,6 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 		$scope.isUserLoggedIn = true;
 		$scope.isGroupsLoading = true;
 		$scope.IsAllGroupsLoaded = false;
-		//$scope.$emit('groupsLoad', user);
 		$scope.getGroups();
 	});
 	
@@ -56,52 +55,17 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 		$scope.$emit('userLogin');
 	};
 	
-	
-	/////////////
-
-	$scope.getGroups111 = function() {
-		var getParams = PagesService.getParams();
-		getParams.filter = "groups";
-		getParams.extended = 1;
-		getParams.fields = ["description", "members_count"];
-		VK.Api.call('groups.get', getParams, function(r) {
-				if(r.response) {
-					console.log(r.response);
-					var gr = r.response;
-					var co = gr.shift();
-					
-					PagesService.reload = false;
-					PagesService.offset += co;
-					
-					
-					if (co < $scope.count)
-						$scope.$apply(function(){
-							$scope.IsGroupsLoaded = true;
-						});
-					
-					$scope.$emit('groupsLoaded', gr);
-				}
-		});
-	}
-
-
-	
-	$scope.$on('userLogout', function(event, data) {
-		console.log("User logged out", $scope.user);
-		
-		$scope.isUserLoggedIn = false;
-		$scope.isGroupsLoading = false;
-		$scope.IsGroupsLoaded = true;
-		$scope.groups = [];
-		$scope.$parent.offset = 10;
+	$scope.$on('userLogout', function(event) {
+		$scope.resetParams();
 	});	
 	
-	$scope.$on('groupsLoad', function(event, user) { 
-		console.log("loading groups");
-		$scope.getGroups();
-	});
+	$scope.resetParams = function() {
+		$scope.isUserLoggedIn = false;
+		$scope.isGroupsLoading = false;
+		$scope.IsAllGroupsLoaded = true;
+		$scope.groups = [];
+	};
 	
-
+	$scope.resetParams();
 	
-
 });
