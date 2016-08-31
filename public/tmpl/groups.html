@@ -32,7 +32,7 @@
 
 	<div ng-repeat="gr in groups" id="group_{{gr.screen_name}}" class="row group-item">
 		<div class="logo col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2 col-sm-2 col-xs-2">
-			<a href="#details/{{gr.screen_name}}"><img class="img-rounded pull-right" ng-src="{{gr.photo}}"></a>
+			<a href="#details/{{gr.screen_name}}"><img class="img-rounded pull-right" ng-src="{{gr.photo_100}}"></a>
 		</div>
 		<div class="col-lg-7 col-md-7 col-sm-10 col-xs-10" >
 			<div><a href="#details/{{gr.screen_name}}" class="group-header">{{gr.name}}</a> ({{gr.members_count}} members)</div>
