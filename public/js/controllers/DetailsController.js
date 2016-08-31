@@ -22,6 +22,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    	self.name = data.response[0].name;
 		    	self.gid = data.response[0].id;
 		    	self.IsMember = data.response[0].is_member;
+		    	console.log(self.gid , data.response[0].id);
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
@@ -30,9 +31,9 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	//$scope.leaveGroup();
 	$scope.getGroupInfo();
 	
-	$scope.leaveGroup = function(gid) {
+	$scope.leaveGroup = function() {
 		var getParams = {
-				group_id : gid
+				group_id : this.gid
 		};
 				
 		var url = "https://api.vk.com/method/groups.leave?" + this.paramsToString(getParams) + User.getUrlParams();
@@ -46,9 +47,9 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    });
 	};	
 	
-	$scope.joinGroup = function(gid) {
+	$scope.joinGroup = function() {
 		var getParams = {
-				group_id : gid
+				group_id : this.gid
 		};
 				
 		var url = "https://api.vk.com/method/groups.join?" + this.paramsToString(getParams) + User.getUrlParams();
