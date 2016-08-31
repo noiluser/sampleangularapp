@@ -59,7 +59,7 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 	});
 	
 	if (User.isAuthorized()) {
-		$scope.getGroups();
+		$scope.$emit('userLogin');
 	};
 	
 	
