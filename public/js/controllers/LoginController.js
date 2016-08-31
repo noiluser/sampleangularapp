@@ -1,4 +1,4 @@
-app.controller("authCtrl", function($scope, $location, $routeParams, $http, $window, UserService, User) {
+app.controller("authCtrl", function($scope, $location, $window, User) {
 	$scope.openProfile = function() {
 		$window.open($scope.userHref, '_blank');
 	};
@@ -13,7 +13,7 @@ app.controller("authCtrl", function($scope, $location, $routeParams, $http, $win
 			$scope.photo = User.getPhoto();
 			$scope.hasPhoto = User.hasPhoto(); 
 			$scope.isUserLoggedIn = true;
-			//$scope.$parent.$broadcast('userLogin', user);
+			$scope.$parent.$broadcast('userLogin');
 		});
 	}
 

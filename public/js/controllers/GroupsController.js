@@ -1,11 +1,60 @@
-app.controller("groupsCtrl", function($scope, $sce, PagesService, UserService) {
+app.controller("groupsCtrl", function($scope, $sce, $http, PagesService) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
 	$scope.IsGroupsLoaded = true;
 	$scope.groups = [];
 	$scope.renderHtml = $scope.$parent.renderHtml;
-
+	$scope.paramsToString = function(hash, delim) {
+		var str = "";
+		for(var item in hash) {
+			str += item + "=" + hash[item];
+			if (delim) str += delim; else str += "&";
+		}
+	};
+	
+	$scope.$on('userLogin', function(event) {
+		$scope.isUserLoggedIn = true;
+		$scope.isGroupsLoading = true;
+		
+		//$scope.$emit('groupsLoad', user);
+		$scope.getGroups();
+	});
+	
 	$scope.getGroups = function() {
+		var getParams = PagesService.getParams();
+		getParams.filter = "groups";
+		getParams.extended = 1;
+		getParams.fields = "description,members_count";
+		
+		var url = "https://api.vk.com/method/users.get?"+$scope.paramsToString(getParams)+"&access_token=" + this.access_token + "&v=" + this.ver + "&callback=JSON_CALLBACK";
+		var self = this;
+		$http.jsonp(url).
+		    success(function(data, status, headers, config) {
+
+				var gr = data.response;
+				var co = gr.shift();
+				
+				PagesService.reload = false;
+				PagesService.offset += co;
+								
+				if (co < $scope.count)
+					$scope.$apply(function(){
+						$scope.IsAllGroupsLoaded = true;
+					});
+				
+				//$scope.$emit('groupsLoaded', gr);
+		    }).
+		    error(function(data, status, headers, config) {
+		        console.log(data);
+		    });
+	}
+	
+
+	
+	
+	/////////////
+
+	$scope.getGroups111 = function() {
 		var getParams = PagesService.getParams();
 		getParams.filter = "groups";
 		getParams.extended = 1;
@@ -30,13 +79,7 @@ app.controller("groupsCtrl", function($scope, $sce, PagesService, UserService) {
 		});
 	}
 
-	$scope.$on('userLogin', function(event, user) {
-		console.log("User logged in", user);
-		$scope.isUserLoggedIn = true;
-		$scope.isGroupsLoading = true;
-		
-		$scope.$emit('groupsLoad', user);
-	});
+
 	
 	$scope.$on('userLogout', function(event, data) {
 		console.log("User logged out", $scope.user);
@@ -63,10 +106,5 @@ app.controller("groupsCtrl", function($scope, $sce, PagesService, UserService) {
 		});
 	});
 	
-	/*if (UserService.authorized) {
-		$scope.$parent.$broadcast('userExists', response.session.user);
-	}*/
 
-	//$scope.groups = [{screen_name : "abc", members_count : 1, name : "Aaa", description : "Bbbb bbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbb b bbbbbbbbbbbbbbbbb", photo: "http://cs624416.vk.me/v624416877/1231a/OZ7c25mYgRA.jpg"},
-	//                 {screen_name : "bcf", members_count : 2, name : "Ccc", description : "Ddd dddddddddddddddddd<br>dd dddddddddddddddd dddddddddddddddddd", photo: "http://cs10407.vk.me/g59184/c_b17a5775.jpg"}];
 });
