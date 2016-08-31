@@ -1,4 +1,4 @@
-app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
+app.controller("detailsCtrl", function($scope, $routeParams, PagesService, User) {
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.id = $routeParams.group;
 	$scope.posts = [];
@@ -6,7 +6,23 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 	
 	console.log($scope.id);
 	
-/*
+	$scope.leaveGroup = function() {
+		var getParams = {
+				group_id : $scope.id
+		};
+				
+		var url = "https://api.vk.com/method/groups.leave?" + $scope.paramsToString(getParams) + User.getUrlParams();
+		var self = this;
+		$http.jsonp(url).
+		    success(function(data, status, headers, config) {
+		    	console.log(data);
+		    }).
+		    error(function(data, status, headers, config) {
+		        console.log(data);
+		    });
+	};	
+	$scope.leaveGroup();
+	/*
 	
 	VK.Api.call('groups.getById', {
 		group_id : $scope.id,
