@@ -20,7 +20,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    	self.CanPost = data.response[0].can_post;
 		    	self.description = data.response[0].description;
 		    	self.name = data.response[0].name;
-		    	self.gid = data.response[0].gid;
+		    	self.gid = data.response[0].id;
 		    	self.IsMember = data.response[0].is_member;
 		    }).
 		    error(function(data, status, headers, config) {
