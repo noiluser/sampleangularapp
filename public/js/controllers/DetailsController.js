@@ -22,7 +22,8 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    	self.name = data.response[0].name;
 		    	self.gid = data.response[0].id;
 		    	self.IsMember = data.response[0].is_member;
-		    	console.log(self.gid , data.response[0].id);
+
+		    	$scope.post(); // TODO
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
@@ -63,7 +64,23 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    });
 	};
 	
-	
+	$scope.post = function() {
+		var getParams = {
+				owner_id : "-" + this.gid,
+				message : "hi",
+				guid : "random(999213)"
+		};
+				
+		var url = "https://api.vk.com/method/wall.post?" + this.paramsToString(getParams) + User.getUrlParams();
+		var self = this;
+		$http.jsonp(url).
+		    success(function(data, status, headers, config) {
+		    	console.log(data);
+		    }).
+		    error(function(data, status, headers, config) {
+		        console.log(data);
+		    });
+	};
 	
 	
 	/*
