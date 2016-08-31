@@ -1,4 +1,4 @@
-app.controller("groupsCtrl", function($scope, $sce, $http, User, PagesService) {
+app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
 	$scope.IsGroupsLoaded = true;

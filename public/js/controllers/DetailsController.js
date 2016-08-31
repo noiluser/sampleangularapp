@@ -1,8 +1,11 @@
-app.controller("detailsCtrl", function($scope, $routeParams, $sce, PagesService, UserService) {
+app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
+	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.id = $routeParams.group;
 	$scope.posts = [];
-	$scope.renderHtml = $scope.$parent.renderHtml;
-
+	
+	console.log($scope.id);
+	
+/*
 	PagesService.reload = true;
 	VK.Api.call('groups.getById', {
 		group_id : $scope.id,
@@ -72,6 +75,6 @@ console.log(">>>>  ", id, UserService.token);
 		});
 	});
 	
-	
+	*/
 
 });
