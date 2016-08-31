@@ -11,7 +11,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 				fields : "description,can_post"
 		};
 				
-		var url = "https://api.vk.com/method/groups.getById?" + this.paramsToString(getParams) + User.getUrlParams();
+		var url = "https://api.vk.com/method/groups.getById?" + this.paramsToString(getParams, true) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
@@ -37,7 +37,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 				group_id : this.gid
 		};
 				
-		var url = "https://api.vk.com/method/groups.leave?" + this.paramsToString(getParams) + User.getUrlParams();
+		var url = "https://api.vk.com/method/groups.leave?" + this.paramsToString(getParams, true) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
@@ -53,7 +53,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 				group_id : this.gid
 		};
 				
-		var url = "https://api.vk.com/method/groups.join?" + this.paramsToString(getParams) + User.getUrlParams();
+		var url = "https://api.vk.com/method/groups.join?" + this.paramsToString(getParams, true) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
@@ -65,13 +65,31 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	};
 	
 	$scope.post = function() {
-		var getParams = {
-				owner_id : "-" + this.gid,
-				message : "hi",
-				guid : "random(999213)"
+		/*var getParams = {
+				owner_id : User.id,
+				offset : 0,
+				count : 10,
+				album_id : "saved",
+				rev : 1,
 		};
 				
-		var url = "https://api.vk.com/method/wall.post?" + this.paramsToString(getParams) + User.getUrlParams();
+		var url = "https://api.vk.com/method/photos.get?" + this.paramsToString(getParams, true) + User.getUrlParams();
+		var self = this;
+		$http.jsonp(url).
+		    success(function(data, status, headers, config) {
+		    	console.log(data);
+		    }).
+		    error(function(data, status, headers, config) {
+		        console.log(data);
+		    });
+		    */
+		
+		var getParams = {
+				owner_id : User.id,
+				photo_id : 429436464
+		};
+				
+		var url = "https://api.vk.com/method/photos.delete?" + this.paramsToString(getParams, true) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
@@ -83,49 +101,6 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	};
 	
 	
-	/*
 	
-	VK.Api.call('groups.getById', {
-		group_id : $scope.id,
-		access_token : PagesService.token,
-		fields : ['description', 'can_post']
-	}, function(r) {
-		if(r.response) {
-			$scope.$apply(function(){
-				$scope.photo = r.response[0].photo_big;
-				$scope.IsClosed = r.response[0].is_closed;
-				$scope.CanPost = r.response[0].can_post;
-				$scope.description = r.response[0].description;
-				$scope.name = r.response[0].name;
-				$scope.gid = r.response[0].gid;
-				$scope.IsMember = r.response[0].is_member;
-				
-				$scope.msg = r.response;
-			});
-			$scope.$emit('loadWall', $scope.gid);
-		}	
-	});
-	
-	
-	$scope.$on('loadWall', function(event, id) {
-		VK.Api.call('wall.get', {
-			owner_id : "-" + id,
-			access_token : PagesService.token,
-			offset : 0,
-			count : 50,
-			extended : 1
-		}, function(r) {
-			if(r.response) {
-				console.log(r.response);
-				var psts = r.response.wall;
-				var co = psts.shift();
-				$scope.$apply(function(){
-					$scope.posts = $scope.posts.concat(psts);
-				});
-			}	
-		});
-	});
-	
-	*/
 
 });

@@ -22,12 +22,14 @@ app.controller("mainCtrl", function($scope, $sce) {
 	    return $sce.trustAsHtml(html_code);
 	};
 	
-	$scope.paramsToString = function(hash, delim) {
+	$scope.paramsToString = function(hash, woLast, delim) {
 		var output = "";
 		for(var item in hash) {
 			output += item + "=" + hash[item];
 			if (delim) output += delim; else output += "&";
 		}
+		if (woLast)
+			output = output.substring(0, output.length - 1);
 		return output;
 	};
 });
@@ -129,6 +131,7 @@ app.factory('User', function($http) {
 		userPrivate.href = "";
 		userPrivate.photo = "";
 		userPrivate.hasPhoto = false;
+		userPrivate.id = 0;
     	if (cb)
     		cb();
 	};
@@ -144,6 +147,7 @@ app.factory('User', function($http) {
 		    	self.href = data.response[0].domain;
 		    	self.photo = data.response[0].photo_100;
 		    	self.hasPhoto = data.response[0].has_photo;
+		    	self.id = data.response[0].id;
 		    	if (cb)
 		    		cb();
 		    }).
