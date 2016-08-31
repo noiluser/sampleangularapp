@@ -97,7 +97,7 @@ app.factory('User', function($http) {
 		for(var i = 0; i < settings.length; i+=2) {
 			userPrivate[settings[i]] = settings[i+1];
 		}
-		if(userPrivate.hesOwnProperty("access_token")) {
+		if(userPrivate.hasOwnProperty("access_token")) {
 			userPrivate.isAuthorized = true;
 			userPrivate.getUserData();
 		}
