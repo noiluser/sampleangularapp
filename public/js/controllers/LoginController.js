@@ -5,31 +5,10 @@ app.controller("authCtrl", function($scope, $location, $routeParams, $http, $win
 	
 	var path = $location.hash();
 	if(path) {
-		console.log("y");
+		console.log("got Token");
 		User.setToken(path);
-		console.log(User.getToken);
+		console.log(User.getToken());
 	}
-	console.log(path);
-	/*var token = $location.search().access_token;
-	var exp = $location.search().expires_in;*/
-	var code = $location.search().code;
-	console.log($location, $routeParams);
-	if (code) {
-		var codeUrl = "https://oauth.vk.com/access_token?client_id=" + "5590999" + "&client_secret=" + "atSWBxGT2fRivAqmOMff" + "&v=5.53&redirect_uri=https://nsrg-angular-api.herokuapp.com&code=" + code + "&callback=JSON_CALLBACK&format=jsonp";
-		console.log("y", codeUrl);
-
-		$http.jsonp(codeUrl).success(function(data) {
-            console.log(data.access_token);
-        });
-		/*$http.get(codeUrl).then(function(response) {
-			console.log(response)
-		});*/
-		//User.setToken(token, exp);
-	} else {
-		console.log("n");
-	}
-	
-	//User.setToken(token, exp);
 
 	
 	/*$scope.login = function() {

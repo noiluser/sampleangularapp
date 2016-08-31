@@ -86,6 +86,8 @@ app.service('UserService', function() {
 app.factory('User', function($http) {
 	var userPublic = new Object();
 	var userPrivate = new Object(); 
+	userPrivate.ver = "5.53";
+	// https://api.vk.com/method/METHOD_NAME?PARAMETERS&access_token=ACCESS_TOKEN&v=V&callback=JSONP_CALLBACK
 	userPrivate.appId = "5590999";
 	userPrivate.redirectUrl = "https://nsrg-angular-api.herokuapp.com/";
 	
@@ -95,12 +97,28 @@ app.factory('User', function($http) {
 		for(var i = 0; i < settings.length; i+=2) {
 			userPrivate[settings[i]] = settings[i+1];
 		}
+		if(userPrivate.hesOwnProperty("access_token")) {
+			userPrivate.isAuthorized = true;
+			userPrivate.getUserData();
+		}
 	};
 
 	userPublic.getToken = function() {
 		return userPrivate.access_token;
 	};
 	// private methods
+	
+	userPrivate.getUserData = function() {
+		var url = "https://api.vk.com/method/users.get?fields=['photo_100','has_photo','domain']&access_token=" + this.access_token + "&v=" + this.ver + "&callback=JSONP_CALLBACK";
+
+		$http.jsonp(url).
+		    success(function(data, status, headers, config) {
+		    	console.log(data);
+		    }).
+		    error(function(data, status, headers, config) {
+		        $scope.error = true;
+		    });
+	};
 
 	
 	return userPublic;
