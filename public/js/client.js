@@ -107,6 +107,10 @@ app.factory('User', function($http) {
 		output += "&access_token=" + userPrivate.access_token + "&v=" + userPrivate.ver + "&callback=JSON_CALLBACK";
 		return output;
 	};
+	
+	userPublic.isAuthorized = function() {
+		return userPrivate.isAuthorized;
+	};
 	// private methods
 	
 	userPrivate.getUserData = function(cb) {

@@ -2,11 +2,12 @@ app.controller("detailsCtrl", function($scope, $routeParams, PagesService) {
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.id = $routeParams.group;
 	$scope.posts = [];
+	PagesService.reload = true;
 	
 	console.log($scope.id);
 	
 /*
-	PagesService.reload = true;
+	
 	VK.Api.call('groups.getById', {
 		group_id : $scope.id,
 		access_token : PagesService.token,

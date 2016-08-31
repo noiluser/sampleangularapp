@@ -1,7 +1,7 @@
 app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
-	$scope.IsGroupsLoaded = true;
+	$scope.IsAllGroupsLoaded = true;
 	$scope.groups = [];
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.paramsToString = function(hash, delim) {
@@ -16,7 +16,7 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 	$scope.$on('userLogin', function(event) {
 		$scope.isUserLoggedIn = true;
 		$scope.isGroupsLoading = true;
-		
+		$scope.IsAllGroupsLoaded = false;
 		//$scope.$emit('groupsLoad', user);
 		$scope.getGroups();
 	});
@@ -58,7 +58,9 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 		console.log($scope.groups);
 	});
 	
-
+	if (User.isAuthorized()) {
+		$scope.getGroups();
+	};
 	
 	
 	/////////////
