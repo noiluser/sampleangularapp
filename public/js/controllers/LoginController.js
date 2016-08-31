@@ -10,7 +10,7 @@ app.controller("authCtrl", function($scope, $location, $window, User, PagesServi
 		console.log("got Token");
 		User.setToken(path, function() {
 			$scope.syncUserData();
-			$scope.$parent.$broadcast('userLogin');
+			//$scope.$parent.$broadcast('userLogin');
 		});
 	}
 	
