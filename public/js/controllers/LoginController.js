@@ -7,12 +7,11 @@ app.controller("authCtrl", function($scope, $location, $routeParams, $http, $win
 	var code = $location.search().code;
 	console.log($location, $routeParams);
 	if (code) {
-		var codeUrl = "https://oauth.vk.com/access_token?client_id=" + "5590999" + "&client_secret=" + "atSWBxGT2fRivAqmOMff" + "&v=5.53&redirect_uri=https://nsrg-angular-api.herokuapp.com&code="+code;
+		var codeUrl = "https://oauth.vk.com/access_token?client_id=" + "5590999" + "&client_secret=" + "atSWBxGT2fRivAqmOMff" + "&v=5.53&redirect_uri=https://nsrg-angular-api.herokuapp.com&code=" + code + "&callback=JSON_CALLBACK";
 		console.log("y", codeUrl);
 
-		$http.jsonp(codeUrl + "&callback=JSON_CALLBACK")
-        .success(function(data) {
-            //console.log(json.access_token);
+		$http.jsonp(codeUrl).success(function(data) {
+            console.log(data.access_token);
         });
 		/*$http.get(codeUrl).then(function(response) {
 			console.log(response)
