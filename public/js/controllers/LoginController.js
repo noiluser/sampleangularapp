@@ -3,7 +3,12 @@ app.controller("authCtrl", function($scope, $location, $routeParams, $http, $win
 		$window.open('https://vk.com/n_srg', '_blank');
 	};
 	
-	var path = $location.path();
+	var path = $location.hash();
+	if(path) {
+		console.log("y");
+		User.setToken(path);
+		console.log(User.getToken);
+	}
 	console.log(path);
 	/*var token = $location.search().access_token;
 	var exp = $location.search().expires_in;*/

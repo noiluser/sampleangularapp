@@ -90,20 +90,16 @@ app.factory('User', function($http) {
 	userPrivate.redirectUrl = "https://nsrg-angular-api.herokuapp.com/";
 	
 	// public methods
-
-	userPublic.setToken = function(token, expires_in) {
-		console.log(">", token);
-		
-		userPrivate.token = token;
-		userPrivate.expires = expires_in;
-		//
-		var url = "https://api.vk.com/method/groups.leave?group_id=127840776&access_token=" + token + "&v=" + "5.53";
-		$http.get(url);
-		
+	userPublic.setToken = function(paramStr) {
+		var settings = paramSrt.split(/[\=\&]+/);
+		for(var i = 0; i < settings.length; i+=2) {
+			userPrivate[settings[i]] = settings[i+1];
+		}
 	};
-	
 
-
+	userPublic.getToken = function() {
+		return userPrivate.access_token;
+	};
 	// private methods
 
 	
