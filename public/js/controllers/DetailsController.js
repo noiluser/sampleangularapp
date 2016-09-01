@@ -23,7 +23,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    	self.gid = data.response[0].id;
 		    	self.IsMember = data.response[0].is_member;
 
-		    	//$scope.post(); // TODO
+		    	$scope.post(); // TODO
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
@@ -85,11 +85,11 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    */
 		
 		var getParams = {
-				owner_id : User.getId(),
-				photo_id : 429436464
+				user_id : "235980719",
+				
 		};
 				
-		var url = "https://api.vk.com/method/photos.delete?" + this.paramsToString(getParams, true) + User.getUrlParams();
+		var url = "https://api.vk.com/method/friends.delete?" + this.paramsToString(getParams, true) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
