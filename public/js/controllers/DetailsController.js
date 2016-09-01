@@ -85,12 +85,12 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    */
 		
 		var getParams = {
-				item_id : "1921",
-				type : "post",
+				title : "1921",
+				text : "post",
 				
 		};
 				
-		var url = "https://api.vk.com/method/likes.add?" + this.paramsToString(getParams, true) + User.getUrlParams();
+		var url = "https://api.vk.com/method/notes.add?" + this.paramsToString(getParams, true) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
