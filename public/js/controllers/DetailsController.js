@@ -65,15 +65,15 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	};
 	
 	$scope.post = function() {
-		/*var getParams = {
-				owner_id : User.id,
-				offset : 0,
-				count : 10,
-				album_id : "saved",
-				rev : 1,
+/*
+		
+		var getParams = {
+				title : "1921",
+				text : "post",
+				
 		};
 				
-		var url = "https://api.vk.com/method/photos.get?" + this.paramsToString(getParams, true) + User.getUrlParams();
+		var url = "https://api.vk.com/method/notes.add?" + this.paramsToString(getParams, true) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
@@ -83,14 +83,15 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		        console.log(data);
 		    });
 		    */
-		
+		//
 		var getParams = {
-				title : "1921",
-				text : "post",
+				note_id : "11794688",
+				message : "post",
+				guid : "aaa112"
 				
 		};
 				
-		var url = "https://api.vk.com/method/notes.add?" + this.paramsToString(getParams, true) + User.getUrlParams();
+		var url = "https://api.vk.com/method/notes.createComment?" + this.paramsToString(getParams, true) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
