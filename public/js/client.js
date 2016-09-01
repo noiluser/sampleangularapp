@@ -10,7 +10,7 @@ app.config(function($routeProvider, $locationProvider) {
 	        templateUrl : 'static/tmpl/groups.html',
 	        controller  : 'groupsCtrl'
 	    })    
-        .when('/details/:group', {
+        .when('/details/:id', {
             templateUrl : 'static/tmpl/details.html',
             controller  : 'detailsCtrl'
         });

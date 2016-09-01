@@ -64,7 +64,7 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 	$scope.$on('groupsLoaded', function(event, notes) {
 		$scope.isGroupsLoading = false;
 		$scope.IsGroupsLoaded = false;
-		$scope.notes = $scope.groups.concat(notes);
+		$scope.notes = $scope.notes.concat(notes);
 	});
 	
 	if (User.isAuthorized()) {
