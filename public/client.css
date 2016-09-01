@@ -7,10 +7,18 @@
 }	
 
 .notelist:hover {
-	border : 1px solid;
+	background-color : #e7e7e7;
+	cursor : pointer;
 }
 
 .notelist {
 	margin-bottom : 20px;
-	background-color : #e7e7e7;
+	background-color : #f0f0f0;
+}
+
+.description {
+	display : block;
+    white-space : nowrap;
+    overflow : hidden;
+    text-overflow : ellipsis;
 }
