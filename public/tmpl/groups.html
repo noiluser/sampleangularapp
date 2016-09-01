@@ -33,7 +33,8 @@
 	<div ng-repeat="note in notes" id="note_{{note.id}}" class="row group-item">
 		<div class="col-lg-7 col-md-7 col-sm-10 col-xs-10" >
 			<div><a href="/details/{{note.id}}" class="group-header">{{note.title}}</a></div>
-			<div>{{note.date}}</div>
+			<div ng-bind="convertDate(note.date)"></div>
+			
 			<div><a ng-href="{{note.view_url}}">vk</a></div>
 			<ng-bind-html ng-bind-html="renderHtml(note.text)">
 			</ng-bind-html>

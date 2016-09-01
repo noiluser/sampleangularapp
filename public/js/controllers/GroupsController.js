@@ -4,6 +4,7 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 	$scope.IsAllGroupsLoaded = true;
 	$scope.notes = [];
 	$scope.renderHtml = $scope.$parent.renderHtml;
+	$scope.convertDate = $scope.$parent.convertDate;
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.$on('userLogin', function(event) {
