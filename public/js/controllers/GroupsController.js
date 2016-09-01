@@ -2,7 +2,7 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
 	$scope.IsAllGroupsLoaded = true;
-	$scope.groups = [];
+	$scope.notes = [];
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
@@ -61,10 +61,10 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 		    });
 	}
 	
-	$scope.$on('groupsLoaded', function(event, groups) {
+	$scope.$on('groupsLoaded', function(event, notes) {
 		$scope.isGroupsLoading = false;
 		$scope.IsGroupsLoaded = false;
-		$scope.groups = $scope.groups.concat(groups);
+		$scope.notes = $scope.groups.concat(notes);
 	});
 	
 	if (User.isAuthorized()) {
@@ -79,7 +79,7 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 		$scope.isUserLoggedIn = false;
 		$scope.isGroupsLoading = false;
 		$scope.IsAllGroupsLoaded = true;
-		$scope.groups = [];
+		$scope.notes = [];
 	};
 		
 });
