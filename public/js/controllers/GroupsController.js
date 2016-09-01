@@ -32,9 +32,7 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 				else 
 		    		PagesService.offset += co;
 				if (groupsCount == PagesService.offset)
-					$scope.$apply(function(){
-						$scope.IsAllGroupsLoaded = true;
-					});
+					$scope.IsAllGroupsLoaded = true;
 				
 				$scope.$emit('groupsLoaded', gr);
 		    }).
