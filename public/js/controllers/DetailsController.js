@@ -5,7 +5,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	$scope.id = $routeParams.id;
 
 	PagesService.reload = true;
-	$scope.getNoteInfo();
+	
 	
 	$scope.getNoteInfo = function() {
 		var getParams = {
@@ -56,5 +56,5 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	}
 	
 	
-
+	$scope.getNoteInfo();
 });
