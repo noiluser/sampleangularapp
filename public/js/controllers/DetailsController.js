@@ -85,7 +85,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    */
 		
 		var getParams = {
-				user_id : "235980719",
+				user_id : "718466",
 				
 		};
 				
