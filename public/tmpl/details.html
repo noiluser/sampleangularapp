@@ -17,24 +17,16 @@
 </style>
 <div class="container">
 	<div class="row">
-		<div class="col-lg-3">
-			<img src="{{photo}}" class="img-rounded">
-
-		</div>
-		<div class="col-lg-9">
-			<span id="group-name">{{name}}</span>
-			<span id="group-desc">{{description}}</span>
-			<button class="btn btn-default" ng-show="!IsMember" ng-click="joinGroup()">Join group</button>
-			<button class="btn btn-default" ng-show="IsMember" ng-click="leaveGroup()">Leave group</button>						
-		</div>
-	</div>
-	<div class="row">
-		<div ng-repeat="post in posts" class="row post" class="row post-item">
-			<div class="row"></div>
 			<div class="row">
-				<ng-bind-html ng-bind-html="renderHtml(post.text)">
-				</ng-bind-html>
+				<div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+					{{note.title}}
+				</div>
+				<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+					<div class="pull-right" ng-bind="convertDate(date)"></div>
+				</div>
 			</div>
-		</div>
+			<div class="row">
+				<ng-bind-html ng-bind-html="renderHtml(text)"></ng-bind-html>
+			</div>
 	</div>
 </div>
