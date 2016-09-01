@@ -15,11 +15,10 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 	
 	$scope.getGroups = function() {
 		var getParams = PagesService.getParams();
-		getParams.filter = "groups";
-		getParams.extended = 1;
-		getParams.fields = "description,members_count";
+		getParams.sort = 1;
 		
-		var url = "https://api.vk.com/method/groups.get?" + $scope.paramsToString(getParams) + User.getUrlParams();
+		
+		var url = "https://api.vk.com/method/notes.get?" + $scope.paramsToString(getParams) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
@@ -38,6 +37,24 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 					});
 				
 				$scope.$emit('groupsLoaded', gr);
+		    }).
+		    error(function(data, status, headers, config) {
+		        console.log(data);
+		    });
+	}
+	
+	$scope.addNote = function() {
+		var getParams = {
+				title : "1921",
+				text : "post",
+				
+		};
+				
+		var url = "https://api.vk.com/method/notes.add?" + this.paramsToString(getParams, true) + User.getUrlParams();
+		var self = this;
+		$http.jsonp(url).
+		    success(function(data, status, headers, config) {
+		    	console.log(data);
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);

@@ -4,86 +4,32 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	$scope.id = $routeParams.group;
 	$scope.posts = [];
 	PagesService.reload = true;
+	$scope.getNoteInfo();
 	
 	$scope.getGroupInfo = function() {
 		var getParams = {
-				group_id : this.id,
-				fields : "description,can_post"
+				note_id : this.id,
 		};
 				
 		var url = "https://api.vk.com/method/groups.getById?" + this.paramsToString(getParams, true) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
-		    	self.photo = data.response[0].photo_200;
+		    	/*self.photo = data.response[0].photo_200;
 		    	self.IsClosed = data.response[0].is_closed;
 		    	self.CanPost = data.response[0].can_post;
 		    	self.description = data.response[0].description;
 		    	self.name = data.response[0].name;
 		    	self.gid = data.response[0].id;
-		    	self.IsMember = data.response[0].is_member;
-
-		    	$scope.post(); // TODO
-		    }).
-		    error(function(data, status, headers, config) {
-		        console.log(data);
-		    });
-	};	
-	//$scope.leaveGroup();
-	$scope.getGroupInfo();
-	
-	$scope.leaveGroup = function() {
-		var getParams = {
-				group_id : this.gid
-		};
-				
-		var url = "https://api.vk.com/method/groups.leave?" + this.paramsToString(getParams, true) + User.getUrlParams();
-		var self = this;
-		$http.jsonp(url).
-		    success(function(data, status, headers, config) {
+		    	self.IsMember = data.response[0].is_member;*/
 		    	console.log(data);
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
 		    });
-	};	
-	
-	$scope.joinGroup = function() {
-		var getParams = {
-				group_id : this.gid
-		};
-				
-		var url = "https://api.vk.com/method/groups.join?" + this.paramsToString(getParams, true) + User.getUrlParams();
-		var self = this;
-		$http.jsonp(url).
-		    success(function(data, status, headers, config) {
-		    	console.log(data);
-		    }).
-		    error(function(data, status, headers, config) {
-		        console.log(data);
-		    });
-	};
-	
-	$scope.post = function() {
-/*
+	};		
 		
-		var getParams = {
-				title : "1921",
-				text : "post",
-				
-		};
-				
-		var url = "https://api.vk.com/method/notes.add?" + this.paramsToString(getParams, true) + User.getUrlParams();
-		var self = this;
-		$http.jsonp(url).
-		    success(function(data, status, headers, config) {
-		    	console.log(data);
-		    }).
-		    error(function(data, status, headers, config) {
-		        console.log(data);
-		    });
-		    */
-		//
+	$scope.deleteNote = function() {
 		var getParams = {
 				note_id : "11794688",				
 		};
@@ -99,6 +45,9 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    });
 	};
 	
+	$scope.editNote = function() {
+		
+	}
 	
 	
 
