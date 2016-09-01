@@ -5,3 +5,12 @@
 	margin-top : 5px;
 	cursor : pointer;
 }	
+
+.notelist:hover {
+	border : 1px solid;
+}
+
+.notelist {
+	margin-bottom : 20px;
+	background-color : #e7e7e7;
+}
