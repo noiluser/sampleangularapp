@@ -85,13 +85,10 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    */
 		//
 		var getParams = {
-				note_id : "11794688",
-				message : "post",
-				guid : "aaa112"
-				
+				note_id : "11794688",				
 		};
 				
-		var url = "https://api.vk.com/method/notes.createComment?" + this.paramsToString(getParams, true) + User.getUrlParams();
+		var url = "https://api.vk.com/method/notes.delete?" + this.paramsToString(getParams, true) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
