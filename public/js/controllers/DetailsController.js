@@ -1,4 +1,4 @@
-app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService, User) {
+app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, PagesService, User) {
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.convertDate = $scope.$parent.convertDate;
 	$scope.paramsToString = $scope.$parent.paramsToString;
@@ -22,6 +22,8 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    	$scope.text = data.response.text;
 		    	$scope.text_wiki = data.response.text_wiki;
 		    	$scope.url = data.response.view_url;
+		    	$scope.editTitle = $scope.title;
+				$scope.editText = $scope.text;
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
@@ -29,7 +31,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	};		
 		
 	$scope.deleteNote = function() {
-		/*var getParams = {
+		var getParams = {
 				note_id : this.id,				
 		};
 				
@@ -38,35 +40,47 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
 		    	console.log(data);
+		    	$location.path( "/");
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
-		    });*/
+		    });
 	};
 	
 	$scope.editNote = function() {
 		$scope.IsInEdit = true;
-		/*var getParams = {
-				note_id : this.id,				
-		};
-				
-		var url = "https://api.vk.com/method/notes.edit?" + this.paramsToString(getParams, true) + User.getUrlParams();
-		var self = this;
-		$http.jsonp(url).
-		    success(function(data, status, headers, config) {
-		    	console.log(data);
-		    }).
-		    error(function(data, status, headers, config) {
-		        console.log(data);
-		    });*/
 	};
 	
 	$scope.addNote = function () {
-		
+		if ($scope.IsExists) {
+			// edit
+			/*var getParams = {
+			note_id : this.id,				
+			};
+					
+			var url = "https://api.vk.com/method/notes.edit?" + this.paramsToString(getParams, true) + User.getUrlParams();
+			var self = this;
+			$http.jsonp(url).
+			    success(function(data, status, headers, config) {
+			    	console.log(data);
+			    }).
+			    error(function(data, status, headers, config) {
+			        console.log(data);
+			    });*/
+		} else {
+			// create
+		};
 	};
 	
 	$scope.cancelEdit = function () {
-		$scope.IsInEdit = false;
+		if ($scope.IsExists) {
+			$scope.IsInEdit = false;
+			$scope.editTitle = $scope.title;
+			$scope.editText = $scope.text;
+		} else {
+			$location.path( "/");
+		}
+		
 	};
 	
 	if ($routeParams.id == -1) {
