@@ -12,7 +12,7 @@
 }
 
 .notelist {
-	margin-bottom : 10px;
+	margin-bottom : 5px;
 	background-color : #f7f7f7;
 }
 
@@ -22,3 +22,7 @@
     overflow : hidden;
     text-overflow : ellipsis;
 }
+
+ .group-header {
+ 	font-weight: bold;
+ }
