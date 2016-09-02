@@ -84,6 +84,8 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 			var self = this;
 			$http.jsonp(url).
 			    success(function(data, status, headers, config) {
+			    	var id = data.response;
+			    	$location.path( "/details/" + id );
 			    	console.log(data);
 			    }).
 			    error(function(data, status, headers, config) {
