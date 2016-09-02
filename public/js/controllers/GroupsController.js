@@ -44,21 +44,6 @@ app.controller("groupsCtrl", function($scope, $http, $location, User, PagesServi
 	}
 	
 	$scope.addNote = function() {
-		/*var getParams = {
-				title : "1921",
-				text : "post",
-				
-		};
-				
-		var url = "https://api.vk.com/method/notes.add?" + this.paramsToString(getParams, true) + User.getUrlParams();
-		var self = this;
-		$http.jsonp(url).
-		    success(function(data, status, headers, config) {
-		    	console.log(data);
-		    }).
-		    error(function(data, status, headers, config) {
-		        console.log(data);
-		    });*/
 		$location.path( "/details/-1" );
 	}
 	
