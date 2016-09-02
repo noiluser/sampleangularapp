@@ -48,6 +48,12 @@ app.controller("mainCtrl", function($scope, $sce) {
 	};
 });
 
+app.filter('firstChar', function() {
+    return function(input) {
+      return input.charAt(0).toUpperCase();
+    }
+});
+
 app.service('PagesService', function() {
 	this.totalRows = 0;
 	this.offset = 0;
