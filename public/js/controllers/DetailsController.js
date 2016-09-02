@@ -104,7 +104,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 		
 	};
 	
-	$scope.saveHTML = function(event) {
+	$scope.saveText = function(event) {
 	    this.editText = event.target.innerHTML;
 	}
 	
