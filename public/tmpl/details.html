@@ -1,9 +1,4 @@
 <style>
-	span {
-		margin-bottom : 20px;
-		display : block;
-	}
-	
 	#group-name {
 		font-weight : bold;
 	}
@@ -32,12 +27,12 @@
 	<div class="row" ng-show="!IsInEdit && IsExists">
 		<div class="col-lg-offset-7 col-lg-1 col-md-offset-7 col-md-2 col-sm-offset-4 col-sm-2 col-xs-offset-1 col-xs-4">
 			<button type="button" class="btn btn-primary pull-right" ng-click="editNote()">
-				<span class="glyphicon glyphicon-pencil"></span>edit
+				<span class="glyphicon glyphicon-pencil"></span>&nbsp; edit
 			</button>
 		</div> 
 		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-5">
 			<button type="button" class="btn btn-warning" value="delete" ng-click="deleteNote()">
-				<span class="glyphicon glyphicon-remove"></span>delete
+				<span class="glyphicon glyphicon-remove"></span>&nbsp; delete
 			</button>			
 		</div> 		
 	</div>
@@ -55,11 +50,11 @@
 	<div class="row" ng-show="IsInEdit">
 		<div class="col-lg-offset-7 col-lg-2 col-md-offset-7 col-md-2 col-sm-offset-4 col-sm-2 col-xs-offset-1 col-xs-6">
 			<button type="button" class="btn btn-primary pull-right" ng-click="addNote()">
-				<span class="glyphicon glyphicon-ok"></span>apply/add
+				<span class="glyphicon glyphicon-ok"></span>&nbsp; apply/add
 			</button>
 		</div>
 		<div class="col-lg-1 col-md-2 col-sm-2 col-xs-5">
-			<button type="button" class="btn btn-info" ng-show="IsExists" ng-click="cancelEdit()">
+			<button type="button" class="btn btn-info" ng-click="cancelEdit()">
 				cancel
 			</button>
 		</div>
