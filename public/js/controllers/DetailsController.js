@@ -52,7 +52,6 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 	};
 	
 	$scope.addNote = function () {
-		console.log($scope);
 		if ($scope.IsExists) {
 			// edit
 			var getParams = {
@@ -104,6 +103,10 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 		}
 		
 	};
+	
+	$scope.saveHTML = function(event) {
+	    this.editText = event.target.innerHTML;
+	}
 	
 	if ($routeParams.id == -1) {
 		$scope.IsExists = false;
