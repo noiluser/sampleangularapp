@@ -16,6 +16,11 @@
 	background-color : #f7f7f7;
 }
 
+.notelist-add {
+	margin-bottom : 15px;
+	background-color : #f7f7f7;
+}
+
 .description {
 	display : block;
     white-space : nowrap;
