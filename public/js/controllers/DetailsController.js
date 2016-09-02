@@ -52,6 +52,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 	};
 	
 	$scope.addNote = function () {
+		console.log($scope);
 		if ($scope.IsExists) {
 			// edit
 			var getParams = {
