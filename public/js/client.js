@@ -10,7 +10,7 @@ app.config(function($routeProvider, $locationProvider) {
         .when('/details/:id', {
             templateUrl : 'static/tmpl/details.html',
             controller  : 'detailsCtrl'
-        });
+        });;
     $locationProvider.html5Mode(true);
 });
 

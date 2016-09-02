@@ -2,7 +2,15 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.convertDate = $scope.$parent.convertDate;
 	$scope.paramsToString = $scope.$parent.paramsToString;
+	
 	$scope.id = $routeParams.id;
+	if ($routeParams.id) {
+		$scope.IsExists = true;
+		$scope.IsInEdit = false;
+	} else {
+		$scope.IsExists = false;
+		$scope.IsInEdit = true;
+	}
 
 	PagesService.reload = true;
 	

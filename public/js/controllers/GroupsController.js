@@ -44,7 +44,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User, PagesServi
 	}
 	
 	$scope.addNote = function() {
-		var getParams = {
+		/*var getParams = {
 				title : "1921",
 				text : "post",
 				
@@ -58,7 +58,8 @@ app.controller("groupsCtrl", function($scope, $http, $location, User, PagesServi
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
-		    });
+		    });*/
+		$location.path( "/details/" );
 	}
 	
 	$scope.$on('groupsLoaded', function(event, notes) {
