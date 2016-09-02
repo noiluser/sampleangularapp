@@ -30,20 +30,30 @@
 			</div>
 	</div>
 	<div class="row" ng-show="IsExists">
-		<input type="button" class="btn btn-default" value="edit"> 
+		<div class="col-lg-offset-7 col-lg-2 col-md-offset-7 col-md-2 col-sm-4 col-xs-6">
+			<input type="button" class="btn btn-default" value="edit" ng-click="editNote()">
+		</div> 
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+			<input type="button" class="btn btn-default" value="delete" ng-click="deleteNote()">
+		</div> 		
 	</div>
 	
 	<div class="row" ng-show="IsInEdit">
 		<div class="row col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
-			<input type="text" placeholder="type note header here...">
+			<input type="text" placeholder="type note header here..." value="{{title}}">
 		</div>
 		<div class="row col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
-
-			<div id='text-area' contenteditable style="height : 400px"></div>
+			<div id='text-area' contenteditable style="height : 200px">
+				<ng-bind-html ng-bind-html="renderHtml(text)"></ng-bind-html>
+			</div>
 		</div>		
 	</div>
 	<div class="row" ng-show="IsInEdit">
-		<input type="button" class="btn btn-default" value="apply/add">
-		<input type="button" class="btn btn-default" value="cancel">
+		<div class="col-lg-offset-7 col-lg-2 col-md-offset-7 col-md-2 col-sm-4 col-xs-6">
+			<input type="button" class="btn btn-default" value="apply/add" ng-click="addNote()">
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+			<input type="button" class="btn btn-default" value="cancel" ng-show="IsExists" ng-click="cancelEdit()">
+		</div>
 	</div>
 </div>

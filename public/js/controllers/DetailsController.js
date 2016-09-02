@@ -4,16 +4,8 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.id = $routeParams.id;
-	if ($routeParams.id == -1) {
-		$scope.IsExists = false;
-		$scope.IsInEdit = true;
-	} else {
-		$scope.IsExists = true;
-		$scope.IsInEdit = false;
-	}
 
 	PagesService.reload = true;
-	
 	
 	$scope.getNoteInfo = function() {
 		var getParams = {
@@ -37,7 +29,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	};		
 		
 	$scope.deleteNote = function() {
-		var getParams = {
+		/*var getParams = {
 				note_id : this.id,				
 		};
 				
@@ -49,11 +41,12 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
-		    });
+		    });*/
 	};
 	
 	$scope.editNote = function() {
-		var getParams = {
+		$scope.IsInEdit = true;
+		/*var getParams = {
 				note_id : this.id,				
 		};
 				
@@ -65,9 +58,24 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
-		    });
+		    });*/
+	};
+	
+	$scope.addNote = function () {
+		
+	};
+	
+	$scope.cancelEdit = function () {
+		$scope.IsInEdit = false;
+	};
+	
+	if ($routeParams.id == -1) {
+		$scope.IsExists = false;
+		$scope.IsInEdit = true;
+	} else {
+		$scope.IsExists = true;
+		$scope.IsInEdit = false;
+		$scope.getNoteInfo();
 	}
 	
-	
-	$scope.getNoteInfo();
 });
