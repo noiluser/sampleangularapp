@@ -29,12 +29,16 @@
 				<ng-bind-html ng-bind-html="renderHtml(text)"></ng-bind-html>
 			</div>
 	</div>
-	<div class="row" ng-show="IsExists">
-		<div class="col-lg-offset-7 col-lg-2 col-md-offset-7 col-md-2 col-sm-4 col-xs-6">
-			<input type="button" class="btn btn-default" value="edit" ng-click="editNote()">
+	<div class="row" ng-show="!IsInEdit && IsExists">
+		<div class="col-lg-offset-7 col-lg-1 col-md-offset-7 col-md-2 col-sm-offset-4 col-sm-2 col-xs-offset-1 col-xs-4">
+			<button type="button" class="btn btn-primary pull-right" ng-click="editNote()">
+				<span class="glyphicon glyphicon-pencil" aria-hidden="true">edit
+			</button>
 		</div> 
-		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-			<input type="button" class="btn btn-default" value="delete" ng-click="deleteNote()">
+		<div class="col-lg-1 col-md-2 col-sm-2 col-xs-5">
+			<button type="button" class="btn btn-warning" value="delete" ng-click="deleteNote()">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true">delete
+			</button>			
 		</div> 		
 	</div>
 	
@@ -49,11 +53,15 @@
 		</div>		
 	</div>
 	<div class="row" ng-show="IsInEdit">
-		<div class="col-lg-offset-7 col-lg-2 col-md-offset-7 col-md-2 col-sm-4 col-xs-6">
-			<input type="button" class="btn btn-default" value="apply/add" ng-click="addNote()">
+		<div class="col-lg-offset-7 col-lg-1 col-md-offset-7 col-md-2 col-sm-offset-4 col-sm-2 col-xs-offset-1 col-xs-4">
+			<button type="button" class="btn btn-primary" ng-click="addNote()">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true">apply/add
+			</button>
 		</div>
-		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-			<input type="button" class="btn btn-default" value="cancel" ng-show="IsExists" ng-click="cancelEdit()">
+		<div class="col-lg-1 col-md-2 col-sm-2 col-xs-5">
+			<button type="button" class="btn btn-info" ng-show="IsExists" ng-click="cancelEdit()">
+				cancel
+			</button>
 		</div>
 	</div>
 </div>
