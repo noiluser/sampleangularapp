@@ -31,11 +31,11 @@
 	</div>
 
 	<div ng-repeat="note in notes | orderBy:'-date'" id="note_{{note.id}}" class=" row group-item">
-		<div class="col-lg-offset-1 col-lf-10 col-md-offset-1 col-md-10 col-sm-offset-0 col-sm-12 col-xs-offset-0 col-xs-12 row notelist">
+		<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-0 col-sm-12 col-xs-offset-0 col-xs-12 row notelist" ng-click="showDetails(note.id)">
 		<div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
 		
 		</div>
-		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+		<div class="col-lg-11 col-md-11 col-sm-12 col-xs-12">
 			<div class="row">
 				<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
 					<a href="/details/{{note.id}}" class="group-header">{{note.title}}</a>

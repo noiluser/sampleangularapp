@@ -1,4 +1,4 @@
-app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
+app.controller("groupsCtrl", function($scope, $http, $location, User, PagesService) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
 	$scope.IsAllGroupsLoaded = true;
@@ -79,6 +79,10 @@ app.controller("groupsCtrl", function($scope, $http, User, PagesService) {
 		$scope.isGroupsLoading = false;
 		$scope.IsAllGroupsLoaded = true;
 		$scope.notes = [];
+	};
+	
+	$scope.showDetails = function(id) {
+		$location.path( "/details/" + id );
 	};
 		
 });
