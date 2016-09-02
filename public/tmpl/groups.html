@@ -35,8 +35,8 @@
 		</div>	
 		</div>	
 	</div>
-	<div class=" row group-item">
-		<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-0 col-sm-12 col-xs-offset-0 col-xs-12 row notelist" ng-click="add()">
+	<div class=" row group-item" ng-show="IsGroupsLoaded">
+		<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-0 col-sm-12 col-xs-offset-0 col-xs-12 row notelist" ng-click="addNote()">
 		<div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
 			<img class="imgph img-rounded img-responsive" src="http://placehold.it/20x40/999900/FFFFFF?text=%2B">
 		</div>
@@ -47,7 +47,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<ng-bind-html class="description" ng-bind-html="Note will be stored in your vk account"></ng-bind-html>
+				<div>Note will be stored in your vk account</div>
 			</div>
 		</div>	
 		</div>	

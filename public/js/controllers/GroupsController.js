@@ -1,6 +1,7 @@
 app.controller("groupsCtrl", function($scope, $http, $location, User, PagesService) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
+	$scope.IsGroupsLoaded = false;
 	$scope.IsAllGroupsLoaded = true;
 	$scope.notes = [];
 	$scope.renderHtml = $scope.$parent.renderHtml;
@@ -62,7 +63,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User, PagesServi
 	
 	$scope.$on('groupsLoaded', function(event, notes) {
 		$scope.isGroupsLoading = false;
-		$scope.IsGroupsLoaded = false;
+		$scope.IsGroupsLoaded = true;
 		$scope.notes = $scope.notes.concat(notes);
 	});
 	
@@ -78,6 +79,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User, PagesServi
 		$scope.isUserLoggedIn = false;
 		$scope.isGroupsLoading = false;
 		$scope.IsAllGroupsLoaded = true;
+		$scope.IsGroupsLoaded = false;
 		$scope.notes = [];
 	};
 	
