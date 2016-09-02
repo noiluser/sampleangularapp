@@ -18,8 +18,7 @@
 	<div ng-repeat="note in notes | orderBy:'-date'" id="note_{{note.id}}" class=" row group-item">
 		<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-0 col-sm-12 col-xs-offset-0 col-xs-12 row notelist" ng-click="showDetails(note.id)">
 		<div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
-			<img src="http://placehold.it/50x50/FF0000/FFFFFF?text={{note.title | firstChar}}">
-			
+			<img class="imgph img-rounded img-responsive" src="http://placehold.it/20x40/660000/FFFFFF?text={{note.title | firstChar}}">
 		</div>
 		<div class="col-lg-11 col-md-11 col-sm-12 col-xs-12">
 			<div class="row">
