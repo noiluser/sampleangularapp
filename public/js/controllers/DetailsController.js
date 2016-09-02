@@ -4,12 +4,12 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, PagesService
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.id = $routeParams.id;
-	if ($routeParams.id) {
-		$scope.IsExists = true;
-		$scope.IsInEdit = false;
-	} else {
+	if ($routeParams.id == -1) {
 		$scope.IsExists = false;
 		$scope.IsInEdit = true;
+	} else {
+		$scope.IsExists = true;
+		$scope.IsInEdit = false;
 	}
 
 	PagesService.reload = true;

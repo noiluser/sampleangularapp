@@ -59,7 +59,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User, PagesServi
 		    error(function(data, status, headers, config) {
 		        console.log(data);
 		    });*/
-		$location.path( "/details/" );
+		$location.path( "/details/-1" );
 	}
 	
 	$scope.$on('groupsLoaded', function(event, notes) {
