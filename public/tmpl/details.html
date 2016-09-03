@@ -12,7 +12,7 @@
 </style>
 <div class="container">
 	<div class="row" ng-show="!IsInEdit && IsExists">
-			<div class="row">
+			<div class="row col-xs-10 col-xs-offset-1">
 				<div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
 					{{title}}
 				</div>
@@ -20,7 +20,7 @@
 					<div class="pull-right" ng-bind="convertDate(date)"></div>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row col-xs-10 col-xs-offset-1">
 				<ng-bind-html ng-bind-html="renderHtml(text)"></ng-bind-html>
 			</div>
 	</div>
