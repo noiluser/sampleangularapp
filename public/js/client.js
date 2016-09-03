@@ -56,7 +56,7 @@ app.filter('firstChar', function() {
 
 app.filter('setPlainText', function () {
 	return function (item) {
-		return item.replace(/<\/?div>/g, " ");
+		return item.replace(/<(.|\n)*?>/g, " ");
 	};
 });
 
