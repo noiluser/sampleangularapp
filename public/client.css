@@ -33,7 +33,7 @@
     text-overflow : ellipsis;
 }
 
-.group-header {
+.note-header {
 	font-weight : bold;
 }
  
@@ -51,4 +51,8 @@
 #placeholder-add {
 	background-color : #f0cd23; 
 	color : #000;
+}
+
+.with-delimiter {
+	margin-bottom : 15px;
 }
