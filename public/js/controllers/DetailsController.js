@@ -55,7 +55,8 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 		var getParams = {
 				title : $scope.editTitle,
 				text : $scope.editText,
-				privacy_view : "only_me"
+				privacy_view : "only_me",
+				privacy_comment : "only_me"
 		};
 		if ($scope.IsExists) {
 			// edit
@@ -103,7 +104,12 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 	};
 	
 	$scope.saveText = function(event) {
+		console.log("s", event.target.innerHTML);
 	    this.editText = event.target.innerHTML;
+	}
+	
+	$scope.uodateText = function(event) {
+		console.log("u", event.target.innerHTML);
 	}
 	
 	if ($routeParams.id == -1) {
