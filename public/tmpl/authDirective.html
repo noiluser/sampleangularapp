@@ -2,25 +2,27 @@
 	<div class="row">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
-				<div class="navbar-header">
+				<div class="navbar-header">				
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
 					<a href="/" class="navbar-brand">VkNotebook</a>
 				</div>
 				
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<ul class="nav navbar-nav navbar-right navbar-collapse collapse">
-					<li class="hidden-xs">
-						<img ng-show="hasPhoto" ng-click="openProfile()" class="avatar img-circle" ng-src="{{photo}}">
-					</li>
-					<li><a href="javascript:void(0);" ng-show="isUserLoggedIn" ng-click="openProfile()" target="_blank">{{userName}} {{userLastName}}</a></li>
-					<li ng-show="isUserLoggedIn"><a href="javascript:void(0);" ng-click="logout()">Logout</a></li>									   
-					<li ng-show="!isUserLoggedIn"><a href="javascript:void(0);" ng-click="login()">Login</a></li>
-					
-				</ul>
+				<div class=" navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="hidden-xs">
+							<img ng-show="hasPhoto" ng-click="openProfile()" class="avatar img-circle" ng-src="{{photo}}">
+						</li>
+						<li><a href="javascript:void(0);" ng-show="isUserLoggedIn" ng-click="openProfile()" target="_blank">{{userName}} {{userLastName}}</a></li>
+						<li ng-show="isUserLoggedIn"><a href="javascript:void(0);" ng-click="logout()">Logout</a></li>									   
+						<li ng-show="!isUserLoggedIn"><a href="javascript:void(0);" ng-click="login()">Login</a></li>
+						
+					</ul>
+				</div>
 			</div>
 		</nav>
 	</div>	
