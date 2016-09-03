@@ -104,8 +104,10 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 	};
 	
 	$scope.saveText = function(event) {
-		console.log("s", event.target.innerHTML, event.target);
-	    this.editText = event.target.innerHTML;
+		var data = event.target.innerHTML;
+		data = data.replace(/<br>/g, "").replace(/<div>/g, "").replace(/<\/div>/g, "<br>");
+		console.log("s", event.target.innerHTML, data);
+	    this.editText = data;
 	}
 	
 	
