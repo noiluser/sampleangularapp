@@ -56,3 +56,7 @@
 .with-delimiter {
 	margin-bottom : 15px;
 }
+
+input {
+	width : 100%;
+}
