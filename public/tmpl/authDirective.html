@@ -5,13 +5,13 @@
 				<div class="navbar-header">				
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"  ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
 						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
+						<span ng-show="!hasPhoto" class="icon-bar"></span>
+						<span ng-show="!hasPhoto" class="icon-bar"></span>
+						<span ng-show="!hasPhoto" class="icon-bar"></span>
+						<img ng-show="hasPhoto" class="avatar img-circle" ng-src="{{photo}}">
 					</button>
 					<a href="/" class="navbar-brand">VkNotebook</a>
 				</div>
-				
 				<div uib-collapse="navCollapsed" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="hidden-xs">
