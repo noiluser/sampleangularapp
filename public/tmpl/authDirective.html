@@ -6,8 +6,14 @@
 					<a href="/" class="navbar-brand">VkNotebook</a>
 				</div>
 				
-				<ul class="nav navbar-nav navbar-right">
-					<li>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<ul class="nav navbar-nav navbar-right navbar-collapse collapse">
+					<li class="hidden-xs">
 						<img ng-show="hasPhoto" ng-click="openProfile()" class="avatar img-circle" ng-src="{{photo}}">
 					</li>
 					<li><a href="javascript:void(0);" ng-show="isUserLoggedIn" ng-click="openProfile()" target="_blank">{{userName}} {{userLastName}}</a></li>

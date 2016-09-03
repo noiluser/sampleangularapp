@@ -37,7 +37,6 @@ app.controller("authCtrl", function($scope, $location, $window, User, PagesServi
 				display : "page",
 				redirect_uri : "https://nsrg-angular-api.herokuapp.com%3F",
 				scope : "notes",
-				//scope : "notify,friends,photos,audio,video,docs,notes,pages,status,offers,questions,wall,groups,notifications,stats,ads,offline,nohttp",
 				response_type : "token",
 				v : "5.53"				
 		};
