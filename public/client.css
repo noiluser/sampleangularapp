@@ -17,6 +17,7 @@
 }
 
 .notelist-add {
+	margin-bottom : 20px;
 	margin-top : 15px;
 	background-color : #f7f7f7;
 }
@@ -29,7 +30,7 @@
 }
 
 .group-header {
-	font-weight: bold;
+	font-weight : bold;
 }
  
 .placeholder-char {
