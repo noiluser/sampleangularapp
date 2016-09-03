@@ -108,8 +108,8 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 	    this.editText = event.target.innerHTML;
 	}
 	
-	$scope.uodateText = function(event) {
-		console.log("u", event.target.innerHTML);
+	$scope.updateText = function(event) {
+		console.log("u", event.target);
 	}
 	
 	if ($routeParams.id == -1) {
