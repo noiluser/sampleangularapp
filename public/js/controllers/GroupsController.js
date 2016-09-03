@@ -35,9 +35,9 @@ app.controller("groupsCtrl", function($scope, $http, $location, User, PagesServi
 		    		PagesService.offset += co;
 				if (groupsCount == PagesService.offset)
 					$scope.IsAllGroupsLoaded = true;
-				gr.forEach(function(item)) {
+				gr.forEach(function(item) {
 					item.text.replace(/<\/?div>/g, " ");
-				};
+				});
 				$scope.$emit('groupsLoaded', gr);
 		    }).
 		    error(function(data, status, headers, config) {
