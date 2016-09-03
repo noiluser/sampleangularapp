@@ -52,13 +52,14 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 	};
 	
 	$scope.addNote = function () {
-		if ($scope.IsExists) {
-			// edit
-			var getParams = {
-				note_id : this.id,	
+		var getParams = {
 				title : $scope.editTitle,
 				text : $scope.editText,
-			};
+				privacy_view : only_me
+		};
+		if ($scope.IsExists) {
+			// edit
+			getParams.note_id = this.id;
 					
 			var url = "https://api.vk.com/method/notes.edit?" + this.paramsToString(getParams, true) + User.getUrlParams();
 			var self = this;
@@ -74,10 +75,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 			    });
 		} else {
 			// create
-			var getParams = {
-					title : $scope.editTitle,
-					text : $scope.editText,
-			};
+
 					
 			var url = "https://api.vk.com/method/notes.add?" + this.paramsToString(getParams, true) + User.getUrlParams();
 			var self = this;
