@@ -28,7 +28,21 @@
     text-overflow : ellipsis;
 }
 
- .group-header {
- 	font-weight: bold;
- }
+.group-header {
+	font-weight: bold;
+}
  
+.placeholder-char {
+	text-align : center; 
+ 	vertical-align : middle; 
+ 	line-height : 40px; 
+ 	height : 40px; 
+ 	width : 100%;
+ 	background-color : #6c2dd2; 
+ 	color : #FFF;
+ 	font-weight : bold;
+}
+ 
+#placeholder-add {
+	background-color : #6c2dd2; 
+}
