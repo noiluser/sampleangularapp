@@ -19,7 +19,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 		    success(function(data, status, headers, config) {
 		    	$scope.date = data.response.date;
 		    	$scope.title = data.response.title;
-		    	$scope.text = data.response.text_wiki | data.response.text;
+		    	$scope.text = data.response.text_wiki ? data.response.text_wiki : data.response.text;
 		    	$scope.url = data.response.view_url;
 		    	$scope.editTitle = $scope.title;
 				$scope.editText = $scope.text;
