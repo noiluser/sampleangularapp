@@ -54,6 +54,12 @@ app.filter('firstChar', function() {
     }
 });
 
+app.filter('setPlainText', function () {
+	return function (item) {
+		return item.replace(/<\/?div>/g, " ");
+	};
+});
+
 app.service('PagesService', function() {
 	this.totalRows = 0;
 	this.offset = 0;

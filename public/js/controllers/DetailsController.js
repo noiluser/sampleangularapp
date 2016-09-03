@@ -55,7 +55,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 		var getParams = {
 				title : $scope.editTitle,
 				text : $scope.editText,
-				privacy_view : only_me
+				privacy_view : "only_me"
 		};
 		if ($scope.IsExists) {
 			// edit

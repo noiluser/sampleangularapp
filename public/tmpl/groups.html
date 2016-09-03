@@ -30,7 +30,8 @@
 				</div>
 			</div>
 			<div class="row">
-				<ng-bind-html class="description" ng-bind-html="renderHtml(note.text)"></ng-bind-html>
+				<div ng-bind="note.text | setPlainText"></div>
+				<!-- <ng-bind-html class="description" ng-bind-html="renderHtml(note.text)"></ng-bind-html>   -->
 			</div>
 		</div>	
 		</div>	
