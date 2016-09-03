@@ -104,13 +104,10 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 	};
 	
 	$scope.saveText = function(event) {
-		console.log("s", event.target.innerHTML);
+		console.log("s", event.target.innerHTML, event.target);
 	    this.editText = event.target.innerHTML;
 	}
 	
-	$scope.updateText = function(event) {
-		console.log("u", event.target);
-	}
 	
 	if ($routeParams.id == -1) {
 		$scope.IsExists = false;
