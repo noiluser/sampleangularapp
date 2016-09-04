@@ -14,9 +14,9 @@ app.controller("authCtrl", function($scope, $location, $window, $cookies, User) 
 console.log(">", path, "-", cook, "<");
 	if(path) {
 console.log("path", path);		
-		$location.hash("");
 		$cookies.put("VkNotebookAccess", path);
 		User.setToken(path, function() {
+			$location.hash("");
 			$scope.syncUserData();
 		});
 	} else if (cook) {
