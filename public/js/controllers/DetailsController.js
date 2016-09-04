@@ -105,7 +105,8 @@ console.log(data.response.text_wiki , data.response.text);
 	
 	$scope.saveText = function(event) {
 		var data = event.target.innerHTML;
-		data = data.replace(/<div><br><\/div>/g, "<br>").replace(/<div>/g, "<br>").replace(/<\/div>/g, "");
+		//data = data.replace(/<div><br><\/div>/g, "<br>").replace(/<div>/g, "<br>").replace(/<\/div>/g, "");
+		data = data.replace(/<div><br><\/div>/g, "\r\n").replace(/<div>/g, "\r\n").replace(/<\/div>/g, "").replace(/\&nbsp\;/g, " ");
 		console.log("s", event.target.innerHTML, data);
 	    this.editText = data;
 	}
