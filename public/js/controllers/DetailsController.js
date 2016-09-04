@@ -21,6 +21,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 		    	$scope.title = data.response.title;
 console.log(data.response.text_wiki , data.response.text);
 		    	$scope.text = data.response.text_wiki ? data.response.text_wiki : data.response.text;
+$scope.text = $scope.text.replace(/\\r\\n/g, "<br/>");
 		    	$scope.url = data.response.view_url;
 		    	$scope.editTitle = $scope.title;
 				$scope.editText = $scope.text;
@@ -105,7 +106,7 @@ console.log(data.response.text_wiki , data.response.text);
 	
 	$scope.saveText = function(event) {
 		var data = event.target.innerHTML;
-		data = "<!--4-->" + data.replace(/<div><br><\/div>/g, "<br/>").replace(/<div>/g, "<br/>").replace(/<\/div>/g, "");
+		data = data.replace(/<div><br><\/div>/g, "<br/>").replace(/<div>/g, "<br/>").replace(/<\/div>/g, "");
 		
 		console.log("s", event.target.innerHTML, data);
 	    this.editText = data;
