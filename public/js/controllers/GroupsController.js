@@ -57,6 +57,10 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 				$scope.$emit('groupsLoaded', gr);
 		    }).
 		    error(function(data, status, headers, config) {
+		    	$scope.btnLoad = "Load more";
+				$scope.isGroupsLoading = false;
+				$scope.IsGroupsLoaded = true;	
+		    	alert("Server responsed with the error message. Please try again.");
 		        console.log(data);
 		    });
 	});

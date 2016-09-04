@@ -7,7 +7,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 
 	$scope.getNoteInfo = function() {
 		var getParams = {
-				note_id : this.id + "111",
+				note_id : this.id,
 				need_wiki : 1
 		};
 				
@@ -26,6 +26,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 		    }).
 		    error(function(data, status, headers, config) {
 		    	$scope.IsLoadPending = false;
+		    	alert("Server responsed with the error message. Please try again.");
 		        console.log(data);
 		    });
 	};		
@@ -44,6 +45,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 		    }).
 		    error(function(data, status, headers, config) {
 		    	$scope.IsDeletePending = false;
+		    	alert("Server responsed with the error message. Please try again.");
 		        console.log(data);
 		    });
 	};
@@ -73,6 +75,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 			    }).
 			    error(function(data, status, headers, config) {
 			    	$scope.IsEditPending = false;
+			    	alert("Server responsed with the error message. Please try again.");
 			        console.log(data);
 			    });
 		} else {
@@ -85,7 +88,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 			    }).
 			    error(function(data, status, headers, config) {
 			    	$scope.IsEditPending = false;
-			    	alert("Server responsed with the error: ");
+			    	alert("Server responsed with the error message. Please try again.");
 			        console.log(data);
 			    });
 		};
