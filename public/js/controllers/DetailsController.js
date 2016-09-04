@@ -4,8 +4,8 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.id = $routeParams.id;
-	$scope.IsEditPending = true; // TODO false
-	$scope.IsDeletePending = true; // TODO false
+	$scope.IsEditPending = false;
+	$scope.IsDeletePending = false;
 	$scope.IsLoadPending = true;
 
 	$scope.getNoteInfo = function() {
