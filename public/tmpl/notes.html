@@ -29,7 +29,7 @@
 		</div>	
 		</div>	
 	</div>
-	<div class=" row group-item" ng-show="IsGroupsLoaded">
+	<div class=" row group-item" ng-show="IsNotesLoaded">
 		<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-0 col-sm-12 col-xs-offset-0 col-xs-12 row notelist-add notelist" ng-click="addNote()">
 		<div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
 			<div class="placeholder-char" id="placeholder-add">
@@ -52,7 +52,7 @@
 	<div class="row next-loader" ng-show="!IsAllGroupsLoaded && isUserLoggedIn">
 		<div class="col-xs-12">
 			<div class="text-center">
-				<button ng-disabled="isGroupsLoading" class="btn btn-default" ng-click="getGroups()"><span ng-class="{'fa-spin' : isGroupsLoading}" class="fa fa-circle-o-notch"></span>&nbsp;{{btnLoad}}</button>
+				<button ng-disabled="isNotesLoading" class="btn btn-default" ng-click="getGroups()"><span ng-class="{'fa-spin' : isNotesLoading}" class="fa fa-circle-o-notch"></span>&nbsp;{{btnLoad}}</button>
 			</div>
 		</div>
 	</div>

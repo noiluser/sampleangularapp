@@ -1,7 +1,7 @@
 app.controller("NotesController", function($scope, $http, $location, User) {
 	$scope.isUserLoggedIn = false;
-	$scope.isGroupsLoading = false;
-	$scope.IsGroupsLoaded = false;
+	$scope.isNotesLoading = false;
+	$scope.IsNotesLoaded = false;
 	$scope.IsAllGroupsLoaded = false;
 	$scope.notes = [];
 	$scope.renderHtml = $scope.$parent.renderHtml;
@@ -14,14 +14,14 @@ app.controller("NotesController", function($scope, $http, $location, User) {
 	$scope.$watch(function(){ return User.isAuthorized(); }, function(val){
 		if (val) {
 			$scope.isUserLoggedIn = true;
-			$scope.isGroupsLoading = true;
+			$scope.isNotesLoading = true;
 			$scope.IsAllGroupsLoaded = false;
 			$scope.$emit('loadGroups');    
 		} else {
 			$scope.isUserLoggedIn = false;
-			$scope.isGroupsLoading = false;
+			$scope.isNotesLoading = false;
 			$scope.IsAllGroupsLoaded = false;
-			$scope.IsGroupsLoaded = false;
+			$scope.IsNotesLoaded = false;
 			$scope.btnLoad = "Loading...";
 			$scope.offset = 0;
 			$scope.notes = [];
@@ -41,7 +41,7 @@ app.controller("NotesController", function($scope, $http, $location, User) {
 				count : $scope.count,
 				sort : 1
 		};
-		$scope.isGroupsLoading = true;
+		$scope.isNotesLoading = true;
 		var url = "https://api.vk.com/method/notes.get?" + $scope.paramsToString(getParams) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
@@ -58,8 +58,8 @@ app.controller("NotesController", function($scope, $http, $location, User) {
 		    }).
 		    error(function(data, status, headers, config) {
 		    	$scope.btnLoad = "Load more";
-				$scope.isGroupsLoading = false;
-				$scope.IsGroupsLoaded = true;	
+				$scope.isNotesLoading = false;
+				$scope.IsNotesLoaded = true;	
 		    	alert("Server responsed with the error message. Please try again.");
 		        console.log(data);
 		    });
@@ -70,8 +70,8 @@ app.controller("NotesController", function($scope, $http, $location, User) {
 	}
 	
 	$scope.$on('groupsLoaded', function(event, notes) {
-		$scope.isGroupsLoading = false;
-		$scope.IsGroupsLoaded = true;	
+		$scope.isNotesLoading = false;
+		$scope.IsNotesLoaded = true;	
 		$scope.notes = $scope.notes.concat(notes);
 	});
 	
