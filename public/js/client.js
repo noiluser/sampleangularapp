@@ -17,7 +17,7 @@ app.config(function($routeProvider, $locationProvider) {
 app.config(['usSpinnerConfigProvider', function (usSpinnerConfigProvider) {
     usSpinnerConfigProvider.setDefaults({
     	  lines: 17 // The number of lines to draw
-    	  , length: 24 // The length of each line
+    	  , length: 5 // The length of each line
     	  , width: 2 // The line thickness
     	  , radius: 0 // The radius of the inner circle
     	  , scale: 1 // Scales overall size of the spinner
@@ -35,7 +35,7 @@ app.config(['usSpinnerConfigProvider', function (usSpinnerConfigProvider) {
     	  , left: '50%' // Left position relative to parent
     	  , shadow: false // Whether to render a shadow
     	  , hwaccel: true // Whether to use hardware acceleration
-    	  //, position: 'absolute' // Element positioning
+    	  , position: 'relative' // Element positioning
     	  });
 }]);
 
