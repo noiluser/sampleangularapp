@@ -49,7 +49,7 @@ console.log("load", event);
 		    error(function(data, status, headers, config) {
 		        console.log(data);
 		    });
-	}
+	});
 	
 	$scope.addNote = function() {
 		$location.path( "/details/-1" );
