@@ -9,12 +9,20 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	$scope.offset = 0;
 	$scope.count = 10;
-	
-	$scope.$on('userLogin', function(event) {
-		//$scope.$apply(function(){
+
+	$scope.$watch(function(){ return User.isAuthorized(); }, function(NewValue, OldValue){
 			$scope.isUserLoggedIn = true;
 			$scope.isGroupsLoading = true;
 			$scope.IsAllGroupsLoaded = false;
+		    console.log(NewValue + ' ' + OldValue);
+		    console.log(User.isAuthorized());
+		});
+
+	$scope.$on('userLogin', function(event) {
+		//$scope.$apply(function(){
+		//	$scope.isUserLoggedIn = true;
+		//	$scope.isGroupsLoading = true;
+		//	$scope.IsAllGroupsLoaded = false;
 	    //});
 
 		//$scope.$emit('loadGroups');		

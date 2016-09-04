@@ -17,7 +17,7 @@ app.controller("authCtrl", function($scope, $location, $window, $cookies, User) 
 		User.setToken(path, function() {
 			$location.hash("");
 			$scope.syncUserData();
-			$scope.$emit('userLogin');
+			$scope.$parent.$broadcast('userLogin');
 		});
 	} else if (cook) {		
 		User.setToken(cook, function() {

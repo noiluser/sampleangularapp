@@ -46,11 +46,6 @@ app.controller("mainCtrl", function($scope, $sce) {
 		var formattedTime = hours + ':' + minutes.substr(-2) + ', ' + day + ' ' + months[month] + ' ' + year;
 		return formattedTime;
 	};
-	
-	/*$scope.$on('userLogin', function(event) {
-		$scope.$broadcast('userLogin');
-	});*/
-	$scope.$broadcast('userLogin');
 });
 
 app.filter('firstChar', function() {
