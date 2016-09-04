@@ -20,7 +20,7 @@ console.log("login", $scope);
 	
 	$scope.getGroups = function() {
 		$scope.$emit('loadGroups');
-	});
+	};
 
 	$scope.$on('loadGroups', function(event) {
 console.log("load", event);		
