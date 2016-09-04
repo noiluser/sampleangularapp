@@ -7,7 +7,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.convertDate = $scope.$parent.convertDate;
 	$scope.paramsToString = $scope.$parent.paramsToString;
-	$scope.offset = 10;
+	$scope.offset = 0;
 	$scope.count = 10;
 	
 	$scope.$on('userLogin', function(event) {

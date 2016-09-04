@@ -1,4 +1,4 @@
-app.controller("authCtrl", function($scope, $location, $window, User) {
+app.controller("authCtrl", function($scope, $location, $window, $cookies, User) {
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.openProfile = function() {
@@ -39,7 +39,7 @@ app.controller("authCtrl", function($scope, $location, $window, User) {
 				client_id : 5590999,
 				display : "page",
 				redirect_uri : "https://nsrg-angular-api.herokuapp.com%3F",
-				scope : "notes",
+				scope : "notes,offline",
 				response_type : "token",
 				v : "5.53"				
 		};
