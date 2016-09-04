@@ -11,12 +11,10 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 	$scope.count = 10;
 	
 	$scope.$on('userLogin', function(event) {
-		$scope.$apply(function() {
-			$scope.isUserLoggedIn = true;
-			$scope.isGroupsLoading = true;
-			$scope.IsAllGroupsLoaded = false;
-			$scope.$emit('loadGroups');	
-		});				
+		$scope.isUserLoggedIn = true;
+		$scope.isGroupsLoading = true;
+		$scope.IsAllGroupsLoaded = false;
+		//$scope.$emit('loadGroups');		
 	});
 	
 	$scope.getGroups = function() {
