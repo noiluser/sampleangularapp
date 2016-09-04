@@ -21,14 +21,24 @@ app.controller("authCtrl", function($scope, $location, $window, $cookies, User) 
 		User.setToken(cook);
 	}
 	
-	$scope.$watch(function(){ return User.isAuthorized(); }, function(val){
-		$scope.userName = User.getFirstName();
-		$scope.userLastName = User.getLastName();
-		$scope.userHref = User.getHref();
-		$scope.photo = User.getPhoto();
-		$scope.hasPhoto = User.hasPhoto(); 
-		$scope.isUserLoggedIn = User.isAuthorized();
+	$scope.$watch(function(){ return User.getFirstName(); }, function(val){
+		$scope.userName = val;
 	});	
+	$scope.$watch(function(){ return User.getLastName(); }, function(val){
+		$scope.userLastName = val;
+	});	
+	$scope.$watch(function(){ return User.getHref(); }, function(val){
+		$scope.userHref = val;
+	});	
+	$scope.$watch(function(){ return User.getPhoto(); }, function(val){
+		$scope.photo = val;
+	});	
+	$scope.$watch(function(){ return User.hasPhoto(); }, function(val){
+		$scope.hasPhoto = val; 
+	});	
+	$scope.$watch(function(){ return User.isAuthorized(); }, function(val){
+		$scope.isUserLoggedIn = val;
+	});		
 	
 	$scope.logout = function() {
 		$cookies.remove("VkNotebookAccess");
