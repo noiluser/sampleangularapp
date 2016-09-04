@@ -15,7 +15,7 @@
 		</div>
 	</div>
 
-	<div ng-repeat="note in notes | orderBy:'-date'" id="note_{{note.id}}" class=" row group-item">
+	<div ng-repeat="note in notes" id="note_{{note.id}}" class=" row group-item">
 		<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-0 col-sm-12 col-xs-offset-0 col-xs-12 row notelist" ng-click="showDetails(note.id)">
 		<div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
 			<div class="placeholder-char">

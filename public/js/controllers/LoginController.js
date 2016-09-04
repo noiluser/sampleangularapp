@@ -16,30 +16,27 @@ app.controller("authCtrl", function($scope, $location, $window, $cookies, User) 
 		$cookies.put("VkNotebookAccess", path);
 		User.setToken(path, function() {
 			$location.hash("");
-			$scope.syncUserData();
 		});
 	} else if (cook) {		
-		User.setToken(cook, function() {
-			$scope.syncUserData();
-		});
+		User.setToken(cook);
 	}
 	
-	$scope.logout = function() {
-		$cookies.remove("VkNotebookAccess");
-		User.resetParams(function() {
-			$scope.syncUserData();
-		});
-	};
-	
-	$scope.syncUserData = function() {
+	$scope.$watch(function(){ return User.isAuthorized(); }, function(val){
 		$scope.userName = User.getFirstName();
 		$scope.userLastName = User.getLastName();
 		$scope.userHref = User.getHref();
 		$scope.photo = User.getPhoto();
 		$scope.hasPhoto = User.hasPhoto(); 
 		$scope.isUserLoggedIn = User.isAuthorized();
-	}
+	});	
 	
+	$scope.logout = function() {
+		$cookies.remove("VkNotebookAccess");
+		User.resetParams(function() {
+			$location.path( "/");
+		});
+	};
+
 	$scope.login = function() {
 		var getParams = {
 				client_id : 5590999,

@@ -32,8 +32,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 		$scope.$emit('loadGroups');
 	};
 
-	$scope.$on('loadGroups', function(event) {
-console.log("load", $scope);		
+	$scope.$on('loadGroups', function(event) {		
 		var getParams = {
 				offset : $scope.offset,
 				count : $scope.count,
@@ -51,7 +50,7 @@ console.log("load", $scope);
 				
 				$scope.offset += co;
 				$scope.IsAllGroupsLoaded = (groupsCount == $scope.offset);
-console.log("success", data);				
+			
 				$scope.$emit('groupsLoaded', gr);
 		    }).
 		    error(function(data, status, headers, config) {
@@ -65,8 +64,7 @@ console.log("success", data);
 	
 	$scope.$on('groupsLoaded', function(event, notes) {
 		$scope.isGroupsLoading = false;
-		$scope.IsGroupsLoaded = true;
-console.log("loaded", notes);		
+		$scope.IsGroupsLoaded = true;	
 		$scope.notes = $scope.notes.concat(notes);
 	});
 	
