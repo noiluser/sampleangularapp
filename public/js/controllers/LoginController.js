@@ -13,7 +13,7 @@ app.controller("authCtrl", function($scope, $location, $window, $cookies, User) 
 	var cook = $cookies.get("VkNotebookAccess");
 
 	if(path) {
-		$location.hash([]);
+		$location.hash("");
 		$cookies.put("VkNotebookAccess", path);
 		User.setToken(path, function() {
 			$scope.syncUserData();
