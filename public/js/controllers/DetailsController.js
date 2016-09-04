@@ -19,9 +19,10 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 		    success(function(data, status, headers, config) {
 		    	$scope.date = data.response.date;
 		    	$scope.title = data.response.title;
-console.log(data.response.text_wiki , data.response.text);
+console.log("data", data.response.text_wiki , data.response.text);
 		    	$scope.text = data.response.text_wiki ? data.response.text_wiki : data.response.text;
-$scope.text = $scope.text.replace(/\\r\\n/g, "<br/>");
+$scope.text = $scope.text.replace(/\\r\\n/g, "<br/>").replace(/\&\#13\;\&\#10\;/g, "<br/>");
+console.log("sc", $scope.text);
 		    	$scope.url = data.response.view_url;
 		    	$scope.editTitle = $scope.title;
 				$scope.editText = $scope.text;
