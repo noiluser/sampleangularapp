@@ -14,7 +14,7 @@ app.config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 });
 
-app.controller("mainCtrl", function($scope, $sce) {
+app.controller("MainController", function($scope, $sce) {
 	$scope.renderHtml = function(html_code)	{
 	    return $sce.trustAsHtml(html_code);
 	};

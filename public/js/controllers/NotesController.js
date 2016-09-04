@@ -23,10 +23,8 @@ app.controller("NotesController", function($scope, $http, $location, User) {
 			$scope.IsAllGroupsLoaded = false;
 			$scope.IsNotesLoaded = false;
 			$scope.btnLoad = "Loading...";
-			$scope.offset = 0;
 			$scope.notes = [];
 			$scope.offset = 0;
-			$scope.count = 10;
 		}
 	});
 	
