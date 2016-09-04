@@ -21,7 +21,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 		    	$scope.title = data.response.title;
 console.log("data", data.response.text_wiki , data.response.text);
 		    	$scope.text = data.response.text_wiki ? data.response.text_wiki : data.response.text;
-$scope.text = $scope.text.replace(/\\r\\n/g, "<br/>").replace(/\&\#13\;\&\#10\;/g, "<br/>");
+$scope.text = $scope.text.replace(/\r\n/g, "<br/>").replace(/&#13;&#10;/g, "<br/>");
 console.log("sc", $scope.text);
 		    	$scope.url = data.response.view_url;
 		    	$scope.editTitle = $scope.title;
@@ -107,7 +107,14 @@ console.log("sc", $scope.text);
 	
 	$scope.saveText = function(event) {
 		var data = event.target.innerHTML;
-		data = data.replace(/<div><br><\/div>/g, "<br/>").replace(/<div>/g, "<br/>").replace(/<\/div>/g, "");
+		//data = data.replace(/<div><br><\/div>/g, "<br/>").replace(/<div>/g, "<br/>").replace(/<\/div>/g, "");
+		data = data.replace(/(<div><br>)*<\/div>/g, '\n');
+		data = data.replace(/<div>/g, '');
+		  /* replaces some html entities */
+		data = data.replace(/&nbsp;/g, ' ');
+		data = data.replace(/&amp;/g, '&');
+		data = data.replace(/&lt;/g, '<');
+		data = data.replace(/&gt;/g, '>');
 		
 		console.log("s", event.target.innerHTML, data);
 	    this.editText = data;
