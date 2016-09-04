@@ -47,9 +47,9 @@ app.controller("mainCtrl", function($scope, $sce) {
 		return formattedTime;
 	};
 	
-	$scope.$on('userLogin', function(event) {
+	/*$scope.$on('userLogin', function(event) {
 		$scope.$broadcast('userLogin');
-	});
+	});*/
 	$scope.$broadcast('userLogin');
 });
 
