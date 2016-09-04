@@ -10,13 +10,15 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 	$scope.offset = 0;
 	$scope.count = 10;
 
-	$scope.$watch(function(){ return User.isAuthorized(); }, function(NewValue, OldValue){
+	$scope.$watch(function(){ return User.isAuthorized(); }, function(val){
+		if (val) {
 			$scope.isUserLoggedIn = true;
 			$scope.isGroupsLoading = true;
 			$scope.IsAllGroupsLoaded = false;
-		    console.log(NewValue + ' ' + OldValue);
+		    console.log(val);
 		    console.log(User.isAuthorized());
-		});
+		}
+	});
 
 	$scope.$on('userLogin', function(event) {
 		//$scope.$apply(function(){
