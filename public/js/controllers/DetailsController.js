@@ -64,7 +64,6 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 			var self = this;
 			$http.jsonp(url).
 			    success(function(data, status, headers, config) {
-			    	console.log(data);
 			    	$scope.title = $scope.editTitle;
 					$scope.text = $scope.editText;
 					$scope.IsInEdit = false;
