@@ -9,6 +9,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	$scope.offset = 0;
 	$scope.count = 10;
+	$scope.btnLoad = "Loading...";
 
 	$scope.$watch(function(){ return User.isAuthorized(); }, function(val){
 		if (val) {
@@ -21,6 +22,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 			$scope.isGroupsLoading = false;
 			$scope.IsAllGroupsLoaded = false;
 			$scope.IsGroupsLoaded = false;
+			$scope.btnLoad = "Loading...";
 			$scope.offset = 0;
 			$scope.notes = [];
 			$scope.offset = 0;
@@ -29,6 +31,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 	});
 	
 	$scope.getGroups = function() {
+		$scope.btnLoad = "Loading...";
 		$scope.$emit('loadGroups');
 	};
 
@@ -50,7 +53,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 				
 				$scope.offset += co;
 				$scope.IsAllGroupsLoaded = (groupsCount == $scope.offset);
-			
+				$scope.btnLoad = "Load more";
 				$scope.$emit('groupsLoaded', gr);
 		    }).
 		    error(function(data, status, headers, config) {
