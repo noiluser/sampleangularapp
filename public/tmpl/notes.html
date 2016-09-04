@@ -49,10 +49,10 @@
 		</div>	
 	</div>	
  
-	<div class="row next-loader" ng-show="!IsAllGroupsLoaded && isUserLoggedIn">
+	<div class="row next-loader" ng-show="!IsAllNotesLoaded && isUserLoggedIn">
 		<div class="col-xs-12">
 			<div class="text-center">
-				<button ng-disabled="isNotesLoading" class="btn btn-default" ng-click="getGroups()"><span ng-class="{'fa-spin' : isNotesLoading}" class="fa fa-circle-o-notch"></span>&nbsp;{{btnLoad}}</button>
+				<button ng-disabled="isNotesLoading" class="btn btn-default" ng-click="getNotes()"><span ng-class="{'fa-spin' : isNotesLoading}" class="fa fa-circle-o-notch"></span>&nbsp;{{btnLoad}}</button>
 			</div>
 		</div>
 	</div>

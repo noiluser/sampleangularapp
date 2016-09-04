@@ -2,7 +2,7 @@ app.controller("NotesController", function($scope, $http, $location, User) {
 	$scope.isUserLoggedIn = false;
 	$scope.isNotesLoading = false;
 	$scope.IsNotesLoaded = false;
-	$scope.IsAllGroupsLoaded = false;
+	$scope.IsAllNotesLoaded = false;
 	$scope.notes = [];
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.convertDate = $scope.$parent.convertDate;
@@ -15,12 +15,12 @@ app.controller("NotesController", function($scope, $http, $location, User) {
 		if (val) {
 			$scope.isUserLoggedIn = true;
 			$scope.isNotesLoading = true;
-			$scope.IsAllGroupsLoaded = false;
-			$scope.$emit('loadGroups');    
+			$scope.IsAllNotesLoaded = false;
+			$scope.$emit('loadNotes');    
 		} else {
 			$scope.isUserLoggedIn = false;
 			$scope.isNotesLoading = false;
-			$scope.IsAllGroupsLoaded = false;
+			$scope.IsAllNotesLoaded = false;
 			$scope.IsNotesLoaded = false;
 			$scope.btnLoad = "Loading...";
 			$scope.notes = [];
@@ -28,16 +28,16 @@ app.controller("NotesController", function($scope, $http, $location, User) {
 		}
 	});
 	
-	$scope.getGroups = function() {
+	$scope.getNotes = function() {
 		$scope.btnLoad = "Loading...";
-		$scope.$emit('loadGroups');
+		$scope.$emit('loadNotes');
 	};
 
-	$scope.$on('loadGroups', function(event) {		
+	$scope.$on('loadNotes', function(event) {		
 		var getParams = {
 				offset : $scope.offset,
 				count : $scope.count,
-				sort : 1
+				sort : 0
 		};
 		$scope.isNotesLoading = true;
 		var url = "https://api.vk.com/method/notes.get?" + $scope.paramsToString(getParams) + User.getUrlParams();
@@ -45,14 +45,14 @@ app.controller("NotesController", function($scope, $http, $location, User) {
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
 
-				var gr = data.response.items;
-				var co = gr.length;
-				var groupsCount = data.response.count; 
+				var nt = data.response.items;
+				var co = nt.length;
+				var notesCount = data.response.count; 
 				
 				$scope.offset += co;
-				$scope.IsAllGroupsLoaded = (groupsCount == $scope.offset);
+				$scope.IsAllNotesLoaded = (notesCount == $scope.offset);
 				$scope.btnLoad = "Load more";
-				$scope.$emit('groupsLoaded', gr);
+				$scope.$emit('notesLoaded', nt);
 		    }).
 		    error(function(data, status, headers, config) {
 		    	$scope.btnLoad = "Load more";
@@ -67,7 +67,7 @@ app.controller("NotesController", function($scope, $http, $location, User) {
 		$location.path( "/details/-1" );
 	}
 	
-	$scope.$on('groupsLoaded', function(event, notes) {
+	$scope.$on('notesLoaded', function(event, notes) {
 		$scope.isNotesLoading = false;
 		$scope.IsNotesLoaded = true;	
 		$scope.notes = $scope.notes.concat(notes);
