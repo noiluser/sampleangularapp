@@ -13,6 +13,7 @@ app.controller("authCtrl", function($scope, $location, $window, $cookies, User) 
 	var cook = $cookies.get("VkNotebookAccess");
 
 	if(path) {
+		$location.hash([]);
 		$cookies.put("VkNotebookAccess", path);
 		User.setToken(path, function() {
 			$scope.syncUserData();
@@ -23,6 +24,7 @@ app.controller("authCtrl", function($scope, $location, $window, $cookies, User) 
 		});
 	
 	$scope.logout = function() {
+		$cookies.remove("VkNotebookAccess");
 		User.resetParams(function() {
 			$scope.syncUserData();
 			$scope.$parent.$broadcast('userLogout');
