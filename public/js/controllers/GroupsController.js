@@ -40,10 +40,8 @@ console.log("load", event);
 				var groupsCount = data.response.count; 
 				
 				$scope.offset += co;
-				
-				if (groupsCount == $scope.offset)
-					$scope.IsAllGroupsLoaded = true;
-
+				$scope.IsAllGroupsLoaded = (groupsCount == $scope.offset);
+console.log("success", data);				
 				$scope.$emit('groupsLoaded', gr);
 		    }).
 		    error(function(data, status, headers, config) {
