@@ -7,14 +7,6 @@
 		</div>
 	</div>
 
-	<div class="row" ng-show="isGroupsLoading">
-		<div class="col-xs-12">
-			<div class="text-center">
-				Loading notes
-			</div>
-		</div>
-	</div>
-
 	<div ng-repeat="note in notes" id="note_{{note.id}}" class=" row group-item">
 		<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-offset-0 col-sm-12 col-xs-offset-0 col-xs-12 row notelist" ng-click="showDetails(note.id)">
 		<div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
@@ -60,7 +52,7 @@
 	<div class="row next-loader" ng-show="!IsAllGroupsLoaded">
 		<div class="col-xs-12">
 			<div class="text-center">
-				<button class="btn btn-default" ng-click="getGroups()"><span class="fa fa-refresh fa-spin"></span>&nbsp;Load more</button>
+				<button class="btn btn-default" ng-click="getGroups()"><span ng-disabled="isGroupsLoading" ng-class="{'fa-spin' : isGroupsLoading}" class="fa fa-circle-o-notch"></span>&nbsp;Load more</button>
 			</div>
 		</div>
 	</div>

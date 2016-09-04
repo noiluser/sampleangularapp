@@ -2,7 +2,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
 	$scope.IsGroupsLoaded = false;
-	$scope.IsAllGroupsLoaded = true;
+	$scope.IsAllGroupsLoaded = false;
 	$scope.notes = [];
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.convertDate = $scope.$parent.convertDate;
@@ -19,7 +19,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 		} else {
 			$scope.isUserLoggedIn = false;
 			$scope.isGroupsLoading = false;
-			$scope.IsAllGroupsLoaded = true;
+			$scope.IsAllGroupsLoaded = false;
 			$scope.IsGroupsLoaded = false;
 			$scope.offset = 0;
 			$scope.notes = [];
@@ -38,7 +38,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 				count : $scope.count,
 				sort : 1
 		};
-		
+		$scope.isGroupsLoading = true;
 		var url = "https://api.vk.com/method/notes.get?" + $scope.paramsToString(getParams) + User.getUrlParams();
 		var self = this;
 		$http.jsonp(url).
