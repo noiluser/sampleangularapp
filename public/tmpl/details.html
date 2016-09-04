@@ -1,4 +1,11 @@
 <div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="text-center">
+				<span class="fa fa-spin fa-circle-o-notch"></span>
+			</div>
+		</div>
+	</div>
 	<div class="row with-delimiter" ng-show="!IsInEdit && IsExists">
 			<div class="row col-xs-10 col-xs-offset-1">
 				<div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 note-header">
@@ -19,8 +26,8 @@
 			</button>
 		</div> 
 		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-5">
-			<button type="button" class="btn btn-danger" value="delete" ng-click="deleteNote()">
-				<span class="glyphicon glyphicon-remove"></span>&nbsp; delete
+			<button type="button" class="btn btn-danger" value="delete" ng-click="deleteNote()" ng-disabled="IsDeletePending">
+				<span ng-class="{'fa-spin fa-circle-o-notch' : IsDeletePending, 'fa-trash-o' : !IsDeletePending}" class="fa ">&nbsp; delete</span>
 			</button>			
 		</div> 		
 	</div>
@@ -37,8 +44,8 @@
 	
 	<div class="row" ng-show="IsInEdit">
 		<div class="col-lg-offset-7 col-lg-2 col-md-offset-7 col-md-2 col-sm-offset-6 col-sm-2 col-xs-offset-1 col-xs-6">
-			<button type="button" class="btn btn-success pull-right" ng-click="addNote()">
-				<span class="glyphicon glyphicon-ok"></span>&nbsp; {{btnOk}}
+			<button type="button" class="btn btn-success pull-right" ng-click="addNote()" ng-disabled="IsEditPending">
+				<span ng-class="{'fa-spin fa-circle-o-notch' : IsEditPending, 'fa-check' : !IsEditPending}" class="fa ">&nbsp; {{btnOk}}</span>
 			</button>
 		</div>
 		<div class="col-lg-1 col-md-2 col-sm-2 col-xs-5">

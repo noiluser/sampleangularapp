@@ -4,6 +4,9 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.id = $routeParams.id;
+	$scope.IsEditPending = false;
+	$scope.IsDeletePending = false;
+	$scope.IsLoadPending = true;
 
 	$scope.getNoteInfo = function() {
 		var getParams = {
@@ -12,7 +15,6 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 		};
 				
 		var url = "https://api.vk.com/method/notes.getById?" + this.paramsToString(getParams, true) + User.getUrlParams();
-		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
 		    	$scope.date = data.response.date;
@@ -23,6 +25,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 		    	$scope.url = data.response.view_url;
 		    	$scope.editTitle = $scope.title;
 				$scope.editText = $scope.text;
+				$scope.IsLoadPending = false;
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
@@ -30,15 +33,15 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 	};		
 		
 	$scope.deleteNote = function() {
+		$scope.IsDeletePending = true;
 		var getParams = {
 				note_id : this.id,				
 		};
 				
 		var url = "https://api.vk.com/method/notes.delete?" + this.paramsToString(getParams, true) + User.getUrlParams();
-		var self = this;
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
-		    	console.log(data);
+		    	$scope.IsDeletePending = false;
 		    	$location.path( "/").replace();
 		    }).
 		    error(function(data, status, headers, config) {
@@ -51,6 +54,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 	};
 	
 	$scope.addNote = function () {
+		$scope.IsEditPending = true;
 		var getParams = {
 				title : $scope.editTitle,
 				text : $scope.editText,
@@ -61,22 +65,21 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 			getParams.note_id = this.id;
 					
 			var url = "https://api.vk.com/method/notes.edit?" + this.paramsToString(getParams, true) + User.getUrlParams();
-			var self = this;
 			$http.jsonp(url).
 			    success(function(data, status, headers, config) {
 			    	$scope.title = $scope.editTitle;
 					$scope.text = $scope.editText;
-					$scope.IsInEdit = false;
+					$scope.IsEditPending = false;
 			    }).
 			    error(function(data, status, headers, config) {
 			        console.log(data);
 			    });
 		} else {
 			var url = "https://api.vk.com/method/notes.add?" + this.paramsToString(getParams, true) + User.getUrlParams();
-			var self = this;
 			$http.jsonp(url).
 			    success(function(data, status, headers, config) {
 			    	var id = data.response;
+			    	$scope.IsEditPending = false;
 			    	$location.path( "/details/" + id ).replace();
 			    }).
 			    error(function(data, status, headers, config) {
