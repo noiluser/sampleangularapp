@@ -15,6 +15,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 		$scope.isUserLoggedIn = true;
 		$scope.isGroupsLoading = true;
 		$scope.IsAllGroupsLoaded = false;
+		$scope.$apply();
 		$scope.getGroups();
 	});
 	
