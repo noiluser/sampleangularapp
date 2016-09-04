@@ -1,14 +1,14 @@
 app.controller("groupsCtrl", function($scope, $http, $location, User) {
-	/*$scope.isUserLoggedIn = false;
+	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
 	$scope.IsGroupsLoaded = false;
 	$scope.IsAllGroupsLoaded = true;
-	$scope.notes = [];*/
+	$scope.notes = [];
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.convertDate = $scope.$parent.convertDate;
 	$scope.paramsToString = $scope.$parent.paramsToString;
-	/*$scope.offset = 0;
-	$scope.count = 10;*/
+	$scope.offset = 0;
+	$scope.count = 10;
 
 	$scope.$watch(function(){ return User.isAuthorized(); }, function(val){
 		if (val) {
