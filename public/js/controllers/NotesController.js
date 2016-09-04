@@ -1,4 +1,4 @@
-app.controller("groupsCtrl", function($scope, $http, $location, User) {
+app.controller("NotesController", function($scope, $http, $location, User) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
 	$scope.IsGroupsLoaded = false;

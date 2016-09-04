@@ -1,4 +1,4 @@
-app.controller("authCtrl", function($scope, $location, $window, $cookies, User) {
+app.controller("AuthController", function($scope, $location, $window, $cookies, User) {
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.openProfile = function() {

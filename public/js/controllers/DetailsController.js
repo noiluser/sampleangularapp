@@ -1,4 +1,4 @@
-app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, User) {
+app.controller("DetailsController", function($scope, $routeParams, $http, $location, User) {
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.convertDate = $scope.$parent.convertDate;
 	$scope.paramsToString = $scope.$parent.paramsToString;
