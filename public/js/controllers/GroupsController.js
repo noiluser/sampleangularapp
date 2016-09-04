@@ -11,11 +11,12 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 	$scope.count = 10;
 	
 	$scope.$on('userLogin', function(event) {
-		$scope.isUserLoggedIn = true;
-		$scope.isGroupsLoading = true;
-		$scope.IsAllGroupsLoaded = false;
-		$scope.$emit('loadGroups');
-console.log("login", $scope);		
+		$scope.$apply(function() {
+			$scope.isUserLoggedIn = true;
+			$scope.isGroupsLoading = true;
+			$scope.IsAllGroupsLoaded = false;
+			$scope.$emit('loadGroups');	
+		});				
 	});
 	
 	$scope.getGroups = function() {
@@ -23,7 +24,7 @@ console.log("login", $scope);
 	};
 
 	$scope.$on('loadGroups', function(event) {
-console.log("load", event);		
+console.log("load", $scope);		
 		var getParams = {
 				offset : $scope.offset,
 				count : $scope.count,
