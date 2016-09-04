@@ -11,15 +11,19 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 	$scope.count = 10;
 	
 	$scope.$on('userLogin', function(event) {
-		console.log("login", event);
 		$scope.isUserLoggedIn = true;
 		$scope.isGroupsLoading = true;
 		$scope.IsAllGroupsLoaded = false;
-		$scope.$apply();
-		$scope.getGroups();
+		$scope.$emit('loadGroups');
+console.log("login", $scope);		
 	});
 	
 	$scope.getGroups = function() {
+		$scope.$emit('loadGroups');
+	});
+
+	$scope.$on('loadGroups', function(event) {
+console.log("load", event);		
 		var getParams = {
 				offset : $scope.offset,
 				count : $scope.count,
