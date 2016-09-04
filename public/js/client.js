@@ -1,5 +1,5 @@
 
-var app = angular.module("vkSample", ['ngRoute', 'ngCookies', 'ui.bootstrap']);
+var app = angular.module("vkSample", ['ngRoute', 'ngCookies', 'ui.bootstrap', 'angularSpinner']);
 
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
