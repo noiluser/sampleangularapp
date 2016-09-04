@@ -4,13 +4,10 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.id = $routeParams.id;
-	$scope.IsEditPending = false;
-	$scope.IsDeletePending = false;
-	$scope.IsLoadPending = true;
 
 	$scope.getNoteInfo = function() {
 		var getParams = {
-				note_id : this.id,
+				note_id : this.id + "111",
 				need_wiki : 1
 		};
 				
@@ -28,6 +25,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 				$scope.IsLoadPending = false;
 		    }).
 		    error(function(data, status, headers, config) {
+		    	$scope.IsLoadPending = false;
 		        console.log(data);
 		    });
 	};		
@@ -45,6 +43,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 		    	$location.path( "/").replace();
 		    }).
 		    error(function(data, status, headers, config) {
+		    	$scope.IsDeletePending = false;
 		        console.log(data);
 		    });
 	};
@@ -70,8 +69,10 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 			    	$scope.title = $scope.editTitle;
 					$scope.text = $scope.editText;
 					$scope.IsEditPending = false;
+					$scope.IsInEdit = false;
 			    }).
 			    error(function(data, status, headers, config) {
+			    	$scope.IsEditPending = false;
 			        console.log(data);
 			    });
 		} else {
@@ -83,6 +84,8 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 			    	$location.path( "/details/" + id ).replace();
 			    }).
 			    error(function(data, status, headers, config) {
+			    	$scope.IsEditPending = false;
+			    	alert("Server responsed with the error: ");
 			        console.log(data);
 			    });
 		};
@@ -105,11 +108,16 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, U
 	    this.editText = data;
 	}
 	
+	$scope.IsEditPending = false;
+	$scope.IsDeletePending = false;
+	
 	if ($routeParams.id == -1) {
 		$scope.IsExists = false;
 		$scope.IsInEdit = true;
 		$scope.btnOk = "create";
+		$scope.IsLoadPending = false;
 	} else {
+		$scope.IsLoadPending = true;
 		$scope.IsExists = true;
 		$scope.IsInEdit = false;
 		$scope.btnOk = "apply";
