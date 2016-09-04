@@ -11,9 +11,12 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 	$scope.count = 10;
 	
 	$scope.$on('userLogin', function(event) {
-		$scope.isUserLoggedIn = true;
-		$scope.isGroupsLoading = true;
-		$scope.IsAllGroupsLoaded = false;
+		$scope.$apply(function(){
+			$scope.isUserLoggedIn = true;
+			$scope.isGroupsLoading = true;
+			$scope.IsAllGroupsLoaded = false;
+	    });
+
 		//$scope.$emit('loadGroups');		
 	});
 	
