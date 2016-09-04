@@ -56,9 +56,9 @@ app.controller("groupsCtrl", function($scope, $http, $location, User) {
 		$scope.notes = $scope.notes.concat(notes);
 	});
 	
-	if (User.isAuthorized()) { // TODO
+	/*if (User.isAuthorized()) { // TODO
 		$scope.$emit('userLogin');
-	};
+	};*/
 	
 	$scope.$on('userLogout', function(event) {
 		$scope.resetParams();
