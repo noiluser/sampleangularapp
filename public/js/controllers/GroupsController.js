@@ -58,6 +58,7 @@ console.log("load", event);
 	$scope.$on('groupsLoaded', function(event, notes) {
 		$scope.isGroupsLoading = false;
 		$scope.IsGroupsLoaded = true;
+console.log("loaded", notes);		
 		$scope.notes = $scope.notes.concat(notes);
 	});
 	
