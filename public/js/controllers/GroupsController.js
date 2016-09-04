@@ -1,33 +1,31 @@
 app.controller("groupsCtrl", function($scope, $http, $location, User) {
-	$scope.isUserLoggedIn = false;
+	/*$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
 	$scope.IsGroupsLoaded = false;
 	$scope.IsAllGroupsLoaded = true;
-	$scope.notes = [];
+	$scope.notes = [];*/
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.convertDate = $scope.$parent.convertDate;
 	$scope.paramsToString = $scope.$parent.paramsToString;
-	$scope.offset = 0;
-	$scope.count = 10;
+	/*$scope.offset = 0;
+	$scope.count = 10;*/
 
 	$scope.$watch(function(){ return User.isAuthorized(); }, function(val){
 		if (val) {
 			$scope.isUserLoggedIn = true;
 			$scope.isGroupsLoading = true;
 			$scope.IsAllGroupsLoaded = false;
-		    console.log(val);
-		    console.log(User.isAuthorized());
+			$scope.$emit('loadGroups');    
+		} else {
+			$scope.isUserLoggedIn = false;
+			$scope.isGroupsLoading = false;
+			$scope.IsAllGroupsLoaded = true;
+			$scope.IsGroupsLoaded = false;
+			$scope.offset = 0;
+			$scope.notes = [];
+			$scope.offset = 0;
+			$scope.count = 10;
 		}
-	});
-
-	$scope.$on('userLogin', function(event) {
-		//$scope.$apply(function(){
-		//	$scope.isUserLoggedIn = true;
-		//	$scope.isGroupsLoading = true;
-		//	$scope.IsAllGroupsLoaded = false;
-	    //});
-
-		//$scope.$emit('loadGroups');		
 	});
 	
 	$scope.getGroups = function() {
@@ -71,23 +69,6 @@ console.log("success", data);
 console.log("loaded", notes);		
 		$scope.notes = $scope.notes.concat(notes);
 	});
-	
-	/*if (User.isAuthorized()) { // TODO
-		$scope.$emit('userLogin');
-	};*/
-	
-	$scope.$on('userLogout', function(event) {
-		$scope.resetParams();
-	});	
-	
-	$scope.resetParams = function() {
-		$scope.isUserLoggedIn = false;
-		$scope.isGroupsLoading = false;
-		$scope.IsAllGroupsLoaded = true;
-		$scope.IsGroupsLoaded = false;
-		$scope.offset = 0;
-		$scope.notes = [];
-	};
 	
 	$scope.showDetails = function(id) {
 		$location.path( "/details/" + id );

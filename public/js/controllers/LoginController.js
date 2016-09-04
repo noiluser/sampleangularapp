@@ -28,7 +28,6 @@ app.controller("authCtrl", function($scope, $location, $window, $cookies, User) 
 		$cookies.remove("VkNotebookAccess");
 		User.resetParams(function() {
 			$scope.syncUserData();
-			$scope.$parent.$broadcast('userLogout');
 		});
 	};
 	
