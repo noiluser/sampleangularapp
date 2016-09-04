@@ -117,7 +117,7 @@ console.log("sc", $scope.text);
 		data = data.replace(/&gt;/g, '>');
 		
 		console.log("s", event.target.innerHTML, data);
-	    this.editText = data;
+	    this.editText = encodeURIComponent(data);
 	}
 	
 	
