@@ -11,17 +11,20 @@ app.controller("authCtrl", function($scope, $location, $window, $cookies, User) 
 	
 	var path = $location.hash();
 	var cook = $cookies.get("VkNotebookAccess");
-
+console.log(">", path, "-", cook, "<");
 	if(path) {
+console.log("path", path);		
 		$location.hash("");
 		$cookies.put("VkNotebookAccess", path);
 		User.setToken(path, function() {
 			$scope.syncUserData();
 		});
-	} else if (cook)
+	} else if (cook) {
+console.log("cook", cook);		
 		User.setToken(cook, function() {
 			$scope.syncUserData();
 		});
+	}
 	
 	$scope.logout = function() {
 		$cookies.remove("VkNotebookAccess");
