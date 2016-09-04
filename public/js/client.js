@@ -60,41 +60,6 @@ app.filter('setPlainText', function () {
 	};
 });
 
-app.service('PagesService', function() {
-	this.totalRows = 0;
-	this.offset = 0;
-	this.page = 0;
-	this.reload = false;
-	this.count = 10;
-	this.currentId = 0;
-	this.token = "";
-	
-	this.getParams = function() {
-		if (this.reload) {
-			return {				
-				offset : 0,
-				count : this.offset				
-			};
-		} else {
-			return {				
-				offset : this.offset,
-				count : this.count				
-			};
-		}
-	};
-	
-	this.resetParams = function() {
-		this.totalRows = 0;
-		this.offset = 0;
-		this.page = 0;
-		this.reload = false;
-		this.count = 10;
-		this.currentId = 0;
-		
-	};
-	
-});
-
 app.factory('User', function($http) {
 	var userPublic = new Object();
 	var userPrivate = new Object(); 

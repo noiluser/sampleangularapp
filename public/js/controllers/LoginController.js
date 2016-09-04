@@ -1,4 +1,4 @@
-app.controller("authCtrl", function($scope, $location, $window, User, PagesService) {
+app.controller("authCtrl", function($scope, $location, $window, User) {
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.openProfile = function() {
@@ -6,7 +6,6 @@ app.controller("authCtrl", function($scope, $location, $window, User, PagesServi
 	};
 	
 	$scope.openTop = function() {
-		PagesService.reload = true;
 		$location.path( "/");
 	}
 	
@@ -22,7 +21,6 @@ app.controller("authCtrl", function($scope, $location, $window, User, PagesServi
 	$scope.logout = function() {
 		User.resetParams(function() {
 			$scope.syncUserData();
-			PagesService.resetParams();
 			$scope.$parent.$broadcast('userLogout');
 		});
 	};

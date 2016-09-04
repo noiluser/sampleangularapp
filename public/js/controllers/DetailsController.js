@@ -1,12 +1,10 @@
-app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, PagesService, User) {
+app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, User) {
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.convertDate = $scope.$parent.convertDate;
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.id = $routeParams.id;
 
-	PagesService.reload = true;
-	
 	$scope.getNoteInfo = function() {
 		var getParams = {
 				note_id : this.id,

@@ -1,4 +1,4 @@
-app.controller("groupsCtrl", function($scope, $http, $location, User, PagesService) {
+app.controller("groupsCtrl", function($scope, $http, $location, User) {
 	$scope.isUserLoggedIn = false;
 	$scope.isGroupsLoading = false;
 	$scope.IsGroupsLoaded = false;
@@ -7,6 +7,8 @@ app.controller("groupsCtrl", function($scope, $http, $location, User, PagesServi
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.convertDate = $scope.$parent.convertDate;
 	$scope.paramsToString = $scope.$parent.paramsToString;
+	$scope.offset = 10;
+	$scope.count = 10;
 	
 	$scope.$on('userLogin', function(event) {
 		$scope.isUserLoggedIn = true;
@@ -16,9 +18,11 @@ app.controller("groupsCtrl", function($scope, $http, $location, User, PagesServi
 	});
 	
 	$scope.getGroups = function() {
-		var getParams = PagesService.getParams();
-		getParams.sort = 1;
-		
+		var getParams = {
+				offset : $scope.offset,
+				count : $scope.count,
+				sort : 1
+		};
 		
 		var url = "https://api.vk.com/method/notes.get?" + $scope.paramsToString(getParams) + User.getUrlParams();
 		var self = this;
@@ -29,11 +33,9 @@ app.controller("groupsCtrl", function($scope, $http, $location, User, PagesServi
 				var co = gr.length;
 				var groupsCount = data.response.count; 
 				
-				if (PagesService.reload)
-					PagesService.reload = false;
-				else 
-		    		PagesService.offset += co;
-				if (groupsCount == PagesService.offset)
+				$scope.offset += co;
+				
+				if (groupsCount == $scope.offset)
 					$scope.IsAllGroupsLoaded = true;
 
 				$scope.$emit('groupsLoaded', gr);
@@ -66,6 +68,7 @@ app.controller("groupsCtrl", function($scope, $http, $location, User, PagesServi
 		$scope.isGroupsLoading = false;
 		$scope.IsAllGroupsLoaded = true;
 		$scope.IsGroupsLoaded = false;
+		$scope.offset = 0;
 		$scope.notes = [];
 	};
 	
