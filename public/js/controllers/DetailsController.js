@@ -41,7 +41,7 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 		$http.jsonp(url).
 		    success(function(data, status, headers, config) {
 		    	console.log(data);
-		    	$location.path( "/");
+		    	$location.path( "/").replace();
 		    }).
 		    error(function(data, status, headers, config) {
 		        console.log(data);
@@ -60,7 +60,6 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 				privacy_comment : "only_me"
 		};
 		if ($scope.IsExists) {
-			// edit
 			getParams.note_id = this.id;
 					
 			var url = "https://api.vk.com/method/notes.edit?" + this.paramsToString(getParams, true) + User.getUrlParams();
@@ -76,16 +75,12 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 			        console.log(data);
 			    });
 		} else {
-			// create
-
-					
 			var url = "https://api.vk.com/method/notes.add?" + this.paramsToString(getParams, true) + User.getUrlParams();
 			var self = this;
 			$http.jsonp(url).
 			    success(function(data, status, headers, config) {
 			    	var id = data.response;
-			    	$location.path( "/details/" + id );
-			    	console.log(data);
+			    	$location.path( "/details/" + id ).replace();
 			    }).
 			    error(function(data, status, headers, config) {
 			        console.log(data);
@@ -109,7 +104,6 @@ app.controller("detailsCtrl", function($scope, $routeParams, $http, $location, P
 		data = data.replace(/<div><br><\/div>/g, "<br/>").replace(/<div>/g, "<br/>").replace(/<br>/g, "<br/>").replace(/<\/div>/g, "");
 	    this.editText = data;
 	}
-	
 	
 	if ($routeParams.id == -1) {
 		$scope.IsExists = false;
