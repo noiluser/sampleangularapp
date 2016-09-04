@@ -11,7 +11,9 @@ app.controller("authCtrl", function($scope, $location, $window, $cookies, User) 
 	
 	var path = $location.hash();
 	var cook = $cookies.get("VkNote");
-	console.log(path, cook);
+	if (cook && !path) {
+		path = cook;
+	}
 	if(path) {
 		$cookies.put("VkNote", path);
 		User.setToken(path, function() {
