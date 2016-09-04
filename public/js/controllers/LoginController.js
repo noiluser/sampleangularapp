@@ -5,6 +5,11 @@ app.controller("authCtrl", function($scope, $location, $window, User, PagesServi
 		$window.open('https://vk.com/' + $scope.userHref, '_blank');
 	};
 	
+	$scope.openTop = function() {
+		PagesService.reload = true;
+		$location.path( "/");
+	}
+	
 	var path = $location.hash();
 	if(path) {
 		console.log("got Token");
