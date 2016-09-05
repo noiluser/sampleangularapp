@@ -9,10 +9,19 @@
   "author": "Sergey Nikitin",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-clean-css": "^2.0.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "del": "^2.2.2"
   },
   "repository": {
-  	"type": "git",
-	"url": "https://github.com/noiluser/sampleangularapp.git"
-  }  
+    "type": "git",
+    "url": "https://github.com/noiluser/sampleangularapp.git"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
