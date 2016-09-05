@@ -3,6 +3,7 @@ var cleanCSS = require('gulp-clean-css');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
+var ngAnnotate = require('gulp-ng-annotate');
 var del = require('del');
 
 
@@ -20,6 +21,7 @@ gulp.task('minify-css', function() {
 gulp.task('scripts', function() {
     return gulp.src(['public/js/**/*.js', '!public/js/lib/*.js'])
         .pipe(concat('app.min.js')) 
+        .pipe(ngAnnotate())
         .pipe(uglify()) 
         .pipe(gulp.dest('public/dist')); 
 });

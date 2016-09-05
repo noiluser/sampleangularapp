@@ -1,4 +1,5 @@
 app.controller("DetailsController", function($scope, $routeParams, $http, $location, User) {
+	"ngInject"
 	$scope.renderHtml = $scope.$parent.renderHtml;
 	$scope.convertDate = $scope.$parent.convertDate;
 	$scope.paramsToString = $scope.$parent.paramsToString;

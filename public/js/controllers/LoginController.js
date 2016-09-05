@@ -1,4 +1,5 @@
 app.controller("AuthController", function($scope, $location, $window, $cookies, User) {
+	"ngInject"
 	$scope.paramsToString = $scope.$parent.paramsToString;
 	
 	$scope.openProfile = function() {

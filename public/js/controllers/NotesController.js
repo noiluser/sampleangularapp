@@ -1,4 +1,5 @@
 app.controller("NotesController", function($scope, $http, $location, User) {
+	"ngInject"
 	$scope.isUserLoggedIn = false;
 	$scope.isNotesLoading = false;
 	$scope.IsNotesLoaded = false;

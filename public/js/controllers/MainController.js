@@ -1,4 +1,5 @@
 app.controller("MainController", function($scope, $sce) {
+	"ngInject"
 	$scope.renderHtml = function(html_code)	{
 	    return $sce.trustAsHtml(html_code);
 	};
