@@ -38,7 +38,7 @@
 			<span ng-show="noteForm.editTitle.$touched && noteForm.editTitle.$invalid" class="error">The name is required.</span>
 		</div>
 		<div class="row col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-10 col-xs-offset-1 col-xs-10">
-			<textarea style="display:none" name="editText" value="{{editText}}" required></textarea>
+			<textarea style="display:none" name="editText" ng-bind="editText" required></textarea>
 			<div id='text-area' contenteditable="true" name="editTextContent" spellcheck="true" ng-bind-html="renderHtml(editText)" ng-blur="saveText($event)" ng-class="{'has-error' : noteForm.editTextContent.$touched && noteForm.editText.$invalid}">
 			</div> 
 			<span ng-show="noteForm.editTextContent.$touched && noteForm.editText.$invalid" class="error">The text is required.</span>
