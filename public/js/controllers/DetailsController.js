@@ -56,7 +56,7 @@ app.controller("DetailsController", function($scope, $routeParams, $http, $locat
 	};
 	
 	$scope.addNote = function () {
-		if ($scope.editTitle) {
+		if ($scope.editTitle && $scope.editText) {
 			$scope.IsEditPending = true;
 			var getParams = {
 					title : $scope.editTitle,
