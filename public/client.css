@@ -65,3 +65,12 @@ input {
 	overflow : auto;
 	border : 1px solid;
 }
+
+.error {
+	color : #FF0000;
+    font-size : 12px;
+}
+
+.has-error {
+	border-color : #FF0000;
+}

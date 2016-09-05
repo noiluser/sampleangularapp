@@ -56,42 +56,44 @@ app.controller("DetailsController", function($scope, $routeParams, $http, $locat
 	};
 	
 	$scope.addNote = function () {
-		$scope.IsEditPending = true;
-		var getParams = {
-				title : $scope.editTitle,
-				text : $scope.editText,
-				privacy_view : "only_me",
-				privacy_comment : "only_me"
-		};
-		if ($scope.IsExists) {
-			getParams.note_id = this.id;
-					
-			var url = "https://api.vk.com/method/notes.edit?" + this.paramsToString(getParams, true) + User.getUrlParams();
-			$http.jsonp(url).
-			    success(function(data, status, headers, config) {
-			    	$scope.title = $scope.editTitle;
-					$scope.text = $scope.editText;
-					$scope.IsEditPending = false;
-					$scope.IsInEdit = false;
-			    }).
-			    error(function(data, status, headers, config) {
-			    	$scope.IsEditPending = false;
-			    	alert("Server responsed with the error message. Please try again.");
-			        console.log(data);
-			    });
-		} else {
-			var url = "https://api.vk.com/method/notes.add?" + this.paramsToString(getParams, true) + User.getUrlParams();
-			$http.jsonp(url).
-			    success(function(data, status, headers, config) {
-			    	var id = data.response;
-			    	$scope.IsEditPending = false;
-			    	$location.path( "/details/" + id ).replace();
-			    }).
-			    error(function(data, status, headers, config) {
-			    	$scope.IsEditPending = false;
-			    	alert("Server responsed with the error message. Please try again.");
-			        console.log(data);
-			    });
+		if ($scope.editTitle) {
+			$scope.IsEditPending = true;
+			var getParams = {
+					title : $scope.editTitle,
+					text : $scope.editText,
+					privacy_view : "only_me",
+					privacy_comment : "only_me"
+			};
+			if ($scope.IsExists) {
+				getParams.note_id = this.id;
+						
+				var url = "https://api.vk.com/method/notes.edit?" + this.paramsToString(getParams, true) + User.getUrlParams();
+				$http.jsonp(url).
+				    success(function(data, status, headers, config) {
+				    	$scope.title = $scope.editTitle;
+						$scope.text = $scope.editText;
+						$scope.IsEditPending = false;
+						$scope.IsInEdit = false;
+				    }).
+				    error(function(data, status, headers, config) {
+				    	$scope.IsEditPending = false;
+				    	alert("Server responsed with the error message. Please try again.");
+				        console.log(data);
+				    });
+			} else {
+				var url = "https://api.vk.com/method/notes.add?" + this.paramsToString(getParams, true) + User.getUrlParams();
+				$http.jsonp(url).
+				    success(function(data, status, headers, config) {
+				    	var id = data.response;
+				    	$scope.IsEditPending = false;
+				    	$location.path( "/details/" + id ).replace();
+				    }).
+				    error(function(data, status, headers, config) {
+				    	$scope.IsEditPending = false;
+				    	alert("Server responsed with the error message. Please try again.");
+				        console.log(data);
+				    });
+			};
 		};
 	};
 	
