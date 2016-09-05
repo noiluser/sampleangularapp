@@ -109,6 +109,7 @@ app.controller("DetailsController", function($scope, $routeParams, $http, $locat
 	};
 	
 	$scope.saveText = function(event) {
+		$scope.FieldFilled = true;
 		var data = event.target.innerHTML;
 		data = data.replace(/<div><br><\/div>/g, "<br/>").replace(/<div>/g, "<br/>").replace(/<br>/g, "<br/>").replace(/<\/div>/g, "");
 	    this.editText = data;
@@ -116,6 +117,7 @@ app.controller("DetailsController", function($scope, $routeParams, $http, $locat
 	
 	$scope.IsEditPending = false;
 	$scope.IsDeletePending = false;
+	$scope.FieldFilled = false;
 	
 	if ($routeParams.id == -1) {
 		$scope.IsExists = false;

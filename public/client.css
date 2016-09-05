@@ -59,7 +59,7 @@ input {
 	width : 100%;
 }
 
-#text-area {
+.text-area {
 	height : 300px;
 	max-height : 300px;
 	overflow : auto;
